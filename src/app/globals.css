@@ -1,0 +1,22 @@
+@import "tailwindcss";
+
+@theme {
+  --color-brand-dark: #0F363E;
+  --color-brand-medium: #1D5966;
+  --color-brand-light: #EBF5F7;
+  --color-brand-accent: #38BDF8;
+  --color-brand-muted: #64748B;
+  
+  --font-sans: var(--font-sans), ui-sans-serif, system-ui, sans-serif;
+  --font-serif: var(--font-serif), ui-serif, Georgia, serif;
+}
+
+@layer utilities {
+  .hero-watermark {
+    font-size: clamp(4rem, 14vw, 13rem);
+    line-height: 1;
+    opacity: 0.12;
+    pointer-events: none;
+    user-select: none;
+  }
+}

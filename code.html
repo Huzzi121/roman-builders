@@ -1,0 +1,670 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Havnex — Discover Where Life Begins</title>
+<!-- Tailwind CSS v3 CDN with Plugins -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Tailwind Custom Configuration -->
+<script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              dark: '#0F363E',
+              medium: '#1D5966',
+              light: '#EBF5F7',
+              accent: '#38BDF8',
+              muted: '#64748B'
+            }
+          },
+          fontFamily: {
+            sans: ['Inter', 'system-ui', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'sans-serif']
+          }
+        }
+      }
+    }
+  </script>
+<!-- FontAwesome Icons for UI Symbols -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet"/>
+<style data-purpose="custom-decorations">
+    /* Subtle hero atmospheric text overlay styling */
+    .hero-watermark {
+      font-size: clamp(4rem, 14vw, 13rem);
+      line-height: 1;
+      opacity: 0.12;
+      pointer-events: none;
+      user-select: none;
+    }
+  </style>
+</head>
+<body class="bg-[#F8FAFC] text-slate-800 antialiased font-sans">
+<!-- BEGIN: HeroAndHeaderWrapper -->
+<div class="relative bg-gradient-to-b from-[#6EB3C5] via-[#86C7D4] to-[#C9E7EE] pb-24 overflow-hidden">
+<!-- Large Havnex Watermark behind hero elements -->
+<div class="absolute top-10 left-1/2 -translate-x-1/2 font-black tracking-tight text-white hero-watermark z-0 select-none">
+      Havnex
+    </div>
+<!-- BEGIN: MainHeader -->
+<header class="relative z-20 max-w-7xl mx-auto px-6 sm:px-8 pt-6 flex items-center justify-between text-white">
+<!-- Brand Logo -->
+<a class="text-2xl font-bold tracking-tight text-white flex items-center gap-1.5" data-purpose="brand-logo" href="#">
+<span>Havnex</span>
+</a>
+<!-- Desktop Navigation Links -->
+<nav class="hidden md:flex items-center space-x-8 text-sm font-medium text-white/90" data-purpose="primary-navigation">
+<a class="hover:text-white transition-colors" href="#about">About us</a>
+<a class="hover:text-white transition-colors" href="#properties">Properties</a>
+<a class="hover:text-white transition-colors" href="#process">Services</a>
+<a class="hover:text-white transition-colors" href="#news">Blog</a>
+</nav>
+<!-- Action Icons & Button -->
+<div class="flex items-center space-x-5" data-purpose="header-actions">
+<button aria-label="Search" class="text-white/90 hover:text-white transition-colors text-sm" type="button">
+<i class="fa-solid fa-magnifying-glass"></i>
+</button>
+<a class="bg-[#0F363E] text-white px-5 py-2.5 rounded-lg text-xs font-semibold hover:bg-[#1D5966] transition-colors shadow-sm" href="#contact">
+          Contact us
+        </a>
+</div>
+</header>
+<!-- END: MainHeader -->
+<!-- BEGIN: HeroSection -->
+<section class="relative z-10 max-w-7xl mx-auto px-6 sm:px-8 pt-12 md:pt-16 pb-16" data-purpose="hero-content">
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+<!-- Hero Text & CTA -->
+<div class="lg:col-span-6 space-y-6 pt-4">
+<h1 class="text-4xl sm:text-5xl lg:text-[3.5rem] font-bold text-white tracking-tight leading-[1.15]">
+            Discover Where<br/>Life Begins
+          </h1>
+<p class="text-white/80 text-sm max-w-md leading-relaxed font-light">
+            Browse thousands of trusted listings and unlock the door to your perfect home — whether buying, renting, or investing.
+          </p>
+<div class="pt-2">
+<a class="inline-flex items-center gap-2 bg-[#0F363E] text-white px-5 py-3 rounded-lg text-xs font-medium hover:bg-[#1D5966] transition-all shadow-md" href="#properties">
+<span>Explore properties</span>
+<i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
+</a>
+</div>
+</div>
+<!-- Hero House Visual -->
+<div class="lg:col-span-6 flex justify-center lg:justify-end relative" data-purpose="hero-image-container">
+<div class="relative w-full max-w-lg">
+<img alt="House with red roof and vibrant greenery" class="w-full h-auto object-cover rounded-2xl drop-shadow-2xl" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDTFW1n1HLzEFWD2ncyIyFPgsLap7gm4-Wjep9_6trwAMjw3PMVSfxvREj6O713f1uCd2AlN5dlnK796oi0m3Dpw2KjAqB29dPzTvZ433bYXT3LlyG2BlXaS2c6BcuW_5bfK-FQ7crYaNKYT-8u6BKdYTaiC5xrNnyXhsf-Ex2ha0IAp4JaZ6h03DVvaO10do9KBPVCC4nYMzyHzPGCuXhNp8zxh7TSzNzzGuJx5g0X0n5IAO4_2DHEDg"/>
+</div>
+</div>
+</div>
+<!-- Quick Search Bar Widget Floating on Hero -->
+<div class="mt-14 max-w-5xl mx-auto bg-white/95 backdrop-blur-sm rounded-xl p-3 sm:p-4 shadow-xl border border-white/60" data-purpose="property-search-bar">
+<form class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-3 items-end">
+<!-- Filter 1: Keyword -->
+<div class="space-y-1">
+<label class="block text-[11px] font-semibold text-slate-500 uppercase tracking-wider pl-1">Looking for</label>
+<input class="w-full bg-[#F4F8FA] border-0 rounded-lg text-xs px-3 py-2.5 text-slate-700 placeholder-slate-400 focus:ring-2 focus:ring-[#0F363E]" placeholder="What to looking for?" type="text"/>
+</div>
+<!-- Filter 2: Property Type -->
+<div class="space-y-1">
+<label class="block text-[11px] font-semibold text-slate-500 uppercase tracking-wider pl-1">Type</label>
+<select class="w-full bg-[#F4F8FA] border-0 rounded-lg text-xs px-3 py-2.5 text-slate-700 focus:ring-2 focus:ring-[#0F363E]">
+<option>Property type</option>
+<option>Villa</option>
+<option>Apartment</option>
+<option>Penthouse</option>
+</select>
+</div>
+<!-- Filter 3: Price -->
+<div class="space-y-1">
+<label class="block text-[11px] font-semibold text-slate-500 uppercase tracking-wider pl-1">Price</label>
+<input class="w-full bg-[#F4F8FA] border-0 rounded-lg text-xs px-3 py-2.5 text-slate-700 placeholder-slate-400 focus:ring-2 focus:ring-[#0F363E]" placeholder="Price" type="text"/>
+</div>
+<!-- Filter 4: Location -->
+<div class="space-y-1">
+<label class="block text-[11px] font-semibold text-slate-500 uppercase tracking-wider pl-1">Location</label>
+<select class="w-full bg-[#F4F8FA] border-0 rounded-lg text-xs px-3 py-2.5 text-slate-700 focus:ring-2 focus:ring-[#0F363E]">
+<option>All cities</option>
+<option>Florence</option>
+<option>Vienna</option>
+<option>Barcelona</option>
+</select>
+</div>
+<!-- Filter Submit Button -->
+<div>
+<button class="w-full bg-[#0F363E] hover:bg-[#1D5966] text-white rounded-lg text-xs font-semibold py-2.5 px-4 flex items-center justify-center gap-2 transition-colors" type="submit">
+<i class="fa-solid fa-magnifying-glass text-xs"></i>
+<span>Search</span>
+</button>
+</div>
+</form>
+</div>
+</section>
+<!-- END: HeroSection -->
+</div>
+<!-- END: HeroAndHeaderWrapper -->
+<!-- BEGIN: VideoSection -->
+<section class="max-w-6xl mx-auto px-6 -mt-10 relative z-20" data-purpose="video-presentation" id="about">
+<div class="relative rounded-2xl overflow-hidden shadow-2xl border border-white/20 aspect-[16/8] sm:aspect-[21/9] bg-slate-900 group">
+<img alt="Modern Villa Architecture" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDyAaJKyaWp-AnExbWMPz1xeTbGPoTYmRbXuG0SB1BMVfP39hup8fOzLgoB4wo9RipalNpUBNCkrps69Rxnld_gPKAjb9ZBujYxZ8a9-6wESwHNfiN2yLU0gT-P4WELNgiGEsmqsryNtcBLAh2GV28eH2V-UMTxlYt5kZEVe4axWhzNRu_sQrib1t60DDUE0yQq6aQBPyHiJV1mEo1MCbRsGnDI-WRUa4u_1UtN0z1PE9x6Ize9DRoq-A"/>
+<!-- Shaded dark overlay -->
+<div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent flex flex-col justify-between p-6 sm:p-10 text-white">
+<!-- Play Button Center Icon -->
+<div class="self-center my-auto">
+<button aria-label="Play video" class="w-14 h-14 sm:w-16 sm:h-16 rounded-full bg-white/20 backdrop-blur-md hover:bg-white/40 border border-white/40 flex items-center justify-center text-white transition-all transform hover:scale-110" type="button">
+<i class="fa-solid fa-play text-lg sm:text-xl pl-1"></i>
+</button>
+</div>
+<!-- Video Bottom Captions -->
+<div class="flex flex-col sm:flex-row items-start sm:items-end justify-between gap-4">
+<h2 class="text-xl sm:text-2xl font-semibold tracking-tight text-white">What is Havnex?</h2>
+<p class="text-xs text-white/80 max-w-sm sm:text-right font-light leading-relaxed">
+            Havnex is a modern, trusted real estate company offering stylish, secure, and well-located homes and commercial spaces. We turn your dream lifestyle into reality with smart, elegant solutions.
+          </p>
+</div>
+</div>
+</div>
+</section>
+<!-- END: VideoSection -->
+<!-- BEGIN: PopularPropertySection -->
+<section class="max-w-7xl mx-auto px-6 sm:px-8 py-20" data-purpose="popular-properties" id="properties">
+<!-- Header with controls -->
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-10">
+<div>
+<h2 class="text-2xl sm:text-3xl font-bold text-slate-900 tracking-tight">Popular Property</h2>
+</div>
+<p class="text-xs text-slate-500 max-w-md leading-relaxed">
+        Discover the top-choice homes and commercial spaces our clients love. These premium properties combine prime locations, modern design, and unmatched comfort — perfect for your next move.
+      </p>
+</div>
+<!-- Filter Buttons & Explore All Link -->
+<div class="flex flex-wrap items-center justify-between gap-4 mb-8">
+<div class="flex items-center space-x-2">
+<button class="px-5 py-2 rounded-lg text-xs font-semibold bg-[#0F363E] text-white" type="button">Residential</button>
+<button class="px-5 py-2 rounded-lg text-xs font-medium bg-slate-100 hover:bg-slate-200 text-slate-600 transition-colors" type="button">Commercial</button>
+<button class="px-5 py-2 rounded-lg text-xs font-medium bg-slate-100 hover:bg-slate-200 text-slate-600 transition-colors" type="button">Apartment</button>
+</div>
+<a class="inline-flex items-center gap-1.5 text-xs font-semibold bg-[#0F363E] text-white px-4 py-2 rounded-lg hover:bg-[#1D5966] transition-colors" href="#">
+<span>Explore all</span>
+<i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
+</a>
+</div>
+<!-- Cards Grid -->
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+<!-- Property Card 1 -->
+<div class="bg-white rounded-xl overflow-hidden border border-slate-100 shadow-sm hover:shadow-md transition-shadow">
+<div class="h-44 bg-slate-200 overflow-hidden">
+<img alt="Villa vurundal" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCtpkAy2oyNiKxh_0OjitYCsNiaWtraTRcq_FlD-HnP2KOTvfPHP3nBcc54lPWiMkImLGfY-BBQ24Nies8zyV2JigEzG2KjzLIjLMzhSCL_-Fla7yLonCXQ-SPlkFo4gLLSH2ZyBYyvsURUrmtwjyopMcu2q4t63KUlTakWIpLtJBYK7wSovXjWlLq_sVn7VkbsV8I-6XDId5DXT-OGP15_jMlOt9Bd2A4lmfFLZbz49Q17X9XqojMlBA"/>
+</div>
+<div class="p-4 space-y-3">
+<div class="flex items-center justify-between">
+<h3 class="font-semibold text-sm text-slate-900">Villa vurundal</h3>
+<a class="text-slate-400 hover:text-slate-700 text-xs" href="#"><i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+</div>
+<div class="text-xs font-bold text-[#0F363E]">$3200<span class="text-[10px] text-slate-400 font-normal">/Night</span></div>
+<div class="pt-2 border-t border-slate-100 flex items-center justify-between text-[11px] text-slate-500">
+<span><i class="fa-solid fa-bed mr-1 text-slate-400"></i> 3 Bed</span>
+<span><i class="fa-solid fa-bath mr-1 text-slate-400"></i> 2 Bath</span>
+<span><i class="fa-solid fa-vector-square mr-1 text-slate-400"></i> 1400 sqft</span>
+</div>
+</div>
+</div>
+<!-- Property Card 2 -->
+<div class="bg-white rounded-xl overflow-hidden border border-slate-100 shadow-sm hover:shadow-md transition-shadow">
+<div class="h-44 bg-slate-200 overflow-hidden">
+<img alt="Villa sakura" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDOhcXwZ0wciEOd5uU6W0PF4_lwDEkuMVDDZMHKTEWjK4fOx8N1EKXDmEdYww2ImP8Ny1YeZEfs7ED-bgoSX2cJky8j6cLFwpvkJkyZwA0evcFC-sjDYe5H_xO9DkJki7wpC0AofSBb0YclnXhEvdHYNCmiGJdles2xIxi57zcauSbooyqNcJRfiUIHIVawt48mYzNxXd9b9fITdnnnGKHBhOwXoI995UaHwvKUs0DQcM0kbOEwbLE_EA"/>
+</div>
+<div class="p-4 space-y-3">
+<div class="flex items-center justify-between">
+<h3 class="font-semibold text-sm text-slate-900">Villa sakura</h3>
+<a class="text-slate-400 hover:text-slate-700 text-xs" href="#"><i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+</div>
+<div class="text-xs font-bold text-[#0F363E]">$3800<span class="text-[10px] text-slate-400 font-normal">/Night</span></div>
+<div class="pt-2 border-t border-slate-100 flex items-center justify-between text-[11px] text-slate-500">
+<span><i class="fa-solid fa-bed mr-1 text-slate-400"></i> 4 Bed</span>
+<span><i class="fa-solid fa-bath mr-1 text-slate-400"></i> 2 Bath</span>
+<span><i class="fa-solid fa-vector-square mr-1 text-slate-400"></i> 1200 sqft</span>
+</div>
+</div>
+</div>
+<!-- Property Card 3 -->
+<div class="bg-white rounded-xl overflow-hidden border border-slate-100 shadow-sm hover:shadow-md transition-shadow">
+<div class="h-44 bg-slate-200 overflow-hidden">
+<img alt="Villa Zuiderpark" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAMcDOno6Scgd5BFg9L1qTf-s9OkhsNQjKzxSplYsQ4dyjkTSCNxADoSv-L-g5_GpFrHLVy05sEHznifXdMUuyYB_NFibVDcr2HAUuQ3RNIIL5uwp1swp5yKn44i4sfxNE63dBmkEksnPLhgwUF_MIlXyx7INpDlnOEWnghAZEBASptDMP36TQXK8X99FzbhzZ5iODFCcsaTO5nI-H56PvGpbMNrXLnwbcEyUcXHpUTXSBbIeFSp98h6g"/>
+</div>
+<div class="p-4 space-y-3">
+<div class="flex items-center justify-between">
+<h3 class="font-semibold text-sm text-slate-900">Villa Zuiderpark</h3>
+<a class="text-slate-400 hover:text-slate-700 text-xs" href="#"><i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+</div>
+<div class="text-xs font-bold text-[#0F363E]">$3600<span class="text-[10px] text-slate-400 font-normal">/Night</span></div>
+<div class="pt-2 border-t border-slate-100 flex items-center justify-between text-[11px] text-slate-500">
+<span><i class="fa-solid fa-bed mr-1 text-slate-400"></i> 3 Bed</span>
+<span><i class="fa-solid fa-bath mr-1 text-slate-400"></i> 2 Bath</span>
+<span><i class="fa-solid fa-vector-square mr-1 text-slate-400"></i> 1100 sqft</span>
+</div>
+</div>
+</div>
+<!-- Property Card 4 -->
+<div class="bg-white rounded-xl overflow-hidden border border-slate-100 shadow-sm hover:shadow-md transition-shadow">
+<div class="h-44 bg-slate-200 overflow-hidden">
+<img alt="Villa Archetype" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCQDOWMTvjW_pesS3iDvSEy0TRijOEhD3H5Okz6qa2Vh1YI62lyMATzJuP50wMFbItQWdtmQKNFDvrGmUPny8tnPL76mEW2jtRIYajWeDZMs36V2LQPEa5yJAhv3KroNLDEZ_MGdUMFo4ZUZcSNFq_WkYA0f6vfJ2sleOrzQt5NWPvSopw5rjzHSAZQGkVL6xo5DRcsJCB-MHDv6RbPqKgRovpaPd6H7hyw5TMpwNokmfiMk_HHomch0g"/>
+</div>
+<div class="p-4 space-y-3">
+<div class="flex items-center justify-between">
+<h3 class="font-semibold text-sm text-slate-900">Villa Archetype</h3>
+<a class="text-slate-400 hover:text-slate-700 text-xs" href="#"><i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+</div>
+<div class="text-xs font-bold text-[#0F363E]">$3000<span class="text-[10px] text-slate-400 font-normal">/Night</span></div>
+<div class="pt-2 border-t border-slate-100 flex items-center justify-between text-[11px] text-slate-500">
+<span><i class="fa-solid fa-bed mr-1 text-slate-400"></i> 3 Bed</span>
+<span><i class="fa-solid fa-bath mr-1 text-slate-400"></i> 2 Bath</span>
+<span><i class="fa-solid fa-vector-square mr-1 text-slate-400"></i> 950 sqft</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Carousel arrows -->
+<div class="flex items-center justify-center space-x-3 mt-8">
+<button class="w-8 h-8 rounded bg-[#0F363E]/80 hover:bg-[#0F363E] text-white flex items-center justify-center text-xs transition-colors">
+<i class="fa-solid fa-arrow-left"></i>
+</button>
+<button class="w-8 h-8 rounded bg-[#1D5966] hover:bg-[#0F363E] text-white flex items-center justify-center text-xs transition-colors">
+<i class="fa-solid fa-arrow-right"></i>
+</button>
+</div>
+</section>
+<!-- END: PopularPropertySection -->
+<!-- BEGIN: WorkProcessSection -->
+<section class="bg-[#0F363E] py-16 text-white" data-purpose="work-process" id="process">
+<div class="max-w-7xl mx-auto px-6 sm:px-8">
+<h2 class="text-2xl sm:text-3xl font-bold text-center tracking-tight mb-12">Our Work Process</h2>
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+<!-- Process step icon sidebar -->
+<div class="lg:col-span-3 flex lg:flex-col justify-around lg:justify-start gap-4" data-purpose="process-steps">
+<div class="flex flex-col items-center text-center p-3 rounded-xl bg-white/10 border border-white/10 w-full">
+<div class="w-10 h-10 rounded-lg bg-[#1D5966] flex items-center justify-center text-sm mb-2">
+<i class="fa-solid fa-house"></i>
+</div>
+<span class="text-[11px] font-medium text-white/90">Discover house</span>
+</div>
+<div class="flex flex-col items-center text-center p-3 rounded-xl hover:bg-white/5 border border-transparent transition-colors w-full">
+<div class="w-10 h-10 rounded-lg bg-white/10 flex items-center justify-center text-sm mb-2">
+<i class="fa-regular fa-calendar-check"></i>
+</div>
+<span class="text-[11px] font-medium text-white/70">Schedule to visit</span>
+</div>
+<div class="flex flex-col items-center text-center p-3 rounded-xl hover:bg-white/5 border border-transparent transition-colors w-full">
+<div class="w-10 h-10 rounded-lg bg-white/10 flex items-center justify-center text-sm mb-2">
+<i class="fa-solid fa-handshake-angle"></i>
+</div>
+<span class="text-[11px] font-medium text-white/70">Hassle-free purchase</span>
+</div>
+<div class="flex flex-col items-center text-center p-3 rounded-xl hover:bg-white/5 border border-transparent transition-colors w-full">
+<div class="w-10 h-10 rounded-lg bg-white/10 flex items-center justify-center text-sm mb-2">
+<i class="fa-solid fa-shield-halved"></i>
+</div>
+<span class="text-[11px] font-medium text-white/70">Moneyback guarantee</span>
+</div>
+</div>
+<!-- Featured process preview card -->
+<div class="lg:col-span-9 relative rounded-2xl overflow-hidden shadow-2xl border border-white/10 group">
+<img alt="Modern luxury house by pool" class="w-full h-80 sm:h-96 object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCmDtrA6HYFGlcBPLPhyNmFjixeMUFHMlMZbBzk0RG-fjaZIkdPehgkZcr1RepjE4ns-U9E5PqNcKn7KFvcfTYmD7IC_RTE4qX7O9txBWnUnUMterjs8Cu_uGBUCRNN2ewLej3tnQjNo_aPw9nVaPs-vFw7N_dEiHCGg--HH-yYRZ7CB_qML8yKWjyB1SjQOqjVVpUK0DORxaWWPr1WFJv8w_65FUdu6nq7XZ8IxSjP0qSnf2mthtQRMw"/>
+<div class="absolute inset-y-0 right-0 w-full sm:w-1/2 bg-[#0F363E]/85 backdrop-blur-sm p-6 sm:p-8 flex flex-col justify-center text-white">
+<h3 class="text-xl font-bold mb-3">Find the Perfect House</h3>
+<p class="text-xs text-white/80 leading-relaxed mb-6 font-light">
+              Discover homes that match your lifestyle, budget, and dreams — effortlessly. Whether you're buying, renting, or just exploring, we help you find the right place to call home.
+            </p>
+<div class="flex items-center justify-between text-xs pt-4 border-t border-white/20">
+<span class="text-white/60 font-medium">01 <span class="text-white ml-2">Discover house</span></span>
+<a class="text-white hover:text-white/80 font-medium flex items-center gap-1" href="#">Next <i class="fa-solid fa-chevron-right text-[10px]"></i></a>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- END: WorkProcessSection -->
+<!-- BEGIN: NeighborhoodSection -->
+<section class="max-w-7xl mx-auto px-6 sm:px-8 py-20" data-purpose="neighborhood-catalog">
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-8">
+<div>
+<h2 class="text-2xl sm:text-3xl font-bold text-slate-900 tracking-tight">Find Your Neighborhood</h2>
+<p class="text-xs text-slate-500 mt-2 max-w-xl">
+          Explore neighborhoods that fit your vibe — from quiet suburbs to vibrant city streets. Discover schools, parks, safety, and community, all in one place.
+        </p>
+</div>
+<a class="inline-flex items-center gap-1 text-xs font-semibold text-[#0F363E] border border-slate-300 px-3.5 py-1.5 rounded hover:bg-slate-50" href="#">
+<span>View all</span>
+<i class="fa-solid fa-arrow-up-right-from-square text-[9px]"></i>
+</a>
+</div>
+<!-- Neighborhood Bento-styled Grid -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-5">
+<!-- Column 1 (2 stacked cards) -->
+<div class="flex flex-col gap-5">
+<div class="relative h-44 rounded-xl overflow-hidden group shadow-sm">
+<img alt="Hillcrest, Florence" class="w-full h-full object-cover group-hover:scale-105 transition duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDwPbrjnFWIkltmZ8Vh-MJIzkO3vZSISWm1563p7SJCeat16zFY6XLM98AnmfchAe0J-Tb0l85JzIlFpbLGfoj4OWTVZMudCBgN_W3pK6UhWAqPVPhw8Fk5FwAI7f2zah5l9HeJZq8Y66rIX78WJfsCk4gw5faG2yJq0MER3dThqdwG4DQA09jCw6h-0PZ-ImNrxyCfKMPWXauZMgWOyIaqcO4_uN6AWZvKSSz0CYourEjqjE1L9NPiOw"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent flex items-end p-4">
+<div class="flex items-center justify-between w-full text-white text-xs font-medium">
+<span>Hillcrest, Florence</span>
+<i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
+</div>
+</div>
+</div>
+<div class="relative h-44 rounded-xl overflow-hidden group shadow-sm">
+<img alt="Rosegate, Paris" class="w-full h-full object-cover group-hover:scale-105 transition duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuADEMd7nbTImbHttVeMXUETWSH5bsp-czjOMvLxRJiZv33QXycPyh8Wpujmq6kj12NqEKvEx1TlYYh-5-AF-scTTQFN6BAfqMhI8WPIFUaw46uCBrOsGhdHWaqxd8dOmYHYBXrm7GN2S2N_z1fbg2c-zdJcFC26PI_VZPSY3FBWpqrGUCI5lmJOuGj_TEpHIFERSEwoGWLPus0d0cL4IOP-5K_Y9zk3VAEsz5s-OYj4kcWFiobBHEMhsw"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent flex items-end p-4">
+<div class="flex items-center justify-between w-full text-white text-xs font-medium">
+<span>Rosegate, Paris</span>
+<i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
+</div>
+</div>
+</div>
+</div>
+<!-- Column 2 (Tall skyscraper card) -->
+<div class="relative h-[23.25rem] rounded-xl overflow-hidden group shadow-sm">
+<img alt="Silverleaf, Vienna" class="w-full h-full object-cover group-hover:scale-105 transition duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB7T_91QZFbKKLxmg_rDOcX_GYxiDHVCVpAqUhGPA9jFR9XgonfsHYtk64mFw8Sxy9HASYjPzzBb3O4-EIjPl5AETmsJcp0B12PqXR1mJlOxiYJdX0ZMTPdnRFG8FpyaVXxKkRLAM-roJ7Ch-QcwlinECCp6w_iMvbaeE80DKzKKmlvwuimY54Wu-OCMrQeFJdw1EWtlPV_kFa9wMSy-yYytNmwD0rIKiGmYMy3_xl5EQFMxxn3JJ42hg"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent flex items-end p-4">
+<div class="flex items-center justify-between w-full text-white text-xs font-medium">
+<span>Silverleaf, Vienna</span>
+<i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
+</div>
+</div>
+</div>
+<!-- Column 3 (2 stacked cards) -->
+<div class="flex flex-col gap-5">
+<div class="relative h-44 rounded-xl overflow-hidden group shadow-sm">
+<img alt="Oakmont, Barcelona" class="w-full h-full object-cover group-hover:scale-105 transition duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCfTRQ4Qab1BxJga1jTVRcWXR0J98AyAs66b7FZL8-6tieKdBvd4D1JrZIQ7Eo9oZiJ8rSk72BxuidcXHWDtDf_zgG2JVhbaf0w45IWJP1VajxwgdZHfEw1_FasHREpUcsH5hhXuyL_kPN5a36TUHeMe_GwxHh2sRc2KsH0FwKhv-11zY5bcncmWrgjXg0ovEvCQDFuxA0-4GNpdiOWjudyCvr3PTnwFtoox7xUlwfrhU4OBvdKWKkNDg"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent flex items-end p-4">
+<div class="flex items-center justify-between w-full text-white text-xs font-medium">
+<span>Oakmont, Barcelona</span>
+<i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
+</div>
+</div>
+</div>
+<div class="relative h-44 rounded-xl overflow-hidden group shadow-sm">
+<img alt="Maplewood, Rome" class="w-full h-full object-cover group-hover:scale-105 transition duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDLwop_JwvYH1UzlpBRGkwvLklf_ZanzDCxc699-Om1m-MedhJI8j34oax-gQ8aPsLNp8dD2ck_cdmGuLYBbyFFzRtS63HlA6ST1AHjN4_-trM7PjWsr0ZXGnbwrpynr5So-sQABUmzMes-_k4NG_w-5Cdp1qXD2MCGCnoUhcvkdSYxeVEQfUS811-4lnXpvFpJO26XnFX4CMz-XuKwVQDch0XUfoDxBuPKRrG9AxRPeniM37vQq3-IUg"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent flex items-end p-4">
+<div class="flex items-center justify-between w-full text-white text-xs font-medium">
+<span>Maplewood, Rome</span>
+<i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- END: NeighborhoodSection -->
+<!-- BEGIN: TeamSection -->
+<section class="max-w-7xl mx-auto px-6 sm:px-8 py-16" data-purpose="team-members">
+<div class="text-center max-w-xl mx-auto mb-8">
+<h2 class="text-2xl sm:text-3xl font-bold text-slate-900 tracking-tight">Meet Our Team</h2>
+<p class="text-xs text-slate-500 mt-2">
+        Get to know the passionate professionals dedicated to guiding you home. Experienced, trusted, and always here for you.
+      </p>
+<!-- Search Filters -->
+<div class="mt-6 flex items-center justify-center gap-2">
+<select class="bg-white border border-slate-200 rounded text-xs px-3 py-1.5 text-slate-600 focus:ring-1 focus:ring-[#0F363E]">
+<option>Language</option>
+<option>English</option>
+<option>Spanish</option>
+<option>French</option>
+</select>
+<select class="bg-white border border-slate-200 rounded text-xs px-3 py-1.5 text-slate-600 focus:ring-1 focus:ring-[#0F363E]">
+<option>Specialization</option>
+<option>Residential</option>
+<option>Commercial</option>
+</select>
+<button class="bg-[#0F363E] text-white text-xs px-4 py-1.5 rounded flex items-center gap-1.5 hover:bg-[#1D5966] transition-colors">
+<i class="fa-solid fa-magnifying-glass text-[10px]"></i>
+<span>Search</span>
+</button>
+</div>
+</div>
+<!-- Team Cards Slider / Grid -->
+<div class="relative flex items-center justify-center">
+<!-- Left Arrow -->
+<button class="hidden md:flex absolute left-0 z-10 w-8 h-8 rounded border border-slate-300 text-slate-600 items-center justify-center hover:bg-slate-100 text-xs">
+<i class="fa-solid fa-arrow-left"></i>
+</button>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6 w-full max-w-4xl px-0 md:px-12">
+<!-- Team Member 1 -->
+<div class="bg-[#0F363E] text-white rounded-xl overflow-hidden shadow-lg flex flex-col items-center pt-5 pb-4 px-4 text-center">
+<div class="w-36 h-44 rounded-lg overflow-hidden bg-slate-200 mb-4 shadow">
+<img alt="Devon Lane" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDYkaW-o7U-ijQMSgQtIkgnYSNhJKpBtjfoyLhebbU0L2WGH9mitSExt7iTuuKjTSyc3EJe9fNRTLuVQ_yIqdRGT85ReZdORhXv_w4_zl1JNhXaYxccZjtJvjy-zMpedCBnmwiOtwUYY54Y86iMuCjQZWPYSOXArRIsftnvS-urNmmU8mpBmEIegriD3u6D0lEquH1pGKL102eUV4uCs582WWw1YAiDKxfASFfr0EUE5YIyTOBsIm8q4A"/>
+</div>
+<h3 class="font-semibold text-sm">Devon Lane</h3>
+<p class="text-[10px] text-white/70 mb-3">Head of plan</p>
+<div class="text-[10px] text-white/80 border-t border-white/15 pt-2 w-full space-y-0.5">
+<div>Experience: 10 years</div>
+<div>Language: English, Arabic</div>
+</div>
+</div>
+<!-- Team Member 2 -->
+<div class="bg-[#0F363E] text-white rounded-xl overflow-hidden shadow-lg flex flex-col items-center pt-5 pb-4 px-4 text-center">
+<div class="w-36 h-44 rounded-lg overflow-hidden bg-slate-200 mb-4 shadow">
+<img alt="Theresa Webb" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD_EjeZTam9LiH6BiB57e0sCHCvW_KnFyh6Y1Pgl4HfhyOHiS4P_WPdoxzI_noZjLdOw4nQylTRYymJdvBbfN54_IbcS1T1zE_tK4yf_EO8JvH_UJ8bJrTckRXV8CGC44VpXMsYrIFtseSgfk2CSx0JmpJ58djs56xysioLkGI-YmeqOou6Fg9_gWi4VCKCT06hR7HfGC0-iVf7TiDjFFjc48D7OmCEf3EGrGKRrkpjraQNr1N8BN_rLw"/>
+</div>
+<h3 class="font-semibold text-sm">Theresa Webb</h3>
+<p class="text-[10px] text-white/70 mb-3">Head of secondary</p>
+<div class="text-[10px] text-white/80 border-t border-white/15 pt-2 w-full space-y-0.5">
+<div>Experience: 12 years</div>
+<div>Language: English, Spanish</div>
+</div>
+</div>
+<!-- Team Member 3 -->
+<div class="bg-[#0F363E] text-white rounded-xl overflow-hidden shadow-lg flex flex-col items-center pt-5 pb-4 px-4 text-center">
+<div class="w-36 h-44 rounded-lg overflow-hidden bg-slate-200 mb-4 shadow">
+<img alt="Eleanor Pena" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAmTGX16Z9oLU_aUBTkOQ0BUgaYskaKsME27AKhQ2I01_R1WY2VTqqE7flXb9cwxTqOLwt5dCol7BbnivGxqq_k0mx6gixlGg8dIkYuCSk4S9vuN7NI3eCZEGaXBrAKPRJ31fameBBkp3WwweiUt-JmGRMDHIHIv4pilx7KnLGaR18IYKNrvC7fOuG-V84olL3tgQe4UKV3ef-mzeXMPeYG2raf0cq6mSGug0gfRNW2O8Qty4VicNlDxQ"/>
+</div>
+<h3 class="font-semibold text-sm">Eleanor Pena</h3>
+<p class="text-[10px] text-white/70 mb-3">Senior sales manager</p>
+<div class="text-[10px] text-white/80 border-t border-white/15 pt-2 w-full space-y-0.5">
+<div>Experience: 14 years</div>
+<div>Language: English, French</div>
+</div>
+</div>
+</div>
+<!-- Right Arrow -->
+<button class="hidden md:flex absolute right-0 z-10 w-8 h-8 rounded bg-[#1D5966] text-white items-center justify-center hover:bg-[#0F363E] text-xs">
+<i class="fa-solid fa-arrow-right"></i>
+</button>
+</div>
+<div class="text-center mt-8">
+<a class="inline-flex items-center gap-1.5 text-xs font-semibold bg-[#0F363E] text-white px-4 py-2 rounded hover:bg-[#1D5966]" href="#">
+<span>View all</span>
+<i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
+</a>
+</div>
+</section>
+<!-- END: TeamSection -->
+<!-- BEGIN: NewsSection -->
+<section class="max-w-7xl mx-auto px-6 sm:px-8 py-16" data-purpose="news-and-insights" id="news">
+<div class="mb-8">
+<h2 class="text-2xl sm:text-3xl font-bold text-slate-900 tracking-tight">Read Our News</h2>
+<p class="text-xs text-slate-500 mt-1">
+        Get to know the passionate professionals dedicated to guiding you home. Experienced, trusted, and always here for you.
+      </p>
+</div>
+<!-- Editorial Layout -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+<!-- Main Large News Card -->
+<div class="lg:col-span-6 bg-white rounded-xl overflow-hidden border border-slate-100 shadow-sm flex flex-col justify-between">
+<div class="h-64 sm:h-72 bg-slate-200">
+<img alt="Rental Market News" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD1H5OGAO06vKn3N8gQWFIwY2tZ84-tS-KYYex5T0QtYU-9OEJWQnXaZy00dK2n0kxdw1KdvzsVRraFnkyXNQ12BJDVYh4uK6OSbm7ODsSROAYOYfj_pp1YqSkwUVH77OFQPfUsolPHGqdLhv4hlny4gCCwvV99VSZP6iJikJwZ3uNfXx3x1b7WNdj72j4AF6my9de4_kCkXqWG7_Esrb422_gW4eN9v5QjhDOwMG_m45iXrabyGHEFZw"/>
+</div>
+<div class="p-5">
+<span class="text-[10px] text-slate-400 font-medium">10 May 2025</span>
+<div class="flex items-center justify-between mt-1">
+<h3 class="text-sm font-semibold text-slate-900">Rental Market Update: Best Investment Zones of the Year</h3>
+<a class="text-xs text-[#0F363E] font-medium flex items-center gap-1 whitespace-nowrap ml-4" href="#">
+<span>Read more</span>
+<i class="fa-solid fa-arrow-up-right-from-square text-[9px]"></i>
+</a>
+</div>
+</div>
+</div>
+<!-- Secondary Smaller Cards Grid -->
+<div class="lg:col-span-6 grid grid-cols-1 sm:grid-cols-2 gap-4">
+<!-- Mini Card 1 -->
+<div class="bg-white rounded-xl overflow-hidden border border-slate-100 shadow-sm h-44">
+<img alt="Architecture" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBK9fzq7DPil8C4DIlRjdSgWuHgoKyGWjU4DL-_pOh6K1FDkc22xwYvEqE7oRmGWMc-4wbTpT5SLsh1YMrTwMWl5z8uoMAMjQMJ7Ir5-DPmHZosAKcjIhcjvMi-0n4f9uioaHcLBStQedn27ag1jY4IuBuTgODZwD8Bx4l1z-wxQ6LlRVVPIiixeVHr4vJFz-ZyOsCadAG-63fYQP9Q5c-hQhXTNx7cY81Q8j0O3dzR0IKnP4xKtbV8yg"/>
+</div>
+<!-- Mini Card 2 -->
+<div class="bg-white rounded-xl overflow-hidden border border-slate-100 shadow-sm h-44">
+<img alt="Estate" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBYBtb93AwIZFI3mKsKTCLXnTPtcvXp9IRBy29ncR9m3aC6F--88LPQkemgWM3EtrnC0IoRX7OgVhUhGS3cjAYJD6mnqll1OSlorbGERI2Nl_sw-116cxw3eMubzWOxKYHr2vfraGKOLWgx3x3osk7y--efZYGpxDqG68nthZxZZqYJHw3zD8duFinNdriNJE4fQ-q30uZcX67a6fz1LPu8OprSsYcFdjlEYYCj8XRhORpp_h6_i0LQWg"/>
+</div>
+<!-- Mini Card 3 Spanning Full Width -->
+<div class="sm:col-span-2 bg-white rounded-xl overflow-hidden border border-slate-100 shadow-sm h-48">
+<img alt="Suburban Villa" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDKUOqwwKTXooM4vrFFLbDfojSRKbU5rzz2pL1Rk_FcF0J9GiRnjJh4IlsvJSaxL-Qj1bWJVPt5BKWuqNMGebiQzVkc86xb2jz9uM9foK28caKc6k2oftsE_KdXWiPAg5aqbCOresxix7pYr7W_9IkzRwRxkUDzJnSB5LTLmCie_rtzKe5aDfrl1RgLL70zC2aKTogbD7aAEiAiHLv4H5nOzf6b4NXUNSsKICTGUudtwsmrAf2u8GTiWQ"/>
+</div>
+</div>
+</div>
+<div class="text-center mt-8">
+<a class="inline-flex items-center gap-1.5 text-xs font-semibold bg-[#0F363E] text-white px-4 py-2 rounded hover:bg-[#1D5966]" href="#">
+<span>Read all</span>
+<i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
+</a>
+</div>
+</section>
+<!-- END: NewsSection -->
+<!-- BEGIN: TestimonialsSection -->
+<section class="max-w-7xl mx-auto px-6 sm:px-8 py-12" data-purpose="testimonials">
+<div class="bg-[#0F363E] rounded-2xl overflow-hidden shadow-xl p-8 sm:p-12 text-white">
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+<!-- Testimonial heading -->
+<div class="lg:col-span-4 space-y-4">
+<h2 class="text-2xl sm:text-3xl font-bold tracking-tight leading-snug">
+            What our clients say about us
+          </h2>
+<p class="text-xs text-white/70 font-light leading-relaxed">
+            Hear from our happy clients about how we've helped bring their vision to life.
+          </p>
+<a class="inline-flex items-center gap-1 text-xs font-medium border border-white/30 px-3.5 py-1.5 rounded hover:bg-white/10 transition-colors" href="#">
+<span>View all</span>
+<i class="fa-solid fa-arrow-up-right-from-square text-[9px]"></i>
+</a>
+</div>
+<!-- Featured Testimonial Card with Image Background -->
+<div class="lg:col-span-8 relative rounded-xl overflow-hidden p-6 sm:p-8 bg-cover bg-center border border-white/10" style="background-image: linear-gradient(rgba(15, 54, 62, 0.85), rgba(15, 54, 62, 0.95)), url('https://lh3.googleusercontent.com/aida-public/AB6AXuBfZeawvZgcC7kTWBUlCYhW4uWWzVDVMqvqiuzfsQsRKpBvP3zQs53hp6wbljI4uYekiGqFz6RttqTcC722nWzlTOZswtJQy1QSgiAJfELw69PRo4vx8gLA6dcF4jCUGS8aij90wFBdkLLsYfgK4ruyUPO4xYx4xmVYgHDOGp0iI6v4DO8FCy_QV2CJXOALDjBMJe6m-UsG9JXE7mrMsFMW9aWyk2Eh19QSd6CMKBfkpl6hU0rWTg6Nhw');">
+<div class="relative z-10 space-y-4">
+<!-- Author Avatar & Details -->
+<div class="flex items-center space-x-3">
+<img alt="Devon Lane avatar" class="w-11 h-11 rounded-full object-cover border-2 border-white/30" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD0Jxt415I89k_GD6yhYLY0GZfGjPhhfk91bGqVR6FOnmpwFEqoQNDKpKk57SBar36xeh-KdJS9P8eaPh9klliwNPXkaAB5P2OCl1_A6mtjw3Yh8_4c8zEmJqFk0GDTe87RnBhgqd5zq0yLIMXc2yO5xd9FMH6E41BARpmVxMnE_s3HX7ei3yzj1-k0UibdFqgezlTUIr1BM69g21yaz71I9AdBzpCdbU1k1f9PZALBHsX2vEoWVsdLLA"/>
+<div>
+<div class="text-xs font-semibold text-white">Devon Lane</div>
+<div class="text-[10px] text-white/60">Investor</div>
+</div>
+</div>
+<!-- Quote Text -->
+<blockquote class="text-xs text-white/90 leading-relaxed font-light">
+              "Havnex Real Estate truly lives up to its name. They helped me find the perfect family home in a great neighborhood. The entire process was stress-free and smooth — from site visits to final paperwork."
+            </blockquote>
+<!-- Rating Stars and Carousel Navigation -->
+<div class="flex items-center justify-between pt-2">
+<div class="text-amber-400 text-xs flex space-x-1">
+<i class="fa-solid fa-star"></i>
+<i class="fa-solid fa-star"></i>
+<i class="fa-solid fa-star"></i>
+<i class="fa-solid fa-star"></i>
+<i class="fa-solid fa-star"></i>
+</div>
+<div class="flex space-x-2">
+<button class="w-7 h-7 rounded border border-white/20 text-white hover:bg-white/10 flex items-center justify-center text-[10px]">
+<i class="fa-solid fa-arrow-left"></i>
+</button>
+<button class="w-7 h-7 rounded bg-[#1D5966] text-white flex items-center justify-center text-[10px]">
+<i class="fa-solid fa-arrow-right"></i>
+</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- END: TestimonialsSection -->
+<!-- BEGIN: LeadFormSection -->
+<section class="max-w-7xl mx-auto px-6 sm:px-8 py-16" data-purpose="lead-capture" id="contact">
+<div class="grid grid-cols-1 lg:grid-cols-12 rounded-2xl overflow-hidden shadow-lg border border-slate-200 bg-[#1D5966]">
+<!-- Contact Form -->
+<div class="lg:col-span-6 p-8 sm:p-10 text-white">
+<h2 class="text-xl sm:text-2xl font-bold mb-6">Still haven't found what you're looking for?</h2>
+<form class="space-y-3" onsubmit="event.preventDefault();">
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+<input class="w-full bg-white text-slate-800 text-xs px-3.5 py-2.5 rounded border-0 placeholder-slate-400 focus:ring-2 focus:ring-[#0F363E]" placeholder="First name" type="text"/>
+<input class="w-full bg-white text-slate-800 text-xs px-3.5 py-2.5 rounded border-0 placeholder-slate-400 focus:ring-2 focus:ring-[#0F363E]" placeholder="Last name" type="text"/>
+</div>
+<input class="w-full bg-white text-slate-800 text-xs px-3.5 py-2.5 rounded border-0 placeholder-slate-400 focus:ring-2 focus:ring-[#0F363E]" placeholder="Buy property" type="text"/>
+<textarea class="w-full bg-white text-slate-800 text-xs px-3.5 py-2.5 rounded border-0 placeholder-slate-400 focus:ring-2 focus:ring-[#0F363E]" placeholder="Notes" rows="3"></textarea>
+<button class="w-full bg-[#0F363E] text-white text-xs font-semibold py-2.5 rounded hover:bg-black/40 transition-colors mt-2" type="submit">
+            Submit
+          </button>
+</form>
+</div>
+<!-- Architectural Showcase Beside Form -->
+<div class="lg:col-span-6 relative bg-slate-800 min-h-[280px]">
+<img alt="Toronto Townhouse" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC1q1YGqF0_SynstJYEnAAxdLr3eTiyO_H0ssThwUUvLRb08PVqRZ-_nZgazhiCVk5NrvVC1AzmiUn22uGM_-rbwqB4lKjaf-yHSI0gpY6_8xZHm82fseuHfWgiQGgJXI68Q-EaHKZOBcRyuxIeZvEafPswLNv_m00WKCKR9eCjV399wZu_r7LyURXlpYIku4HnZ1tbVJDdUb90kpqjpSFq1WVay5DrxldJbb1CkfswCnm7Dq_EJzmdsQ"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent flex items-end justify-between p-6 text-white text-xs">
+<span class="font-medium">Toronto Townhouse</span>
+<div class="flex space-x-2">
+<button class="w-6 h-6 rounded bg-black/40 hover:bg-black/60 text-white flex items-center justify-center text-[10px]">
+<i class="fa-solid fa-arrow-left"></i>
+</button>
+<button class="w-6 h-6 rounded bg-black/40 hover:bg-black/60 text-white flex items-center justify-center text-[10px]">
+<i class="fa-solid fa-arrow-right"></i>
+</button>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- END: LeadFormSection -->
+<!-- BEGIN: NewsletterSection -->
+<section class="max-w-7xl mx-auto px-6 sm:px-8 pb-16" data-purpose="newsletter">
+<div class="bg-[#0F363E] rounded-xl p-6 sm:p-8 flex flex-col sm:flex-row items-center justify-between gap-6 shadow-md">
+<h3 class="text-white font-semibold text-base sm:text-lg">Subscribe Newsletters</h3>
+<form class="flex w-full sm:w-auto max-w-md gap-2" onsubmit="event.preventDefault();">
+<input class="w-full sm:w-64 bg-white text-slate-800 text-xs px-4 py-2 rounded border-0 placeholder-slate-400 focus:ring-1 focus:ring-[#1D5966]" placeholder="Enter your email" type="email"/>
+<button class="bg-[#1D5966] text-white text-xs font-medium px-4 py-2 rounded hover:bg-[#256e7e] transition-colors whitespace-nowrap" type="submit">
+          Subscribe Now
+        </button>
+</form>
+</div>
+</section>
+<!-- END: NewsletterSection -->
+<!-- BEGIN: MainFooter -->
+<footer class="bg-white border-t border-slate-200 pt-12 pb-8 text-xs text-slate-500" data-purpose="main-footer">
+<div class="max-w-7xl mx-auto px-6 sm:px-8">
+<!-- Footer Navigation and Social Links -->
+<div class="flex flex-col sm:flex-row items-center justify-between gap-6 pb-8 border-b border-slate-100">
+<div class="flex items-center space-x-8 text-slate-600 font-medium text-xs">
+<a class="hover:text-slate-900 transition-colors" href="#about">About us</a>
+<a class="hover:text-slate-900 transition-colors" href="#properties">Discover</a>
+<a class="hover:text-slate-900 transition-colors" href="#neighborhood">Explore</a>
+<a class="hover:text-slate-900 transition-colors" href="#news">Books</a>
+</div>
+<div class="flex items-center space-x-4 text-slate-400">
+<a aria-label="Facebook" class="hover:text-[#0F363E] transition-colors text-sm" href="#"><i class="fa-brands fa-facebook-f"></i></a>
+<a aria-label="Twitter" class="hover:text-[#0F363E] transition-colors text-sm" href="#"><i class="fa-brands fa-twitter"></i></a>
+<a aria-label="Vimeo" class="hover:text-[#0F363E] transition-colors text-sm" href="#"><i class="fa-brands fa-vimeo-v"></i></a>
+<a aria-label="YouTube" class="hover:text-[#0F363E] transition-colors text-sm" href="#"><i class="fa-brands fa-youtube"></i></a>
+</div>
+</div>
+<!-- Footer Bottom with Logo & Copyright -->
+<div class="flex flex-col sm:flex-row items-center justify-between gap-4 pt-6 text-[11px] text-slate-400">
+<div>
+          Copyright 2025. All right reserved
+        </div>
+<div class="font-bold text-slate-800 text-sm tracking-tight">
+          Havnex
+        </div>
+<div class="flex space-x-4">
+<a class="hover:underline" href="#">Terms of Service</a>
+<a class="hover:underline" href="#">Privacy Policy</a>
+</div>
+</div>
+</div>
+</footer>
+<!-- END: MainFooter -->
+</body></html>
