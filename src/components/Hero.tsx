@@ -5,7 +5,7 @@ export default function Hero() {
   return (
     <div className="relative overflow-hidden flex flex-col justify-between">
       {/* Large Havnex Watermark behind hero elements */}
-      <div className="absolute top-[6%] left-1/2 -translate-x-1/2 w-full text-center text-[10rem] md:text-[18rem] font-black tracking-tight z-0 select-none bg-gradient-to-b from-black/[0.20] to-transparent bg-clip-text text-transparent leading-none pointer-events-none">
+      <div className="absolute top-[10%] md:top-[6%] left-1/2 -translate-x-1/2 w-full text-center text-[25vw] sm:text-[10rem] md:text-[18rem] font-black tracking-tight z-0 select-none bg-gradient-to-b from-black/[0.20] to-transparent bg-clip-text text-transparent leading-none pointer-events-none">
         Roman
       </div>
       
