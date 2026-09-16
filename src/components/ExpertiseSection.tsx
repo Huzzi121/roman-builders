@@ -4,13 +4,7 @@ import Link from 'next/link';
 export default function ExpertiseSection() {
   return (
     <section className="pt-16 lg:pt-20 pb-12 relative overflow-hidden" data-purpose="expertise" id="about">
-      {/* Giant text positioned absolute bottom-left */}
-      <div className="absolute -bottom-8 -left-4 pointer-events-none select-none z-0 hidden lg:block opacity-[0.03]">
-        <div className="text-[5rem] lg:text-[7rem] font-serif italic text-[#4a5240] leading-[0.85] tracking-tight whitespace-nowrap">
-          A BRIGHTER<br/>
-          <span className="text-[3rem] lg:text-[4rem] font-sans font-bold tracking-[0.2em] uppercase not-italic">TOMORROW</span>
-        </div>
-      </div>
+
 
       <div className="max-w-[90rem] mx-auto px-4 sm:px-6 lg:px-8 xl:px-12 relative z-10">
         <div className="flex flex-col lg:flex-row items-stretch lg:gap-12 xl:gap-20">
@@ -31,7 +25,7 @@ export default function ExpertiseSection() {
             </h2>
             
             {/* Subheading */}
-            <p className="text-gray-600 text-[13px] sm:text-[15px] max-w-md leading-relaxed mb-10 font-medium">
+            <p className="text-gray-800 text-[14px] sm:text-[16px] max-w-md leading-relaxed mb-10 font-medium">
               At Roman Builders & Developers, we turn potential into thriving communities by combining strategic planning, legal expertise, and quality construction.
             </p>
             
@@ -41,24 +35,24 @@ export default function ExpertiseSection() {
                 <div className="w-10 h-10 rounded-full bg-white/40 group-hover:bg-white/20 text-[#161f18] group-hover:text-white flex items-center justify-center mb-4 transition-colors duration-300">
                   <i className="fa-solid fa-map-location-dot text-[13px]"></i>
                 </div>
-                <div className="text-[10px] text-[#161f18] group-hover:text-white/80 font-bold mb-2 transition-colors duration-300">01</div>
-                <h3 className="font-serif text-[15px] text-[#161f18] group-hover:text-white mb-2 leading-tight transition-colors duration-300">Land Planning &<br/>Development</h3>
+                <div className="text-[11px] text-[#161f18] group-hover:text-white/80 font-bold mb-2 transition-colors duration-300">01</div>
+                <h3 className="font-serif text-[16px] text-[#161f18] group-hover:text-white mb-2 leading-tight transition-colors duration-300">Land Planning &<br/>Development</h3>
               </div>
               
               <div className="group bg-white/20 backdrop-blur-md hover:bg-[#4a5240]/85 rounded-3xl p-5 sm:p-6 shadow-[0_8px_32px_rgba(0,0,0,0.1)] border border-white/40 hover:border-transparent hover:-translate-y-1 transition-all duration-300 cursor-pointer">
                 <div className="w-10 h-10 rounded-full bg-white/40 group-hover:bg-white/20 text-[#161f18] group-hover:text-white flex items-center justify-center mb-4 transition-colors duration-300">
                   <i className="fa-solid fa-file-contract text-[13px]"></i>
                 </div>
-                <div className="text-[10px] text-[#161f18] group-hover:text-white/80 font-bold mb-2 transition-colors duration-300">02</div>
-                <h3 className="font-serif text-[15px] text-[#161f18] group-hover:text-white mb-2 leading-tight transition-colors duration-300">Legal Approvals<br/>& Compliance</h3>
+                <div className="text-[11px] text-[#161f18] group-hover:text-white/80 font-bold mb-2 transition-colors duration-300">02</div>
+                <h3 className="font-serif text-[16px] text-[#161f18] group-hover:text-white mb-2 leading-tight transition-colors duration-300">Legal Approvals<br/>& Compliance</h3>
               </div>
               
               <div className="group bg-white/20 backdrop-blur-md hover:bg-[#4a5240]/85 rounded-3xl p-5 sm:p-6 shadow-[0_8px_32px_rgba(0,0,0,0.1)] border border-white/40 hover:border-transparent hover:-translate-y-1 transition-all duration-300 cursor-pointer">
                 <div className="w-10 h-10 rounded-full bg-white/40 group-hover:bg-white/20 text-[#161f18] group-hover:text-white flex items-center justify-center mb-4 transition-colors duration-300">
                   <i className="fa-solid fa-helmet-safety text-[13px]"></i>
                 </div>
-                <div className="text-[10px] text-[#161f18] group-hover:text-white/80 font-bold mb-2 transition-colors duration-300">03</div>
-                <h3 className="font-serif text-[15px] text-[#161f18] group-hover:text-white mb-2 leading-tight transition-colors duration-300">Quality<br/>Construction</h3>
+                <div className="text-[11px] text-[#161f18] group-hover:text-white/80 font-bold mb-2 transition-colors duration-300">03</div>
+                <h3 className="font-serif text-[16px] text-[#161f18] group-hover:text-white mb-2 leading-tight transition-colors duration-300">Quality<br/>Construction</h3>
               </div>
             </div>
             

@@ -5,13 +5,6 @@ import CTASection from "@/components/CTASection";
 export default function ProcessPage() {
   return (
     <main className="relative min-h-screen">
-      {/* Global Unified Background Layer */}
-      <div className="fixed inset-0 z-0 pointer-events-none">
-        <div 
-          className="w-full h-full bg-cover bg-center"
-          style={{ backgroundImage: "url('/images/process-bg.png')" }}
-        ></div>
-      </div>
       {/* Page Hero */}
       <section className="pt-28 pb-28 md:pt-36 md:pb-36 px-6 sm:px-8 relative text-center">
         {/* Masked Background Layer */}
@@ -27,12 +20,7 @@ export default function ProcessPage() {
         </div>
         
         <div className="max-w-7xl mx-auto relative z-10 text-center">
-          <div className="flex items-center justify-center gap-4 mb-6">
-            <div className="w-16 h-[1px] bg-white/30"></div>
-            <span className="text-sm font-bold tracking-[0.25em] text-white/90 uppercase drop-shadow-md">How We Work</span>
-            <div className="w-16 h-[1px] bg-white/30"></div>
-          </div>
-          <h1 className="text-5xl md:text-6xl lg:text-7xl font-serif text-white mb-6 drop-shadow-lg">Our Process</h1>
+          <h1 className="text-5xl md:text-6xl lg:text-7xl font-serif text-white mb-6 drop-shadow-lg">How We Work</h1>
           <p className="text-white w-full max-w-6xl mx-auto text-sm md:text-base lg:text-lg font-light tracking-wide leading-relaxed drop-shadow-md">
             Transparency and structure are at the heart of what we do. From the moment we identify a <br className="hidden md:block" />piece of land to the day we hand over the plot, every step is meticulously planned.
           </p>

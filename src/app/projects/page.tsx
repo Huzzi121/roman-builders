@@ -38,13 +38,7 @@ export default function ProjectsPage() {
 
   return (
     <main className="relative min-h-screen">
-      {/* Global Unified Background Layer */}
-      <div className="fixed inset-0 z-0 pointer-events-none">
-        <div 
-          className="w-full h-full bg-cover bg-center"
-          style={{ backgroundImage: "url('/images/projects-bg.png')" }}
-        ></div>
-      </div>
+
 
       {/* Page Hero */}
       <section className="pt-28 pb-28 md:pt-36 md:pb-36 px-6 sm:px-8 relative text-center">
@@ -61,12 +55,7 @@ export default function ProjectsPage() {
         </div>
         
         <div className="max-w-7xl mx-auto relative z-10 text-center">
-          <div className="flex items-center justify-center gap-4 mb-6">
-            <div className="w-16 h-[1px] bg-white/30"></div>
-            <span className="text-sm font-bold tracking-[0.25em] text-white/90 uppercase drop-shadow-md">Projects</span>
-            <div className="w-16 h-[1px] bg-white/30"></div>
-          </div>
-          <h1 className="text-5xl md:text-6xl lg:text-7xl font-serif text-white mb-6 drop-shadow-lg">Our Developments</h1>
+          <h1 className="text-5xl md:text-6xl lg:text-7xl font-serif text-white mb-6 drop-shadow-lg">Projects</h1>
           <p className="text-white max-w-4xl mx-auto text-base md:text-lg lg:text-xl font-light tracking-wide leading-relaxed drop-shadow-md">
             Discover our portfolio of premium real estate developments, designed to <br className="hidden md:block" />elevate lifestyles and build thriving communities across Hazara.
           </p>

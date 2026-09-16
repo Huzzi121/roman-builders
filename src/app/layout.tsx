@@ -27,7 +27,13 @@ export default function RootLayout({
         />
         <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet" />
       </head>
-      <body className={`${outfit.variable} ${playfair.variable} font-sans bg-[#e8e4db] text-slate-800 antialiased`}>
+      <body className={`${outfit.variable} ${playfair.variable} font-sans bg-[#e8e4db] text-slate-800 antialiased relative`}>
+        {/* Global Background */}
+        <div 
+          className="fixed inset-0 z-[-1] pointer-events-none bg-cover bg-center bg-no-repeat bg-fixed"
+          style={{ backgroundImage: "url('/images/global-bg.png')" }}
+        ></div>
+        
         <Navbar />
         {children}
         <WhatsAppButton />

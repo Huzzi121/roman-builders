@@ -15,11 +15,11 @@ export default function Navbar() {
         
         {/* Desktop Navigation Links */}
         <nav className="hidden md:flex items-center gap-2 text-base font-medium text-[#e8e4db]" data-purpose="primary-navigation">
+          <Link href="/" className="px-5 py-2 rounded-full hover:bg-white/10 hover:text-white transition-all">Home</Link>
           <Link href="/about" className="px-5 py-2 rounded-full hover:bg-white/10 hover:text-white transition-all">About us</Link>
           <Link href="/projects" className="px-5 py-2 rounded-full hover:bg-white/10 hover:text-white transition-all">Projects</Link>
           <Link href="/services" className="px-5 py-2 rounded-full hover:bg-white/10 hover:text-white transition-all">Services</Link>
           <Link href="/process" className="px-5 py-2 rounded-full hover:bg-white/10 hover:text-white transition-all">Process</Link>
-          <Link href="/blog" className="px-5 py-2 rounded-full hover:bg-white/10 hover:text-white transition-all">Blog</Link>
         </nav>
         
         {/* Action Icons & Button */}
@@ -42,11 +42,11 @@ export default function Navbar() {
       {/* Mobile Menu Dropdown */}
       <div className={`pointer-events-auto md:hidden absolute top-[calc(100%+10px)] left-4 right-4 bg-[#3d4435]/95 backdrop-blur-xl rounded-3xl shadow-2xl border border-white/10 transition-all duration-300 origin-top overflow-hidden ${isMobileMenuOpen ? 'opacity-100 scale-y-100' : 'opacity-0 scale-y-0'}`}>
         <nav className="flex flex-col py-4 px-2">
+          <Link href="/" onClick={() => setIsMobileMenuOpen(false)} className="px-6 py-4 text-[#e8e4db] font-medium border-b border-white/5 hover:bg-white/10 rounded-xl transition-colors">Home</Link>
           <Link href="/about" onClick={() => setIsMobileMenuOpen(false)} className="px-6 py-4 text-[#e8e4db] font-medium border-b border-white/5 hover:bg-white/10 rounded-xl transition-colors">About us</Link>
           <Link href="/projects" onClick={() => setIsMobileMenuOpen(false)} className="px-6 py-4 text-[#e8e4db] font-medium border-b border-white/5 hover:bg-white/10 rounded-xl transition-colors">Projects</Link>
           <Link href="/services" onClick={() => setIsMobileMenuOpen(false)} className="px-6 py-4 text-[#e8e4db] font-medium border-b border-white/5 hover:bg-white/10 rounded-xl transition-colors">Services</Link>
           <Link href="/process" onClick={() => setIsMobileMenuOpen(false)} className="px-6 py-4 text-[#e8e4db] font-medium border-b border-white/5 hover:bg-white/10 rounded-xl transition-colors">Process</Link>
-          <Link href="/blog" onClick={() => setIsMobileMenuOpen(false)} className="px-6 py-4 text-[#e8e4db] font-medium border-b border-white/5 hover:bg-white/10 rounded-xl transition-colors">Blog</Link>
           <Link href="/contact" onClick={() => setIsMobileMenuOpen(false)} className="px-6 py-4 text-white font-bold hover:bg-white/10 rounded-xl transition-colors mt-2 flex items-center justify-between">
             Contact us <i className="fa-solid fa-arrow-right text-[11px]"></i>
           </Link>

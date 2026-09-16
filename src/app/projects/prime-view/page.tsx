@@ -16,7 +16,7 @@ export default function PrimeViewPage() {
             <span className="text-[10px] font-bold tracking-wider uppercase">Now Selling</span>
           </div>
           <h1 className="text-5xl md:text-7xl font-serif mb-6 drop-shadow-lg">Prime View Co-Operative Housing Society</h1>
-          <p className="text-lg md:text-xl font-light text-white/90">A Brighter Tomorrow in Abbottabad</p>
+         <p className="text-lg md:text-xl font-light text-white/90">A Brighter Tomorrow in Abbottabad</p>
         </div>
       </section>
 

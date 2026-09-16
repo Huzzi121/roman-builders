@@ -139,23 +139,13 @@ export default function Footer({ transparent = false }: { transparent?: boolean 
                 </p>
                 <div className="flex flex-wrap gap-3 lg:gap-4 items-start justify-center lg:justify-start">
                   {[
-                    { name: 'Facebook', icon: 'fa-facebook-f', href: '#' },
-                    { name: 'Instagram', icon: 'fa-instagram', href: '#' },
-                    { name: 'YouTube', icon: 'fa-youtube', href: '#' },
-                    { name: 'LinkedIn', icon: 'fa-linkedin-in', href: '#' },
-                    { name: 'X', isCustom: true, href: '#' },
-                    { name: 'TikTok', icon: 'fa-tiktok', href: '#' },
-                    { name: 'WhatsApp', icon: 'fa-whatsapp', href: '#' },
+                    { name: 'Call', icon: 'fa-solid fa-phone', href: 'tel:+923139986707' },
+                    { name: 'LinkedIn', icon: 'fa-brands fa-linkedin-in', href: 'https://www.linkedin.com/in/dr-roman-gul/' },
+                    { name: 'WhatsApp', icon: 'fa-brands fa-whatsapp', href: "https://wa.me/923139986707?text=Assalamualaikum%2C%20I%20visited%20your%20website%20and%20I%27m%20interested%20in%20your%20services.%20I%20would%20like%20to%20discuss%20a%20project%20and%20get%20more%20information%20about%20your%20services%2C%20pricing%2C%20and%20process.%20Please%20let%20me%20know%20when%20you%27re%20available%20to%20discuss.%20Thank%20you%21" },
                   ].map((social, i) => (
                     <div key={i} className="flex flex-col items-center justify-start gap-1.5 group cursor-pointer w-10">
-                      <a href={social.href} className="w-8 h-8 rounded-full border border-white/20 flex items-center justify-center text-white/70 hover:text-white hover:bg-white/10 hover:border-white/40 transition-all shadow-sm">
-                        {social.isCustom ? (
-                          <svg viewBox="0 0 24 24" fill="currentColor" className="w-[11px] h-[11px]">
-                            <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
-                          </svg>
-                        ) : (
-                          <i className={`fa-brands ${social.icon} text-[11px]`}></i>
-                        )}
+                      <a href={social.href} target="_blank" rel="noopener noreferrer" className="w-8 h-8 rounded-full border border-white/20 flex items-center justify-center text-white/70 hover:text-white hover:bg-white/10 hover:border-white/40 transition-all shadow-sm">
+                        <i className={`${social.icon} text-[11px]`}></i>
                       </a>
                       <span className="text-[7px] text-white/35 group-hover:text-white/70 transition-colors text-center w-full">{social.name}</span>
                     </div>

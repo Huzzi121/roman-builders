@@ -45,7 +45,7 @@ export default function FeaturedProject() {
               <h3 className="text-2xl sm:text-3xl lg:text-[2.2rem] xl:text-4xl font-serif text-[#161f18] leading-[1.15] tracking-tight mb-4">
                 Prime View<br className="hidden sm:block" /> Co‑Operative Housing Society
               </h3>
-              <p className="text-gray-500 text-[13px] sm:text-sm leading-relaxed max-w-md">
+              <p className="text-gray-700 text-[14px] sm:text-[15px] leading-relaxed max-w-md">
                 Experience unparalleled living in Abbottabad&apos;s premier cooperative housing society.
                 Prime View combines breathtaking natural landscapes with modern urban planning.
               </p>
@@ -62,7 +62,7 @@ export default function FeaturedProject() {
                   <div className="w-7 h-7 rounded-full bg-[#4a5240]/10 flex items-center justify-center shrink-0 group-hover/feat:bg-[#4a5240]/20 transition-colors">
                     <i className={`fa-solid ${feature.icon} text-[#4a5240] text-xs`}></i>
                   </div>
-                  <span className="text-[13px] sm:text-sm text-[#1a1c19] font-medium">{feature.text}</span>
+                  <span className="text-[14px] sm:text-[15px] text-[#1a1c19] font-medium">{feature.text}</span>
                 </div>
               ))}
             </div>

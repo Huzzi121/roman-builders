@@ -39,7 +39,7 @@ export default function StoryPreview() {
           <h2 className="text-3xl md:text-5xl lg:text-[3.5rem] font-serif text-[#161f18] leading-[1.1] tracking-tight mb-5">
             More Than Buildings,<br/>A Brighter Abbottabad
           </h2>
-          <p className="text-gray-500 text-[13px] md:text-sm max-w-2xl leading-relaxed">
+          <p className="text-gray-700 text-sm md:text-base max-w-2xl leading-relaxed">
             Watch how Roman Builders is shaping communities in Abbottabad through<br className="hidden md:block" /> trust, quality construction, and a vision for a better tomorrow.
           </p>
         </div>
@@ -47,32 +47,32 @@ export default function StoryPreview() {
         {/* 3-Column Layout */}
         <div className="w-full flex flex-col lg:flex-row items-center justify-center gap-8 lg:gap-12 xl:gap-20 mb-12">
           {/* Left Column - Icons */}
-          <div className="hidden lg:flex flex-col justify-center gap-8 w-48 shrink-0 relative">
-             <div className="flex items-center gap-4 group">
-                <div className="w-12 h-12 rounded-full bg-[#f3f1e8] flex items-center justify-center border border-[#e0ddd0] group-hover:bg-[#4a5240] group-hover:text-white transition-colors duration-300">
-                   <i className="fa-solid fa-house text-[#4a5240] group-hover:text-white transition-colors"></i>
+          <div className="hidden lg:flex flex-col justify-center gap-10 w-56 shrink-0 relative">
+              <div className="flex items-center gap-5 group">
+                <div className="w-14 h-14 rounded-full bg-[#f3f1e8] flex items-center justify-center border border-[#e0ddd0] group-hover:bg-[#4a5240] group-hover:text-white transition-colors duration-300">
+                   <i className="fa-solid fa-house text-lg text-[#4a5240] group-hover:text-white transition-colors"></i>
                 </div>
                 <div>
-                   <div className="font-bold text-[#161f18] text-sm">Better</div>
-                   <div className="text-xs text-gray-500">Living Spaces</div>
+                   <div className="font-bold text-[#161f18] text-xl">Better</div>
+                   <div className="text-base text-gray-700">Living Spaces</div>
                 </div>
              </div>
-             <div className="flex items-center gap-4 group">
-                <div className="w-12 h-12 rounded-full bg-[#f3f1e8] flex items-center justify-center border border-[#e0ddd0] group-hover:bg-[#4a5240] group-hover:text-white transition-colors duration-300">
-                   <i className="fa-solid fa-users text-[#4a5240] group-hover:text-white transition-colors"></i>
+             <div className="flex items-center gap-5 group">
+                <div className="w-14 h-14 rounded-full bg-[#f3f1e8] flex items-center justify-center border border-[#e0ddd0] group-hover:bg-[#4a5240] group-hover:text-white transition-colors duration-300">
+                   <i className="fa-solid fa-users text-lg text-[#4a5240] group-hover:text-white transition-colors"></i>
                 </div>
                 <div>
-                   <div className="font-bold text-[#161f18] text-sm">Stronger</div>
-                   <div className="text-xs text-gray-500">Communities</div>
+                   <div className="font-bold text-[#161f18] text-xl">Stronger</div>
+                   <div className="text-base text-gray-700">Communities</div>
                 </div>
              </div>
-             <div className="flex items-center gap-4 group">
-                <div className="w-12 h-12 rounded-full bg-[#f3f1e8] flex items-center justify-center border border-[#e0ddd0] group-hover:bg-[#4a5240] group-hover:text-white transition-colors duration-300">
-                   <i className="fa-solid fa-seedling text-[#4a5240] group-hover:text-white transition-colors"></i>
+             <div className="flex items-center gap-5 group">
+                <div className="w-14 h-14 rounded-full bg-[#f3f1e8] flex items-center justify-center border border-[#e0ddd0] group-hover:bg-[#4a5240] group-hover:text-white transition-colors duration-300">
+                   <i className="fa-solid fa-seedling text-lg text-[#4a5240] group-hover:text-white transition-colors"></i>
                 </div>
                 <div>
-                   <div className="font-bold text-[#161f18] text-sm">Brighter</div>
-                   <div className="text-xs text-gray-500">Tomorrow</div>
+                   <div className="font-bold text-[#161f18] text-xl">Brighter</div>
+                   <div className="text-base text-gray-700">Tomorrow</div>
                 </div>
              </div>
           </div>
@@ -109,7 +109,7 @@ export default function StoryPreview() {
                “
              </div>
              <div className="relative z-10 pl-6">
-                <p className="font-serif text-[#4a5240] text-[17px] leading-relaxed italic mb-4">
+                <p className="font-serif text-[#3d4435] text-[19px] leading-relaxed italic mb-4">
                   Building communities<br/>today for a<br/>brighter tomorrow.
                 </p>
                 <div className="w-12 h-[1px] bg-[#d5d2c5]"></div>

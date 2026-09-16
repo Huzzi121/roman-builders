@@ -8,7 +8,7 @@ export default function ServicesPage() {
       title: "Land Acquisition & Development",
       description: "We identify and acquire prime real estate locations, focusing on long-term value, accessibility, and community potential. Our development planning ensures sustainable use of land.",
       icon: "fa-map-location-dot",
-      image: "/images/land-acquisition.jpg"
+      image: "/images/land-acquisition.png"
     },
     {
       id: "legal-approvals",
@@ -42,13 +42,7 @@ export default function ServicesPage() {
 
   return (
     <main className="relative min-h-screen">
-      {/* Global Unified Background Layer */}
-      <div className="fixed inset-0 z-0 pointer-events-none">
-        <div 
-          className="w-full h-full bg-cover bg-center"
-          style={{ backgroundImage: "url('/images/projects-bg.png')" }}
-        ></div>
-      </div>
+
 
       {/* Page Hero */}
       <section className="pt-28 pb-28 md:pt-36 md:pb-36 px-6 sm:px-8 relative text-center">
@@ -65,12 +59,7 @@ export default function ServicesPage() {
         </div>
         
         <div className="max-w-7xl mx-auto relative z-10 text-center">
-          <div className="flex items-center justify-center gap-4 mb-6">
-            <div className="w-16 h-[1px] bg-white/30"></div>
-            <span className="text-sm font-bold tracking-[0.25em] text-white/90 uppercase drop-shadow-md">What We Do</span>
-            <div className="w-16 h-[1px] bg-white/30"></div>
-          </div>
-          <h1 className="text-5xl md:text-6xl lg:text-7xl font-serif text-white mb-6 drop-shadow-lg">Our Services</h1>
+          <h1 className="text-5xl md:text-6xl lg:text-7xl font-serif text-white mb-6 drop-shadow-lg">What We Do</h1>
           <p className="text-white max-w-4xl mx-auto text-base md:text-lg lg:text-xl font-light tracking-wide leading-relaxed drop-shadow-md">
             Comprehensive real estate and development solutions designed <br className="hidden md:block" />to turn empty land into thriving, sustainable communities.
           </p>
@@ -79,20 +68,33 @@ export default function ServicesPage() {
 
       {/* Services Grid */}
       <section className="pt-0 pb-16 px-6 sm:px-8 max-w-7xl mx-auto mb-20 -mt-6 md:-mt-10 relative z-20">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+        <div className="flex flex-col gap-12">
           {services.map((service, idx) => (
-            <div key={idx} className="group bg-white/20 backdrop-blur-md hover:bg-[#4a5240]/85 p-8 rounded-3xl shadow-[0_8px_32px_rgba(0,0,0,0.1)] border border-white/40 hover:border-transparent hover:-translate-y-2 transition-all duration-300 flex flex-col h-full cursor-pointer">
-              <div className="w-full h-48 sm:h-52 rounded-2xl overflow-hidden shadow-sm shrink-0">
-                <img src={service.image} alt={service.title} className="w-full h-full object-cover" />
+            <div key={idx} className={`group bg-white/20 backdrop-blur-md hover:bg-[#4a5240]/85 p-5 md:p-6 rounded-3xl shadow-[0_8px_32px_rgba(0,0,0,0.1)] border border-white/40 hover:border-transparent transition-all duration-300 flex flex-col ${idx % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse'} gap-6 md:gap-8 items-center cursor-pointer`}>
+              
+              {/* Image Side */}
+              <div className="w-full md:w-1/2 h-56 sm:h-64 md:h-[18rem] rounded-2xl overflow-hidden shadow-md shrink-0 relative">
+                <img src={service.image} alt={service.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out" />
               </div>
-              <div className="w-14 h-14 bg-[#e8e5da] group-hover:bg-[#3d4435] text-[#4a5240] group-hover:text-white rounded-2xl flex items-center justify-center -mt-7 ml-4 relative z-10 border-[3px] border-white/50 shadow-md mb-4 shrink-0 transition-colors duration-300">
-                <i className={`fa-solid ${service.icon} text-xl`}></i>
+              
+              {/* Content Side */}
+              <div className="w-full md:w-1/2 flex flex-col justify-center px-2 md:px-4">
+                <div className="flex items-center gap-3 mb-3">
+                  <div className="w-10 h-10 rounded-full bg-white/40 group-hover:bg-white/20 flex items-center justify-center text-[#4a5240] group-hover:text-white shadow-sm transition-colors duration-300">
+                    <i className={`fa-solid ${service.icon} text-base`}></i>
+                  </div>
+                  <h3 className="text-2xl lg:text-3xl font-serif text-[#161f18] group-hover:text-white transition-colors duration-300 leading-tight">
+                    {service.title}
+                  </h3>
+                </div>
+                
+                <p className="text-gray-800 font-medium group-hover:font-normal group-hover:text-white/90 text-sm lg:text-base leading-relaxed mb-6 transition-all duration-300">
+                  {service.description}
+                </p>
+                
+                <div className="w-12 h-[2px] bg-[#4a5240]/20 group-hover:bg-white/30 transition-colors duration-300"></div>
               </div>
-              <h3 className="text-xl font-serif text-[#161f18] group-hover:text-white mb-3 transition-colors duration-300">{service.title}</h3>
-              <p className="text-gray-800 font-medium group-hover:font-normal group-hover:text-white/90 text-sm leading-relaxed mb-6 transition-all duration-300">
-                {service.description}
-              </p>
-              <div className="w-12 h-[2px] bg-[#4a5240]/20 group-hover:bg-white/20 mt-auto transition-colors duration-300"></div>
+
             </div>
           ))}
         </div>

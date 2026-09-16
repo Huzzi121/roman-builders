@@ -28,7 +28,7 @@ export default function FoundersPreview() {
             </div>
             
             <div className="w-full max-w-[360px] mt-10 text-left">
-              <p className="text-[13px] text-gray-600 leading-relaxed mb-6">
+              <p className="text-[13px] font-bold text-gray-700 leading-relaxed mb-6">
                 A distinguished Medical Professional and Businessman. Beyond leading Roman Builders, he serves as the Managing Director of Holistic Health Curative and the Secretary of Prime View Cooperative Housing Society.
               </p>
               <div className="flex items-end justify-between">
@@ -53,7 +53,7 @@ export default function FoundersPreview() {
             </div>
             
             <div className="w-full max-w-[360px] mt-10 text-left">
-              <p className="text-[13px] text-gray-600 leading-relaxed mb-6">
+              <p className="text-[13px] font-bold text-gray-700 leading-relaxed mb-6">
                 An elite operative with a background in high-stakes environments. His extensive qualifications include being an International Sky Diver & Jump Master, International Deep Sea Diver, and Chief Engineer.
               </p>
               <div className="flex items-end justify-between">

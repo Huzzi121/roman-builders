@@ -8,13 +8,6 @@ export default function BlogPage() {
 
   return (
     <main className="relative min-h-screen">
-      {/* Global Unified Background Layer */}
-      <div className="fixed inset-0 z-0 pointer-events-none">
-        <div 
-          className="w-full h-full bg-cover bg-center"
-          style={{ backgroundImage: "url('/images/projects-bg.png')" }}
-        ></div>
-      </div>
       <section className="pt-28 pb-28 md:pt-36 md:pb-36 px-6 sm:px-8 relative text-center">
         {/* Masked Background Layer */}
         <div 

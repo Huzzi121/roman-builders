@@ -63,7 +63,7 @@ export default function ContactPage() {
                 </div>
                 <div>
                   <h4 className="text-sm font-bold text-[#161f18] uppercase tracking-wider mb-1">WhatsApp</h4>
-                  <a href="https://wa.me/923001234567" target="_blank" rel="noreferrer" className="text-gray-600 hover:text-[#4a5240] transition-colors">+92 300 1234 567</a>
+                  <a href="https://wa.me/923139986707?text=Assalamualaikum%2C%20I%20visited%20your%20website%20and%20I%27m%20interested%20in%20your%20services.%20I%20would%20like%20to%20discuss%20a%20project%20and%20get%20more%20information%20about%20your%20services%2C%20pricing%2C%20and%20process.%20Please%20let%20me%20know%20when%20you%27re%20available%20to%20discuss.%20Thank%20you%21" target="_blank" rel="noreferrer" className="text-gray-600 hover:text-[#4a5240] transition-colors">+92 313 9986707</a>
                 </div>
               </div>
 
@@ -73,7 +73,7 @@ export default function ContactPage() {
                 </div>
                 <div>
                   <h4 className="text-sm font-bold text-[#161f18] uppercase tracking-wider mb-1">Phone</h4>
-                  <a href="tel:+92992123456" className="text-gray-600 hover:text-[#4a5240] transition-colors">+92 992 123 456</a>
+                  <a href="tel:+923139986707" className="text-gray-600 hover:text-[#4a5240] transition-colors">+92 313 9986707</a>
                 </div>
               </div>
 
@@ -83,7 +83,7 @@ export default function ContactPage() {
                 </div>
                 <div>
                   <h4 className="text-sm font-bold text-[#161f18] uppercase tracking-wider mb-1">Email</h4>
-                  <a href="mailto:info@romanbuilders.com" className="text-gray-600 hover:text-[#4a5240] transition-colors">info@romanbuilders.com</a>
+                  <a href="mailto:info@romanbuilders.pk" className="text-gray-600 hover:text-[#4a5240] transition-colors">info@romanbuilders.pk</a>
                 </div>
               </div>
 

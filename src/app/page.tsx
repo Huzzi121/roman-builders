@@ -19,11 +19,11 @@ export default function Home() {
       {/* Hero Background Layer - scrolls with page */}
       <div className="absolute inset-0 z-0 pointer-events-none">
         <div 
-          className="absolute top-0 left-0 w-full h-[120vh] bg-cover bg-[center_top] md:bg-[center_85%] bg-no-repeat"
+          className="absolute top-0 left-0 w-full h-[100vh] bg-cover bg-[center_top] md:bg-bottom bg-no-repeat"
           style={{ 
             backgroundImage: "url('/images/hero section.png')",
-            maskImage: "linear-gradient(to bottom, black 70%, transparent 100%)",
-            WebkitMaskImage: "linear-gradient(to bottom, black 70%, transparent 100%)"
+            maskImage: "linear-gradient(to bottom, black 85%, transparent 100%)",
+            WebkitMaskImage: "linear-gradient(to bottom, black 85%, transparent 100%)"
           }}
         ></div>
       </div>
