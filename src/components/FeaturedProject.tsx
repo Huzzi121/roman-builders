@@ -3,14 +3,14 @@ import Link from 'next/link';
 
 export default function FeaturedProject() {
   return (
-    <section className="bg-transparent py-20 lg:py-28 relative overflow-hidden" data-purpose="flagship-project" id="properties">
+    <section className="bg-transparent pt-12 pb-20 lg:pt-16 lg:pb-28 relative overflow-hidden" data-purpose="flagship-project" id="properties">
       {/* Subtle decorative background elements */}
       <div className="absolute top-0 right-0 w-[400px] h-[400px] bg-[#4a5240]/[0.03] rounded-full -translate-y-1/2 translate-x-1/2 pointer-events-none"></div>
       <div className="absolute bottom-0 left-0 w-[300px] h-[300px] bg-[#4a5240]/[0.02] rounded-full translate-y-1/3 -translate-x-1/3 pointer-events-none"></div>
 
       <div className="max-w-7xl mx-auto px-6 sm:px-8 relative z-10">
         {/* Section Header */}
-        <div className="text-center mb-14 lg:mb-20">
+        <div className="text-center mb-10 lg:mb-16">
           <div className="flex items-center justify-center gap-4 mb-5">
             <div className="hidden sm:block w-16 h-[1px] bg-[#4a5240]/30"></div>
             <span className="text-[9px] sm:text-[10px] font-bold tracking-[0.25em] text-[#4a5240] uppercase">Our Flagship Project</span>

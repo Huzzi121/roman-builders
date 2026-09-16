@@ -29,11 +29,14 @@ export default function RootLayout({
       </head>
       <body className={`${outfit.variable} ${playfair.variable} font-sans bg-[#e8e4db] text-slate-800 antialiased relative`}>
         {/* Global Background */}
-        <div 
-          className="fixed inset-0 z-[-1] pointer-events-none bg-cover bg-center bg-no-repeat bg-fixed"
+        <div
+          className="fixed inset-0 z-[-1] pointer-events-none bg-cover bg-[position:bottom_right] sm:bg-center bg-no-repeat"
           style={{ backgroundImage: "url('/images/global-bg.png')" }}
-        ></div>
-        
+        >
+          {/* Mobile Overlay to soften foliage and improve text contrast */}
+          <div className="absolute inset-0 bg-[#e8e4db]/30 sm:hidden"></div>
+        </div>
+
         <Navbar />
         {children}
         <WhatsAppButton />

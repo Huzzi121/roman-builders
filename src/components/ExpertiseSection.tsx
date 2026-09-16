@@ -10,7 +10,7 @@ export default function ExpertiseSection() {
         <div className="flex flex-col lg:flex-row items-stretch lg:gap-12 xl:gap-20">
           
           {/* Left Content Area */}
-          <div className="w-full lg:w-[45%] xl:w-[45%] pb-12 lg:pb-32 pt-2 relative z-20 flex flex-col justify-center">
+          <div className="w-full lg:w-[45%] xl:w-[45%] pb-8 lg:pb-8 pt-2 relative z-20 flex flex-col justify-center">
             {/* Eyebrow */}
             <div className="flex items-center gap-4 mb-6">
               <div className="w-12 h-[1px] bg-[#1a1c19]/30"></div>
@@ -67,7 +67,7 @@ export default function ExpertiseSection() {
           
           {/* Right Image Area */}
           <div className="w-full lg:w-[55%] xl:w-[55%] relative mt-10 lg:mt-0 lg:pl-10">
-            <div className="w-full h-[400px] sm:h-[500px] lg:h-[700px] rounded-tl-[6rem] lg:rounded-tl-[10rem] overflow-hidden relative shadow-2xl">
+            <div className="w-full h-[400px] sm:h-[500px] lg:h-[560px] xl:h-[600px] rounded-tl-[6rem] lg:rounded-tl-[10rem] overflow-hidden relative shadow-2xl">
               <img src="/images/expertise-house.jpg" alt="Luxury Villa" className="w-full h-full object-cover object-center absolute inset-0 z-0" />
             </div>
           </div>
