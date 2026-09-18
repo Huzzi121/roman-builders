@@ -124,7 +124,7 @@ export async function getUsers() {
 
     const mappedUsers = usersData.users.map(u => ({
       id: u.id,
-      email: u.email,
+      email: u.email || '',
       created_at: u.created_at,
       role: rolesData.find(r => r.id === u.id)?.role || 'unknown'
     }))
