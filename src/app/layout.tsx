@@ -4,6 +4,7 @@ import "./globals.css";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import WhatsAppButton from "@/components/WhatsAppButton";
+import AdminLogoutWatcher from "@/components/AdminLogoutWatcher";
 
 const outfit = Outfit({ subsets: ["latin"], variable: "--font-sans" });
 const playfair = Playfair_Display({ subsets: ["latin"], variable: "--font-serif" });
@@ -36,7 +37,7 @@ export default function RootLayout({
           {/* Mobile Overlay to soften foliage and improve text contrast */}
           <div className="absolute inset-0 bg-[#e8e4db]/30 sm:hidden"></div>
         </div>
-
+        <AdminLogoutWatcher />
         <Navbar />
         {children}
         <WhatsAppButton />
