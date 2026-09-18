@@ -54,6 +54,9 @@ export default function AdminDashboard() {
             <h1 className="text-xl font-serif text-[#161f18]">Admin Panel</h1>
             <p className="text-xs text-gray-500 font-bold uppercase tracking-wider mt-1">{userRole?.replace('_', ' ')}</p>
             {userEmail && <p className="text-[10px] text-gray-400 mt-1 truncate">{userEmail}</p>}
+            <p className="text-[10px] text-blue-500 mt-2">
+              Env check: {process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY ? 'Key Found ✅' : 'KEY MISSING ❌'}
+            </p>
             {debugError && <p className="text-[10px] text-red-500 mt-2">Err: {debugError}</p>}
           </div>
           
