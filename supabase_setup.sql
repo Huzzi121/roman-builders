@@ -29,26 +29,7 @@ BEGIN
 END
 $$;
 
--- 2. Create the user_roles table
-CREATE TABLE IF NOT EXISTS user_roles (
-  id UUID REFERENCES auth.users(id) ON DELETE CASCADE PRIMARY KEY,
-  role TEXT NOT NULL CHECK (role IN ('super_admin', 'admin')),
-  created_at TIMESTAMP WITH TIME ZONE DEFAULT timezone('utc'::text, now())
-);
-
--- Enable RLS on user_roles
-ALTER TABLE user_roles ENABLE ROW LEVEL SECURITY;
-
--- Idempotent Policy Creation for user_roles
-DO $$
-BEGIN
-    IF NOT EXISTS (SELECT 1 FROM pg_policies WHERE policyname = 'Users can read own role') THEN
-        CREATE POLICY "Users can read own role" ON user_roles FOR SELECT USING (auth.uid() = id);
-    END IF;
-END
-$$;
-
--- 3. Storage Setup (Idempotent bucket creation)
+-- 2. Storage Setup (Idempotent bucket creation)
 DO $$
 BEGIN
     INSERT INTO storage.buckets (id, name, public) 
@@ -74,8 +55,3 @@ BEGIN
     END IF;
 END
 $$;
-
--- SUPER ADMIN SETUP INSTRUCTION:
--- Replace 'YOUR-COPIED-USER-UID-HERE' with your actual User UID from Authentication -> Users
--- and run this specific line to give yourself access:
--- INSERT INTO user_roles (id, role) VALUES ('YOUR-COPIED-USER-UID-HERE', 'super_admin') ON CONFLICT (id) DO UPDATE SET role = 'super_admin';

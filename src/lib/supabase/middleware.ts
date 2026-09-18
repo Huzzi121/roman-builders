@@ -42,11 +42,7 @@ export async function updateSession(request: NextRequest) {
     return NextResponse.redirect(url)
   }
 
-  // Auto-logout: If the user is logged in, but navigating to a public page (not /admin), log them out.
-  if (user && !request.nextUrl.pathname.startsWith('/admin')) {
-    await supabase.auth.signOut()
-    // The signOut call above will instruct setAll to clear the cookies in supabaseResponse
-  }
+
 
   return supabaseResponse
 }
