@@ -20,15 +20,19 @@ export default function AdminDashboard() {
 
   useEffect(() => {
     const fetchUserRole = async () => {
-      const result = await getMyRole()
-      
-      setUserEmail(result.email)
-      setUserRole(result.role)
-      if (result.error) {
-        setDebugError(result.error)
+      try {
+        const result = await getMyRole()
+        
+        setUserEmail(result.email)
+        setUserRole(result.role)
+        if (result.error) {
+          setDebugError(result.error)
+        }
+      } catch (err: any) {
+        setDebugError(err.message || 'Server Action crashed')
+      } finally {
+        setLoading(false)
       }
-      
-      setLoading(false)
     }
 
     fetchUserRole()
