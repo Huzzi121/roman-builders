@@ -10,6 +10,7 @@ import SettingsTab from './components/SettingsTab'
 export default function AdminDashboard() {
   const [activeTab, setActiveTab] = useState<'projects' | 'users' | 'settings'>('projects')
   const [userRole, setUserRole] = useState<string | null>(null)
+  const [userEmail, setUserEmail] = useState<string | null>(null)
   const [loading, setLoading] = useState(true)
   const [debugError, setDebugError] = useState<string | null>(null)
   
@@ -20,6 +21,7 @@ export default function AdminDashboard() {
     const fetchUserRole = async () => {
       const { data: { user } } = await supabase.auth.getUser()
       if (user) {
+        setUserEmail(user.email || null)
         const { data, error } = await supabase.from('user_roles').select('role').eq('id', user.id).single()
         if (error) {
           console.error("Error fetching user role:", error.message)
@@ -51,6 +53,7 @@ export default function AdminDashboard() {
           <div className="mb-8">
             <h1 className="text-xl font-serif text-[#161f18]">Admin Panel</h1>
             <p className="text-xs text-gray-500 font-bold uppercase tracking-wider mt-1">{userRole?.replace('_', ' ')}</p>
+            {userEmail && <p className="text-[10px] text-gray-400 mt-1 truncate">{userEmail}</p>}
             {debugError && <p className="text-[10px] text-red-500 mt-2">Err: {debugError}</p>}
           </div>
           
