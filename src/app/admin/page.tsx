@@ -6,6 +6,7 @@ import { useRouter } from 'next/navigation'
 import ProjectsTab from './components/ProjectsTab'
 import UsersTab from './components/UsersTab'
 import SettingsTab from './components/SettingsTab'
+import { getMyRole } from './actions'
 
 export default function AdminDashboard() {
   const [activeTab, setActiveTab] = useState<'projects' | 'users' | 'settings'>('projects')
@@ -19,18 +20,17 @@ export default function AdminDashboard() {
 
   useEffect(() => {
     const fetchUserRole = async () => {
-      const { data: { user } } = await supabase.auth.getUser()
-      if (user) {
-        setUserEmail(user.email || null)
-        const { data, error } = await supabase.from('user_roles').select('role').eq('id', user.id).single()
-        if (error) {
-          console.error("Error fetching user role:", error.message)
-          setDebugError(error.message)
-        }
-        setUserRole(data?.role || 'admin')
+      const result = await getMyRole()
+      
+      setUserEmail(result.email)
+      setUserRole(result.role)
+      if (result.error) {
+        setDebugError(result.error)
       }
+      
       setLoading(false)
     }
+
     fetchUserRole()
   }, [])
 

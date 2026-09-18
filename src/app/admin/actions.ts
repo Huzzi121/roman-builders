@@ -134,3 +134,27 @@ export async function getUsers() {
     return { success: false, error: err.message || 'An unexpected error occurred.' }
   }
 }
+
+export async function getMyRole() {
+  try {
+    const supabase = await createClient()
+    const { data: { user } } = await supabase.auth.getUser()
+    
+    if (!user) return { success: false, role: 'admin', email: null }
+
+    const { data, error } = await supabase.from('user_roles').select('role').eq('id', user.id).single()
+    
+    if (error) {
+      console.error("Server Action Error fetching role:", error.message)
+    }
+
+    return { 
+      success: true, 
+      role: data?.role || 'admin',
+      email: user.email || null,
+      error: error?.message || null
+    }
+  } catch (err: any) {
+    return { success: false, role: 'admin', email: null, error: err.message }
+  }
+}
