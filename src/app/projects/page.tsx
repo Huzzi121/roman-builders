@@ -10,6 +10,7 @@ export default async function ProjectsPage() {
   const { data: projectsData, error } = await supabase
     .from('projects')
     .select('*')
+    .or('publication_status.eq.Published,publication_status.is.null')
     .order('display_order', { ascending: true });
 
   const projects = projectsData || [];

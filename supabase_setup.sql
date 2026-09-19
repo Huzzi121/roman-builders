@@ -17,17 +17,12 @@ CREATE TABLE IF NOT EXISTS projects (
 -- Enable Row Level Security (RLS) for projects
 ALTER TABLE projects ENABLE ROW LEVEL SECURITY;
 
--- Idempotent Policy Creation for projects
-DO $$
-BEGIN
-    IF NOT EXISTS (SELECT 1 FROM pg_policies WHERE policyname = 'Allow public read access on projects') THEN
-        CREATE POLICY "Allow public read access on projects" ON projects FOR SELECT USING (true);
-    END IF;
-    IF NOT EXISTS (SELECT 1 FROM pg_policies WHERE policyname = 'Allow admin full access on projects') THEN
-        CREATE POLICY "Allow admin full access on projects" ON projects FOR ALL USING (auth.role() = 'authenticated');
-    END IF;
-END
-$$;
+-- Force recreate policies for projects
+DROP POLICY IF EXISTS "Allow public read access on projects" ON projects;
+DROP POLICY IF EXISTS "Allow admin full access on projects" ON projects;
+
+CREATE POLICY "Allow public read access on projects" ON projects FOR SELECT USING (true);
+CREATE POLICY "Allow admin full access on projects" ON projects FOR ALL USING (auth.role() = 'authenticated');
 
 -- 2. Storage Setup (Idempotent bucket creation)
 DO $$
@@ -38,20 +33,14 @@ BEGIN
 END
 $$;
 
--- Idempotent Storage bucket policies
-DO $$
-BEGIN
-    IF NOT EXISTS (SELECT 1 FROM pg_policies WHERE policyname = 'Public Access') THEN
-        create policy "Public Access" on storage.objects for select using ( bucket_id = 'projects' );
-    END IF;
-    IF NOT EXISTS (SELECT 1 FROM pg_policies WHERE policyname = 'Auth Insert') THEN
-        create policy "Auth Insert" on storage.objects for insert with check ( bucket_id = 'projects' AND auth.role() = 'authenticated' );
-    END IF;
-    IF NOT EXISTS (SELECT 1 FROM pg_policies WHERE policyname = 'Auth Update') THEN
-        create policy "Auth Update" on storage.objects for update using ( bucket_id = 'projects' AND auth.role() = 'authenticated' );
-    END IF;
-    IF NOT EXISTS (SELECT 1 FROM pg_policies WHERE policyname = 'Auth Delete') THEN
-        create policy "Auth Delete" on storage.objects for delete using ( bucket_id = 'projects' AND auth.role() = 'authenticated' );
-    END IF;
-END
-$$;
+-- Force recreate Storage bucket policies
+DROP POLICY IF EXISTS "Public Access" ON storage.objects;
+DROP POLICY IF EXISTS "Auth Insert" ON storage.objects;
+DROP POLICY IF EXISTS "Auth Update" ON storage.objects;
+DROP POLICY IF EXISTS "Auth Delete" ON storage.objects;
+
+CREATE POLICY "Public Access" ON storage.objects FOR SELECT USING ( bucket_id = 'projects' );
+CREATE POLICY "Auth Insert" ON storage.objects FOR INSERT WITH CHECK ( bucket_id = 'projects' AND auth.role() = 'authenticated' );
+CREATE POLICY "Auth Update" ON storage.objects FOR UPDATE USING ( bucket_id = 'projects' AND auth.role() = 'authenticated' );
+CREATE POLICY "Auth Delete" ON storage.objects FOR DELETE USING ( bucket_id = 'projects' AND auth.role() = 'authenticated' );
+ALTER TABLE projects ADD COLUMN publication_status TEXT DEFAULT 'Published';
