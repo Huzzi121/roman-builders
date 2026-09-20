@@ -2,6 +2,7 @@
 
 import { useEffect, useState, useRef } from 'react'
 import { createClient } from '@/lib/supabase/client'
+import { revalidateProjects } from '@/app/admin/actions'
 
 type Project = {
   id: string
@@ -102,6 +103,7 @@ export default function ProjectsTab() {
       setCurrentProject({})
       setFeaturesInput('')
       fetchProjects()
+      await revalidateProjects()
     } catch (error: any) {
       addToast('error', error.message || 'Failed to save project')
     }
@@ -120,6 +122,7 @@ export default function ProjectsTab() {
         if (error) throw error
         addToast('success', 'Project deleted successfully')
         fetchProjects()
+        await revalidateProjects()
       } catch (error: any) {
         addToast('error', error.message || 'Failed to delete project')
       }
@@ -133,6 +136,7 @@ export default function ProjectsTab() {
         if (error) throw error
         addToast('success', 'Project archived successfully')
         fetchProjects()
+        await revalidateProjects()
       } catch (error: any) {
         addToast('error', error.message || 'Failed to archive project')
       }

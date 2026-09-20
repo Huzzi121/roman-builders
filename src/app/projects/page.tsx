@@ -2,15 +2,19 @@ import Footer from "@/components/Footer";
 import Link from 'next/link';
 import Image from 'next/image';
 import CTASection from "@/components/CTASection";
-import { createClient } from "@/lib/supabase/server";
+import { createClient } from '@supabase/supabase-js';
 
-export const revalidate = 0; // Opt out of static rendering
+export const dynamic = 'force-static';
 
 export default async function ProjectsPage() {
-  const supabase = await createClient();
+  const supabase = createClient(
+    process.env.NEXT_PUBLIC_SUPABASE_URL!,
+    process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
+  );
+  
   const { data: projectsData, error } = await supabase
     .from('projects')
-    .select('*')
+    .select('id, title, location, status, description, features, image_url, link')
     .or('publication_status.eq.Published,publication_status.is.null')
     .order('display_order', { ascending: true });
 
