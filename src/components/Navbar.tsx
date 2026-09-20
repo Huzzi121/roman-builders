@@ -1,9 +1,24 @@
 "use client";
 import Link from 'next/link';
 import { useState } from 'react';
+import { usePathname } from 'next/navigation';
 
 export default function Navbar() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const pathname = usePathname();
+
+  if (pathname?.startsWith('/admin')) {
+    return (
+      <div className="fixed top-0 left-0 w-full z-50 px-4 sm:px-8 pt-4 pointer-events-none">
+        <div className="pointer-events-auto flex">
+          <Link href="/" className="inline-flex items-center gap-2 bg-[#3d4435]/80 backdrop-blur-md text-[#e8e4db] border border-white/10 px-5 py-2.5 rounded-full text-[13px] font-medium hover:bg-[#3d4435] transition-all shadow-lg">
+            <i className="fa-solid fa-arrow-left text-[11px]"></i>
+            <span>Go back to home</span>
+          </Link>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="fixed top-0 left-0 w-full z-50 px-4 sm:px-8 pt-2 sm:pt-3 pointer-events-none">

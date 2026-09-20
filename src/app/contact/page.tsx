@@ -35,14 +35,13 @@ export default function ContactPage() {
   return (
     <main className="pt-24 min-h-screen relative">
       <div className="fixed inset-0 z-[-1]">
-        <div className="absolute inset-0 bg-[#ede9e0]"></div>
         <div 
-          className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-40 mix-blend-multiply"
-          style={{ backgroundImage: "url('/images/contact-bg.png')" }}
+          className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+          style={{ backgroundImage: "url('/images/contact-new-bg.png')" }}
         ></div>
       </div>
 
-      <section className="py-20 px-6 sm:px-8 max-w-7xl mx-auto relative z-10">
+      <section className="pt-10 lg:pt-12 pb-24 lg:pb-32 px-6 sm:px-8 max-w-7xl mx-auto relative z-10">
         <div className="flex flex-col lg:flex-row gap-16">
           
           {/* Contact Info */}
@@ -51,12 +50,12 @@ export default function ContactPage() {
               <div className="w-12 h-[1px] bg-[#4a5240]/30"></div>
               <span className="text-[10px] font-bold tracking-[0.25em] text-[#4a5240] uppercase">Contact Us</span>
             </div>
-            <h1 className="text-5xl lg:text-7xl font-serif text-[#161f18] mb-6">Let's Build Your Future</h1>
-            <p className="text-gray-600 mb-12 max-w-md leading-relaxed">
+            <h1 className="text-4xl lg:text-5xl font-serif text-[#161f18] mb-4">Let's Build Your Future</h1>
+            <p className="text-gray-600 mb-6 max-w-md leading-relaxed text-sm">
               Whether you're looking to invest, buy a home, or learn more about our projects, our team is here to help.
             </p>
 
-            <div className="space-y-8">
+            <div className="space-y-4">
               <div className="flex items-start gap-4">
                 <div className="w-12 h-12 rounded-full bg-[#4a5240]/10 flex items-center justify-center text-[#4a5240] shrink-0">
                   <i className="fa-brands fa-whatsapp text-xl"></i>
@@ -98,17 +97,17 @@ export default function ContactPage() {
               </div>
             </div>
             
-            <div className="mt-12 flex gap-4">
-              <a href="#" className="w-10 h-10 rounded-full bg-[#4a5240] text-white flex items-center justify-center hover:bg-[#3d4435] transition-colors"><i className="fa-brands fa-facebook-f"></i></a>
-              <a href="#" className="w-10 h-10 rounded-full bg-[#4a5240] text-white flex items-center justify-center hover:bg-[#3d4435] transition-colors"><i className="fa-brands fa-instagram"></i></a>
-              <a href="#" className="w-10 h-10 rounded-full bg-[#4a5240] text-white flex items-center justify-center hover:bg-[#3d4435] transition-colors"><i className="fa-brands fa-linkedin-in"></i></a>
+            <div className="mt-8 flex gap-4">
+              <a href="#" className="w-10 h-10 rounded-full bg-[#4a5240] text-white flex items-center justify-center hover:bg-[#3d4435] transition-colors shadow-sm"><i className="fa-brands fa-facebook-f"></i></a>
+              <a href="#" className="w-10 h-10 rounded-full bg-[#4a5240] text-white flex items-center justify-center hover:bg-[#3d4435] transition-colors shadow-sm"><i className="fa-brands fa-instagram"></i></a>
+              <a href="#" className="w-10 h-10 rounded-full bg-[#4a5240] text-white flex items-center justify-center hover:bg-[#3d4435] transition-colors shadow-sm"><i className="fa-brands fa-linkedin-in"></i></a>
             </div>
           </div>
 
           {/* Contact Form */}
           <div className="w-full lg:w-1/2">
-            <div className="bg-white rounded-3xl p-8 sm:p-10 shadow-xl border border-gray-100">
-              <h3 className="text-2xl font-serif text-[#161f18] mb-6">Send an Inquiry</h3>
+            <div className="bg-white/95 backdrop-blur-sm rounded-3xl p-6 sm:p-8 shadow-2xl border border-gray-100">
+              <h3 className="text-xl font-serif text-[#161f18] mb-4">Send an Inquiry</h3>
               
               {status === 'success' ? (
                 <div className="bg-emerald-50 text-emerald-800 p-6 rounded-2xl border border-emerald-100 text-center">
@@ -120,8 +119,8 @@ export default function ContactPage() {
                   <button onClick={() => setStatus('idle')} className="mt-4 text-emerald-700 text-sm font-medium hover:underline">Send another message</button>
                 </div>
               ) : (
-                <form onSubmit={handleSubmit} className="space-y-5">
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                <form onSubmit={handleSubmit} className="space-y-4">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     <div>
                       <label className="block text-xs font-bold text-gray-500 uppercase tracking-wider mb-2">Full Name</label>
                       <input required name="name" value={formData.name} onChange={handleChange} type="text" className="w-full bg-[#f8f7f4] border border-gray-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-[#4a5240]/50 transition-all" placeholder="John Doe" />
@@ -150,14 +149,14 @@ export default function ContactPage() {
 
                   <div>
                     <label className="block text-xs font-bold text-gray-500 uppercase tracking-wider mb-2">Message</label>
-                    <textarea required name="message" value={formData.message} onChange={handleChange} rows={4} className="w-full bg-[#f8f7f4] border border-gray-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-[#4a5240]/50 transition-all resize-none" placeholder="How can we help you?"></textarea>
+                    <textarea required name="message" value={formData.message} onChange={handleChange} rows={3} className="w-full bg-[#f8f7f4] border border-gray-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-[#4a5240]/50 transition-all resize-none" placeholder="How can we help you?"></textarea>
                   </div>
 
                   {status === 'error' && (
                     <div className="text-red-500 text-sm font-medium">Failed to send message. Please try again.</div>
                   )}
 
-                  <button disabled={status === 'submitting'} type="submit" className="w-full bg-[#4a5240] text-white py-4 rounded-xl font-medium hover:bg-[#3d4435] transition-colors flex items-center justify-center gap-2 shadow-md disabled:opacity-70">
+                  <button disabled={status === 'submitting'} type="submit" className="w-full bg-[#4a5240] text-white py-3 rounded-xl font-medium hover:bg-[#3d4435] transition-colors flex items-center justify-center gap-2 shadow-md disabled:opacity-70">
                     {status === 'submitting' ? (
                       <span className="flex items-center gap-2"><i className="fa-solid fa-circle-notch fa-spin"></i> Sending...</span>
                     ) : (

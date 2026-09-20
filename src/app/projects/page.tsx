@@ -1,5 +1,6 @@
 import Footer from "@/components/Footer";
 import Link from 'next/link';
+import Image from 'next/image';
 import CTASection from "@/components/CTASection";
 import { createClient } from "@/lib/supabase/server";
 
@@ -46,8 +47,15 @@ export default async function ProjectsPage() {
         {projects.map((project: any, index: number) => (
           <div key={project.id} className={`flex flex-col lg:flex-row gap-10 items-center p-6 md:p-10 lg:p-12 rounded-[3rem] border-2 border-white/70 bg-white/30 shadow-sm backdrop-blur-sm ${index % 2 !== 0 ? 'lg:flex-row-reverse' : ''}`}>
             {/* Image Side */}
-            <div className="w-full lg:w-1/2 relative h-[350px] lg:h-[450px] rounded-3xl overflow-hidden shadow-lg group">
-              <img src={project.image_url} alt={project.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
+            <div className="w-full lg:w-1/2 relative h-[350px] lg:h-[450px] rounded-3xl overflow-hidden shadow-lg group bg-gray-100">
+              <Image 
+                src={project.image_url} 
+                alt={project.title} 
+                fill 
+                sizes="(max-width: 1024px) 100vw, 50vw"
+                priority={index === 0}
+                className="object-cover group-hover:scale-105 transition-transform duration-700" 
+              />
               <div className="absolute top-6 left-6 bg-white/90 backdrop-blur-md px-4 py-2 rounded-full shadow-md flex items-center gap-2">
                 <div className={`w-2 h-2 rounded-full ${project.status === 'Now Selling' ? 'bg-emerald-500 animate-pulse' : 'bg-amber-500'}`}></div>
                 <span className="text-[10px] font-bold tracking-wider text-[#161f18] uppercase">{project.status}</span>
