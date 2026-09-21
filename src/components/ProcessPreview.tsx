@@ -60,7 +60,7 @@ export default function ProcessPreview() {
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-serif text-[#161f18] tracking-tight leading-[1.1] mb-4">
             From Land to <span className="italic">Lasting Communities</span>
           </h2>
-          <p className="text-gray-500 text-[13px] sm:text-sm max-w-lg mx-auto leading-relaxed">
+          <p className="text-gray-700 text-[13px] sm:text-sm max-w-lg mx-auto leading-relaxed">
             A transparent and structured process to turn vision into thriving communities.
           </p>
         </div>

@@ -13,7 +13,7 @@ export default function FoundersPreview() {
             <div className="h-px bg-[#4a5240]/30 w-12"></div>
           </div>
           <h2 className="text-3xl sm:text-4xl font-serif text-[#1a1c19] mb-3 tracking-tight">The Visionaries Behind Roman Builders & Developers</h2>
-          <p className="text-gray-500 text-sm">Two Leaders. One Vision. A Better Tomorrow.</p>
+          <p className="text-gray-700 text-sm">Two Leaders. One Vision. A Better Tomorrow.</p>
         </div>
 
         <div className="flex flex-col lg:flex-row items-stretch justify-center gap-10 lg:gap-6 xl:gap-12">

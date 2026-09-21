@@ -34,11 +34,20 @@ export default function ContactPage() {
 
   return (
     <main className="pt-24 min-h-screen relative">
-      <div className="fixed inset-0 z-[-1]">
+      <div className="fixed inset-0 z-[-1] overflow-hidden">
+        {/* Desktop Background */}
         <div 
-          className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+          className="hidden md:block absolute inset-0 bg-cover bg-center bg-no-repeat"
           style={{ backgroundImage: "url('/images/contact-new-bg.png')" }}
         ></div>
+        {/* Mobile Background */}
+        <div 
+          className="md:hidden w-full h-full bg-cover bg-center blur-[4px] scale-110 relative"
+          style={{ backgroundImage: "url('/images/background for mobile view.png')" }}
+        >
+          {/* 50% white transparent layer specifically for contact page mobile view */}
+          <div className="absolute inset-0 bg-white/50"></div>
+        </div>
       </div>
 
       <section className="pt-10 lg:pt-12 pb-24 lg:pb-32 px-6 sm:px-8 max-w-7xl mx-auto relative z-10">

@@ -25,7 +25,7 @@ export default function ExpertiseSection() {
             </h2>
             
             {/* Subheading */}
-            <p className="text-gray-800 text-[14px] sm:text-[16px] max-w-md leading-relaxed mb-10 font-medium">
+            <p className="text-gray-700 text-[14px] sm:text-[16px] max-w-md leading-relaxed mb-10 font-medium">
               At Roman Builders & Developers, we turn potential into thriving communities by combining strategic planning, legal expertise, and quality construction.
             </p>
             

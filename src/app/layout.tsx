@@ -30,12 +30,20 @@ export default function RootLayout({
       </head>
       <body className={`${outfit.variable} ${playfair.variable} font-sans bg-[#e8e4db] text-slate-800 antialiased relative`}>
         {/* Global Background */}
-        <div
-          className="fixed inset-0 z-[-1] pointer-events-none bg-cover bg-[position:bottom_right] sm:bg-center bg-no-repeat"
-          style={{ backgroundImage: "url('/images/global-bg.png')" }}
-        >
-          {/* Mobile Overlay to soften foliage and improve text contrast */}
-          <div className="absolute inset-0 bg-[#e8e4db]/30 sm:hidden"></div>
+        <div className="fixed inset-0 z-[-1] pointer-events-none overflow-hidden">
+          {/* Desktop Global Background */}
+          <div 
+            className="hidden md:block w-full h-full bg-cover bg-center"
+            style={{ backgroundImage: "url('/images/home-background.png')" }}
+          ></div>
+          {/* Mobile Global Background */}
+          <div 
+            className="md:hidden w-full h-full bg-cover bg-center blur-[4px] scale-110 relative"
+            style={{ backgroundImage: "url('/images/background for mobile view.png')" }}
+          >
+            {/* Subtle white transparent layer for better text visibility */}
+            <div className="absolute inset-0 bg-white/25"></div>
+          </div>
         </div>
         <AdminLogoutWatcher />
         <Navbar />

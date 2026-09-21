@@ -5,7 +5,7 @@ export default function Hero() {
   return (
     <div className="relative overflow-hidden flex flex-col justify-between">
       {/* Large Havnex Watermark behind hero elements */}
-      <div className="absolute top-[14%] md:top-[10%] lg:top-[11%] left-1/2 -translate-x-1/2 w-full text-center text-[25vw] sm:text-[10rem] md:text-[18rem] font-black tracking-tight z-0 select-none bg-gradient-to-b from-black/[0.35] via-black/[0.15] to-transparent bg-clip-text text-transparent leading-none pointer-events-none">
+      <div className="absolute top-[14%] md:top-[10%] lg:top-[11%] left-1/2 -translate-x-1/2 w-full text-center text-[25vw] sm:text-[10rem] md:text-[18rem] font-black tracking-tight z-0 select-none bg-gradient-to-b from-black/[0.55] via-black/[0.25] md:from-black/[0.35] md:via-black/[0.15] to-transparent bg-clip-text text-transparent leading-none pointer-events-none">
         Roman
       </div>
 
@@ -18,7 +18,7 @@ export default function Hero() {
               Building Your Future<br className="hidden sm:block" />
               <span className="sm:hidden"> </span>in Abbottabad
             </h1>
-            <p className="text-[#1a1c19]/90 text-base md:text-lg max-w-md leading-relaxed font-normal pt-2">
+            <p className="text-gray-700 text-base md:text-lg max-w-md leading-relaxed font-normal pt-2">
               Your trusted partners in land development, architecture, and cooperative housing society management in Hazara Division.
             </p>
             <div className="pt-4 flex items-center gap-4">

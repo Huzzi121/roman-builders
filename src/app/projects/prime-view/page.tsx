@@ -3,7 +3,7 @@ import CTASection from "@/components/CTASection";
 
 export default function PrimeViewPage() {
   return (
-    <main className="pt-24 bg-[#ede9e0]">
+    <main className="pt-24">
       {/* Prime View Hero */}
       <section className="relative h-[60vh] min-h-[500px] flex items-center justify-center">
         <div className="absolute inset-0 z-0">
