@@ -132,7 +132,7 @@ export default function StoryPreview() {
           </div>
 
           {/* Bottom Text */}
-          <div className="text-[8px] sm:text-[9px] font-bold tracking-[0.3em] text-gray-400 uppercase">
+          <div className="text-[9px] sm:text-[10px] font-black tracking-[0.3em] text-gray-500 uppercase">
             People • Places • Progress
           </div>
         </div>

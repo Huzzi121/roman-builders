@@ -14,7 +14,8 @@ export default function ExpertiseSection() {
             {/* Eyebrow */}
             <div className="flex items-center gap-4 mb-6">
               <div className="w-12 h-[1px] bg-[#1a1c19]/30"></div>
-              <span className="text-[9px] font-bold tracking-[0.25em] text-[#1a1c19]/60 uppercase">Our Expertise</span>
+              <span className="text-[11px] font-extrabold tracking-[0.25em] text-[#1a1c19]/80 uppercase">Our Expertise</span>
+              <div className="w-12 h-[1px] bg-[#1a1c19]/30"></div>
             </div>
             
             {/* Main Heading */}

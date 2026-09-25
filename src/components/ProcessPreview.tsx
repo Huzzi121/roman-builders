@@ -44,28 +44,19 @@ export default function ProcessPreview() {
   }, [processSteps.length]);
 
   return (
-    <section className="pt-20 lg:pt-28 pb-4 relative overflow-hidden" data-purpose="work-process" id="process">
+    <section className="pt-10 lg:pt-14 pb-4 relative overflow-hidden" data-purpose="work-process" id="process">
       {/* Subtle decorative leaf shapes */}
       <div className="absolute top-10 left-0 w-[200px] h-[400px] bg-[#4a5240]/[0.03] rounded-r-full pointer-events-none"></div>
       <div className="absolute bottom-20 left-4 w-[120px] h-[240px] bg-[#4a5240]/[0.02] rounded-r-full pointer-events-none"></div>
 
       <div className="max-w-7xl mx-auto px-6 sm:px-8 relative z-10">
         {/* Section Header */}
-        <div className="text-center mb-14 lg:mb-16">
-          <div className="flex items-center justify-center gap-4 mb-5">
-            <div className="hidden sm:block w-16 h-[1px] bg-[#4a5240]/30"></div>
-            <span className="text-[9px] sm:text-[10px] font-bold tracking-[0.25em] text-[#4a5240] uppercase">Our Work Process</span>
-            <div className="hidden sm:block w-16 h-[1px] bg-[#4a5240]/30"></div>
-          </div>
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-serif text-[#161f18] tracking-tight leading-[1.1] mb-4">
+        <div className="text-center mb-10 lg:mb-12">
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-serif text-[#161f18] tracking-tight leading-[1.1]">
             From Land to <span className="italic">Lasting Communities</span>
           </h2>
-          <p className="text-gray-700 text-[13px] sm:text-sm max-w-lg mx-auto leading-relaxed">
-            A transparent and structured process to turn vision into thriving communities.
-          </p>
         </div>
 
-        {/* Main Content Card */}
         <div className="bg-white/20 backdrop-blur-md border border-white/40 rounded-3xl overflow-hidden shadow-[0_8px_32px_rgba(0,0,0,0.1)] relative">
           <div className="flex flex-col lg:flex-row min-h-[480px] sm:min-h-[520px] lg:min-h-[560px]">
             {/* Left Sidebar - Process Steps */}
