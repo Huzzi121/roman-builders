@@ -37,10 +37,10 @@ export default function StoryPreview() {
 
           {/* Headings */}
           <h2 className="text-3xl md:text-5xl lg:text-[3.5rem] font-bold text-[#161f18] leading-[1.1] tracking-tight mb-2">
-            More Than Buildings,<br />A Brighter Abbottabad
+            More Than Buildings,<br />Promoting housing communities<br />State-of-the-art structures
           </h2>
           <p className="text-gray-700 text-sm md:text-base max-w-2xl leading-relaxed">
-            Watch how Roman Builders is shaping communities in Abbottabad through<br className="hidden md:block" /> trust, quality construction, and a vision for a better tomorrow.
+            Watch how Roman Builders is shaping communities in Pakistan through<br className="hidden md:block" /> trust, quality construction, and a vision for a better tomorrow.
           </p>
         </div>
 

@@ -11,7 +11,7 @@ export default async function ProjectsPage() {
     process.env.NEXT_PUBLIC_SUPABASE_URL!,
     process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
   );
-  
+
   const { data: projectsData, error } = await supabase
     .from('projects')
     .select('id, title, location, status, description, features, image_url, link')
@@ -27,9 +27,9 @@ export default async function ProjectsPage() {
       {/* Page Hero */}
       <section className="pt-28 pb-28 md:pt-36 md:pb-36 px-6 sm:px-8 relative text-center">
         {/* Masked Background Layer */}
-        <div 
+        <div
           className="absolute inset-0 z-0 bg-[url('/images/construction-image.png')] bg-cover bg-center overflow-hidden"
-          style={{ 
+          style={{
             maskImage: "linear-gradient(to bottom, black 70%, transparent 100%)",
             WebkitMaskImage: "linear-gradient(to bottom, black 70%, transparent 100%)"
           }}
@@ -37,11 +37,11 @@ export default async function ProjectsPage() {
           <div className="absolute inset-0 bg-black/60"></div>
           <div className="absolute inset-0 bg-[url('/images/hero-bg-overlay.png')] opacity-20 mix-blend-overlay"></div>
         </div>
-        
+
         <div className="max-w-7xl mx-auto relative z-10 text-center">
           <h1 className="text-5xl md:text-6xl lg:text-7xl font-serif text-white mb-6 drop-shadow-lg">Projects</h1>
           <p className="text-white max-w-4xl mx-auto text-base md:text-lg lg:text-xl font-light tracking-wide leading-relaxed drop-shadow-md">
-            Discover our portfolio of premium real estate developments, designed to <br className="hidden md:block" />elevate lifestyles and build thriving communities across Hazara.
+            Discover our portfolio of premium real estate developments, designed to <br className="hidden md:block" />elevate lifestyles and build thriving communities across Pakistan.
           </p>
         </div>
       </section>
@@ -52,20 +52,20 @@ export default async function ProjectsPage() {
           <div key={project.id} className={`flex flex-col lg:flex-row gap-10 items-center p-6 md:p-10 lg:p-12 rounded-[3rem] border-2 border-white/70 bg-white/30 shadow-sm backdrop-blur-sm ${index % 2 !== 0 ? 'lg:flex-row-reverse' : ''}`}>
             {/* Image Side */}
             <div className="w-full lg:w-1/2 relative h-[350px] lg:h-[450px] rounded-3xl overflow-hidden shadow-lg group bg-gray-100">
-              <Image 
-                src={project.image_url} 
-                alt={project.title} 
-                fill 
+              <Image
+                src={project.image_url}
+                alt={project.title}
+                fill
                 sizes="(max-width: 1024px) 100vw, 50vw"
                 priority={index === 0}
-                className="object-cover group-hover:scale-105 transition-transform duration-700" 
+                className="object-cover group-hover:scale-105 transition-transform duration-700"
               />
               <div className="absolute top-6 left-6 bg-white/90 backdrop-blur-md px-4 py-2 rounded-full shadow-md flex items-center gap-2">
                 <div className={`w-2 h-2 rounded-full ${project.status === 'Now Selling' ? 'bg-emerald-500 animate-pulse' : 'bg-amber-500'}`}></div>
                 <span className="text-[10px] font-bold tracking-wider text-[#161f18] uppercase">{project.status}</span>
               </div>
             </div>
-            
+
             {/* Content Side */}
             <div className="w-full lg:w-1/2 flex flex-col justify-center">
               <div className="flex items-center gap-2 text-gray-500 mb-4">
@@ -74,7 +74,7 @@ export default async function ProjectsPage() {
               </div>
               <h2 className="text-3xl md:text-4xl font-serif text-[#161f18] mb-4 leading-tight">{project.title}</h2>
               <p className="text-gray-600 mb-8 leading-relaxed text-sm md:text-base">{project.description}</p>
-              
+
               <div className="grid grid-cols-2 gap-y-4 mb-10">
                 {project.features.map((feature: string, idx: number) => (
                   <div key={idx} className="flex items-center gap-3">

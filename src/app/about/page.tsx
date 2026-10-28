@@ -10,9 +10,9 @@ export default function AboutPage() {
       {/* Page Hero */}
       <section className="pt-28 pb-28 md:pt-36 md:pb-36 px-6 sm:px-8 relative text-center">
         {/* Masked Background Layer */}
-        <div 
+        <div
           className="absolute inset-0 z-0 bg-[url('/images/about-us-hero.png')] bg-cover bg-center overflow-hidden"
-          style={{ 
+          style={{
             maskImage: "linear-gradient(to bottom, black 50%, transparent 100%)",
             WebkitMaskImage: "linear-gradient(to bottom, black 50%, transparent 100%)"
           }}
@@ -20,11 +20,11 @@ export default function AboutPage() {
           <div className="absolute inset-0 bg-black/60"></div>
           <div className="absolute inset-0 bg-[url('/images/hero-bg-overlay.png')] opacity-20 mix-blend-overlay"></div>
         </div>
-        
+
         <div className="max-w-7xl mx-auto relative z-10 text-center">
           <h1 className="text-5xl md:text-6xl lg:text-7xl font-serif text-white mb-6 drop-shadow-lg">Our Story</h1>
           <p className="text-white max-w-4xl mx-auto text-base md:text-lg lg:text-xl font-light tracking-wide leading-relaxed drop-shadow-md">
-            Building a brighter tomorrow for Abbottabad through trust, <br className="hidden md:block" />visionary architecture, and lasting communities.
+            Building a brighter tomorrow for Abbottabad through trust, visionary and lasting communities, <br className="hidden md:block" />backed by proven expertise in transforming raw land into quality living spaces.
           </p>
         </div>
       </section>
@@ -32,9 +32,9 @@ export default function AboutPage() {
       {/* Our Story Content & Vision, Mission, Values */}
       <section className="pt-0 pb-10 lg:pb-16 px-6 sm:px-8 -mt-6 md:-mt-10 relative z-20">
         <div className="text-center mb-10 max-w-7xl mx-auto px-4">
-          <h2 className="text-3xl md:text-5xl font-serif text-[#161f18] mb-6">More Than Buildings</h2>
-          <p className="text-gray-700 leading-relaxed text-base md:text-lg">
-            Roman Builders & Developers was founded with a single mission: to revolutionize the real estate landscape of Hazara Division. We believe that true development isn&apos;t just about erecting structures; it&apos;s about creating communities where families can thrive and legacies can be built.
+          <h2 className="text-3xl md:text-5xl font-serif text-[#161f18] mb-6">Roman Builders & Developers (Pvt) Limited</h2>
+          <p className="text-gray-700 leading-relaxed text-base md:text-lg text-justify">
+            Roman Builders & Developers (Private) Limited is a forward-thinking real estate development company driven by strategic leadership, professional expertise, and a commitment to excellence. Backed by the diverse experience of its leadership in land development, town planning, construction, regulatory approvals, legal consultancy, and real estate sales and marketing, the company aims to deliver well-planned, legally compliant, and commercially viable property developments. Combining technical insight, business acumen, and disciplined project management, Roman Builders & Developers strives to create sustainable communities, maximize investment potential, and establish lasting value for its clients and partners.
           </p>
         </div>
         <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-10">

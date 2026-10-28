@@ -14,12 +14,14 @@ export default function Hero() {
         <div className="w-full max-w-7xl mx-auto px-6 sm:px-8 relative z-10">
           {/* Hero Text & CTA */}
           <div className="max-w-4xl space-y-5 pt-24 sm:pt-36 md:pt-64 lg:pt-72 -ml-2 md:-ml-4">
-            <h1 className="text-[2.75rem] leading-[1.1] sm:text-[3.5rem] md:text-[4.25rem] lg:text-[5rem] font-sans font-[750] text-[#1a1c19] tracking-tight sm:leading-[1.05]">
-              Building Your Future<br className="hidden sm:block" />
-              <span className="sm:hidden"> </span>in Abbottabad
+            <h1 className="text-[3.5rem] leading-[1.1] sm:text-[4.25rem] md:text-[5rem] lg:text-[5.75rem] font-sans font-[750] text-[#1a1c19] tracking-tight sm:leading-[1.05]">
+              Building Your Future
             </h1>
             <p className="text-gray-700 text-base md:text-lg max-w-md leading-relaxed font-normal pt-2">
-              Your trusted partners in land development, architecture, and cooperative housing society management in Hazara Division.
+              Builders, developers, architects, housing consultants and real estate planners.
+            </p>
+            <p className="text-gray-700 text-base md:text-lg max-w-xl leading-relaxed font-normal ">
+              "Your trusted partners in bringing your raw land to standard housing community and structures."
             </p>
             <div className="pt-4 flex items-center gap-4">
               <Link href="/projects" className="w-full justify-center sm:w-auto inline-flex items-center gap-2 bg-[#4a5240] text-white px-5 py-3.5 sm:py-3 rounded-lg text-[14px] sm:text-[13px] font-medium hover:bg-[#3d4435] transition-all shadow-md">

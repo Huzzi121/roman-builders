@@ -16,7 +16,7 @@ export default function PrimeViewPage() {
             <span className="text-[10px] font-bold tracking-wider uppercase">Now Selling</span>
           </div>
           <h1 className="text-5xl md:text-7xl font-serif mb-6 drop-shadow-lg">Prime View Co-Operative Housing Society</h1>
-         <p className="text-lg md:text-xl font-light text-white/90">A Brighter Tomorrow in Abbottabad</p>
+          <p className="text-lg md:text-xl font-light text-white/90">A Brighter Tomorrow in Abbottabad</p>
         </div>
       </section>
 
@@ -26,10 +26,10 @@ export default function PrimeViewPage() {
           <div>
             <h2 className="text-3xl md:text-5xl font-serif text-[#161f18] mb-6">Experience Unparalleled Living</h2>
             <p className="text-gray-600 leading-relaxed mb-6">
-              Prime View Co-Operative Housing Society is Abbottabad's premier real estate destination. Nestled against a backdrop of breathtaking mountains, this society combines the tranquility of nature with the convenience of modern urban planning.
+              Prime View Co-Operative Housing Society is Pakistan's premier real estate destination. Nestled against a backdrop of breathtaking mountains, this society combines the tranquility of nature with the convenience of modern urban planning.
             </p>
             <p className="text-gray-600 leading-relaxed mb-8">
-              Developed by Roman Builders, the project is fully legal, TMA & EPA approved, and designed to foster a secure, thriving community.
+              Developed by Roman Builders, the project is fully legal, NOC approved from KP co-operative societies department, and designed to foster a secure, thriving community.
             </p>
             <div className="flex flex-wrap gap-4">
               <div className="bg-white p-4 rounded-xl border border-gray-200 shadow-sm min-w-[140px]">
@@ -55,7 +55,7 @@ export default function PrimeViewPage() {
             <h2 className="text-3xl md:text-5xl font-serif mb-4">World-Class Amenities</h2>
             <p className="text-white/70 max-w-2xl mx-auto">Everything you need for a comfortable, modern lifestyle is built right into the community.</p>
           </div>
-          
+
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8">
             {[
               { icon: "fa-bolt", title: "Underground Electrification", desc: "Uninterrupted power supply without the clutter of overhead cables." },

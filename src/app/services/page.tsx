@@ -13,7 +13,7 @@ export default function ServicesPage() {
     {
       id: "legal-approvals",
       title: "Legal & NOC Approvals",
-      description: "Navigating the complex landscape of real estate regulations. We handle all paperwork to secure TMA, EPA, and other necessary NOCs, guaranteeing 100% legal compliance for our investors.",
+      description: "TMA, EPA, co-operative, HUBCA and other necessary NOC's for our investors and clients.",
       icon: "fa-file-contract",
       image: "/images/noc.jpg"
     },
@@ -27,7 +27,7 @@ export default function ServicesPage() {
     {
       id: "project-management",
       title: "Project Management",
-      description: "End-to-end oversight of real estate projects. We ensure that timelines are met, budgets are respected, and quality is never compromised from groundbreaking to handover.",
+      description: "End-to-end oversight of real estate projects. We ensure that timelines are met, budgets are respected, and quality is never compromised from groundbreaking to possession. We make establish and implement the comprehensive post project delivery policies for better evaluation of the project delivered.",
       icon: "fa-list-check",
       image: "/images/project-management.jpg"
     },
@@ -47,9 +47,9 @@ export default function ServicesPage() {
       {/* Page Hero */}
       <section className="pt-28 pb-28 md:pt-36 md:pb-36 px-6 sm:px-8 relative text-center">
         {/* Masked Background Layer */}
-        <div 
+        <div
           className="absolute inset-0 z-0 bg-[url('/images/our-services.png')] bg-cover bg-center overflow-hidden"
-          style={{ 
+          style={{
             maskImage: "linear-gradient(to bottom, black 50%, transparent 100%)",
             WebkitMaskImage: "linear-gradient(to bottom, black 50%, transparent 100%)"
           }}
@@ -57,7 +57,7 @@ export default function ServicesPage() {
           <div className="absolute inset-0 bg-black/60"></div>
           <div className="absolute inset-0 bg-[url('/images/hero-bg-overlay.png')] opacity-20 mix-blend-overlay"></div>
         </div>
-        
+
         <div className="max-w-7xl mx-auto relative z-10 text-center">
           <h1 className="text-5xl md:text-6xl lg:text-7xl font-serif text-white mb-6 drop-shadow-lg">What We Do</h1>
           <p className="text-white max-w-4xl mx-auto text-base md:text-lg lg:text-xl font-light tracking-wide leading-relaxed drop-shadow-md">
@@ -71,12 +71,12 @@ export default function ServicesPage() {
         <div className="flex flex-col gap-12">
           {services.map((service, idx) => (
             <div key={idx} className={`group bg-white/20 backdrop-blur-md hover:bg-[#4a5240]/85 p-5 md:p-6 rounded-3xl shadow-[0_8px_32px_rgba(0,0,0,0.1)] border border-white/40 hover:border-transparent transition-all duration-300 flex flex-col ${idx % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse'} gap-6 md:gap-8 items-center cursor-pointer`}>
-              
+
               {/* Image Side */}
               <div className="w-full md:w-1/2 h-56 sm:h-64 md:h-[18rem] rounded-2xl overflow-hidden shadow-md shrink-0 relative">
                 <img src={service.image} alt={service.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out" />
               </div>
-              
+
               {/* Content Side */}
               <div className="w-full md:w-1/2 flex flex-col justify-center px-2 md:px-4">
                 <div className="flex items-center gap-3 mb-3">
@@ -87,11 +87,11 @@ export default function ServicesPage() {
                     {service.title}
                   </h3>
                 </div>
-                
+
                 <p className="text-gray-800 font-medium group-hover:font-normal group-hover:text-white/90 text-sm lg:text-base leading-relaxed mb-6 transition-all duration-300">
                   {service.description}
                 </p>
-                
+
                 <div className="w-12 h-[2px] bg-[#4a5240]/20 group-hover:bg-white/30 transition-colors duration-300"></div>
               </div>
 

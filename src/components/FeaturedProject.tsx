@@ -13,7 +13,7 @@ export default function FeaturedProject() {
         <div className="text-center mb-10 lg:mb-16">
           <div className="flex items-center justify-center gap-4 mb-5">
             <div className="hidden sm:block w-16 h-[1px] bg-[#4a5240]/30"></div>
-            <span className="text-[9px] sm:text-[10px] font-bold tracking-[0.25em] text-[#4a5240] uppercase">Our Flagship Project</span>
+            <span className="text-[9px] sm:text-[10px] font-bold tracking-[0.25em] text-[#4a5240] uppercase">Our Flagship Projects</span>
             <div className="hidden sm:block w-16 h-[1px] bg-[#4a5240]/30"></div>
           </div>
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-serif text-[#161f18] tracking-tight leading-[1.1]">
@@ -50,10 +50,10 @@ export default function FeaturedProject() {
                 Prime View combines breathtaking natural landscapes with modern urban planning.
               </p>
             </div>
-            
+
             <div className="space-y-3.5">
               {[
-                { icon: "fa-circle-check", text: "TMA & EPA Approved" },
+                { icon: "fa-circle-check", text: "NOC approved from KP co-operative societies department" },
                 { icon: "fa-circle-check", text: "Underground Electrification" },
                 { icon: "fa-circle-check", text: "Modern Sewerage & Infrastructure" },
                 { icon: "fa-circle-check", text: "Prime Location with Mountain Views" },
