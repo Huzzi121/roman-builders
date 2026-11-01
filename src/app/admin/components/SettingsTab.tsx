@@ -45,8 +45,8 @@ export default function SettingsTab() {
       setSuccess(true)
       setOldPassword('')
       setNewPassword('')
-    } catch (err: any) {
-      setError(err.message || 'An error occurred while changing password')
+    } catch (err: unknown) {
+      setError(err instanceof Error ? err.message : 'An error occurred while changing password')
     } finally {
       setLoading(false)
     }

@@ -82,7 +82,7 @@ export default function StoryPreview() {
             <div className="aspect-[16/9] sm:aspect-[21/9] lg:aspect-[24/10] w-full relative bg-slate-900">
               <video
                 className="w-full h-full object-cover"
-                src="/search_about_Prime_View_City_–.mp4"
+                src="/pv-website-trim-home-page.mp4"
                 autoPlay
                 loop
                 muted

@@ -1,6 +1,6 @@
 'use client'
 
-import { useEffect, useState, useRef } from 'react'
+import { useEffect, useState, useRef, useCallback } from 'react'
 import { createClient } from '@/lib/supabase/client'
 import { revalidateProjects } from '@/app/admin/actions'
 
@@ -15,6 +15,7 @@ type Project = {
   image_url: string
   link: string
   display_order: number
+  created_at?: string
 }
 
 // Toast types
@@ -52,7 +53,7 @@ export default function ProjectsTab() {
   const fileInputRef = useRef<HTMLInputElement>(null)
   const supabase = createClient()
 
-  const fetchProjects = async () => {
+  const fetchProjects = useCallback(async () => {
     setLoading(true)
     const { data, error } = await supabase
       .from('projects')
@@ -64,11 +65,27 @@ export default function ProjectsTab() {
       setProjects(data)
     }
     setLoading(false)
-  }
+  }, [supabase])
 
   useEffect(() => {
-    fetchProjects()
-  }, [])
+    let ignore = false
+    const loadProjects = async () => {
+      const { data, error } = await supabase
+        .from('projects')
+        .select('*')
+      if (ignore) return
+      if (error) {
+        addToast('error', 'Failed to fetch projects')
+      } else if (data) {
+        setProjects(data)
+      }
+      setLoading(false)
+    }
+    loadProjects()
+    return () => {
+      ignore = true
+    }
+  }, [supabase])
 
   const handleSave = async (e: React.FormEvent) => {
     e.preventDefault()
@@ -104,8 +121,8 @@ export default function ProjectsTab() {
       setFeaturesInput('')
       fetchProjects()
       await revalidateProjects()
-    } catch (error: any) {
-      addToast('error', error.message || 'Failed to save project')
+    } catch (error: unknown) {
+      addToast('error', error instanceof Error ? error.message : 'Failed to save project')
     }
   }
 
@@ -123,8 +140,8 @@ export default function ProjectsTab() {
         addToast('success', 'Project deleted successfully')
         fetchProjects()
         await revalidateProjects()
-      } catch (error: any) {
-        addToast('error', error.message || 'Failed to delete project')
+      } catch (error: unknown) {
+        addToast('error', error instanceof Error ? error.message : 'Failed to delete project')
       }
     }
   }
@@ -137,8 +154,8 @@ export default function ProjectsTab() {
         addToast('success', 'Project archived successfully')
         fetchProjects()
         await revalidateProjects()
-      } catch (error: any) {
-        addToast('error', error.message || 'Failed to archive project')
+      } catch (error: unknown) {
+        addToast('error', error instanceof Error ? error.message : 'Failed to archive project')
       }
     }
   }
@@ -169,8 +186,8 @@ export default function ProjectsTab() {
       
       setCurrentProject(prev => ({ ...prev, image_url: data.publicUrl }))
       addToast('success', 'Image uploaded successfully')
-    } catch (error: any) {
-      addToast('error', 'Error uploading image: ' + error.message)
+    } catch (error: unknown) {
+      addToast('error', 'Error uploading image: ' + (error instanceof Error ? error.message : 'Upload failed'))
     } finally {
       setUploadingImage(false)
     }
@@ -203,8 +220,8 @@ export default function ProjectsTab() {
     .sort((a, b) => {
       switch (sortOption) {
         case 'display_order_asc': return a.display_order - b.display_order
-        case 'newest': return (b as any).created_at?.localeCompare((a as any).created_at || '') || 0
-        case 'oldest': return (a as any).created_at?.localeCompare((b as any).created_at || '') || 0
+        case 'newest': return b.created_at?.localeCompare(a.created_at || '') || 0
+        case 'oldest': return a.created_at?.localeCompare(b.created_at || '') || 0
         case 'name_asc': return a.title.localeCompare(b.title)
         default: return 0
       }

@@ -3,7 +3,7 @@ import Link from 'next/link';
 
 export default function ExpertiseSection() {
   return (
-    <section className="pt-16 lg:pt-20 pb-12 relative overflow-hidden" data-purpose="expertise" id="about">
+    <section className="pt-16 lg:pt-20 pb-12 lg:pb-16 relative overflow-hidden" data-purpose="expertise" id="about">
 
 
       <div className="max-w-[90rem] mx-auto px-4 sm:px-6 lg:px-8 xl:px-12 relative z-10">

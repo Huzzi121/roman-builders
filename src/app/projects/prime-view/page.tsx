@@ -26,7 +26,7 @@ export default function PrimeViewPage() {
           <div>
             <h2 className="text-3xl md:text-5xl font-serif text-[#161f18] mb-6">Experience Unparalleled Living</h2>
             <p className="text-gray-600 leading-relaxed mb-6">
-              Prime View Co-Operative Housing Society is Pakistan's premier real estate destination. Nestled against a backdrop of breathtaking mountains, this society combines the tranquility of nature with the convenience of modern urban planning.
+              Prime View Co-Operative Housing Society is Pakistan&apos;s premier real estate destination. Nestled against a backdrop of breathtaking mountains, this society combines the tranquility of nature with the convenience of modern urban planning.
             </p>
             <p className="text-gray-600 leading-relaxed mb-8">
               Developed by Roman Builders, the project is fully legal, NOC approved from KP co-operative societies department, and designed to foster a secure, thriving community.
@@ -86,7 +86,7 @@ export default function PrimeViewPage() {
           <p className="text-gray-600">Take a virtual tour of the Prime View society.</p>
         </div>
         <div className="aspect-video rounded-3xl overflow-hidden shadow-2xl border-4 border-white relative bg-slate-900">
-          <video className="w-full h-full object-cover" src="/search_about_Prime_View_City_–.mp4" controls preload="none" poster="/images/prime-view-showcase.jpg"></video>
+          <video className="w-full h-full object-cover" src="/pv-website-trim-home-page.mp4" controls preload="none" poster="/images/prime-view-showcase.jpg"></video>
         </div>
       </section>
 

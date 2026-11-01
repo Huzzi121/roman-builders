@@ -21,7 +21,7 @@ export default function Hero() {
               Builders, developers, architects, housing consultants and real estate planners.
             </p>
             <p className="text-gray-700 text-base md:text-lg max-w-xl leading-relaxed font-normal ">
-              "Your trusted partners in bringing your raw land to standard housing community and structures."
+              &ldquo;Your trusted partners in bringing your raw land to standard housing community and structures.&rdquo;
             </p>
             <div className="pt-4 flex items-center gap-4">
               <Link href="/projects" className="w-full justify-center sm:w-auto inline-flex items-center gap-2 bg-[#4a5240] text-white px-5 py-3.5 sm:py-3 rounded-lg text-[14px] sm:text-[13px] font-medium hover:bg-[#3d4435] transition-all shadow-md">

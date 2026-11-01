@@ -41,10 +41,10 @@ export default function ProcessPreview() {
       setActiveProcessStep((prev) => (prev + 1) % processSteps.length);
     }, 4000); // Automatically cycle every 4 seconds
     return () => clearInterval(timer);
-  }, [processSteps.length]);
+  }, [activeProcessStep, processSteps.length]);
 
   return (
-    <section className="pt-10 lg:pt-14 pb-4 relative overflow-hidden" data-purpose="work-process" id="process">
+    <section className="pt-10 lg:pt-14 pb-10 lg:pb-14 relative overflow-hidden" data-purpose="work-process" id="process">
       {/* Subtle decorative leaf shapes */}
       <div className="absolute top-10 left-0 w-[200px] h-[400px] bg-[#4a5240]/[0.03] rounded-r-full pointer-events-none"></div>
       <div className="absolute bottom-20 left-4 w-[120px] h-[240px] bg-[#4a5240]/[0.02] rounded-r-full pointer-events-none"></div>
@@ -126,8 +126,8 @@ export default function ProcessPreview() {
                     {step.description}
                   </p>
                   <div>
-                    <Link href="/process" className="inline-flex items-center gap-2 border border-white/30 text-white px-5 py-2.5 rounded-lg text-[12px] font-medium hover:bg-white/10 transition-colors">
-                      <span>Explore Our Process</span>
+                    <Link href="/contact" className="inline-flex items-center gap-2 border border-white/30 text-white px-5 py-2.5 rounded-lg text-[12px] font-medium hover:bg-white/10 transition-colors">
+                      <span>Get In Touch</span>
                       <i className="fa-solid fa-arrow-right text-[10px]"></i>
                     </Link>
                   </div>

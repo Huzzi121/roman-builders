@@ -1,6 +1,7 @@
 import Hero from "@/components/Hero";
 import StoryPreview from "@/components/StoryPreview";
 import ExpertiseSection from "@/components/ExpertiseSection";
+import ProcessPreview from "@/components/ProcessPreview";
 import FeaturedProject from "@/components/FeaturedProject";
 import Footer from "@/components/Footer";
 
@@ -42,6 +43,7 @@ export default function Home() {
         <Hero />
         <StoryPreview />
         <ExpertiseSection />
+        <ProcessPreview />
         <FeaturedProject />
         <Footer transparent={true} />
       </div>

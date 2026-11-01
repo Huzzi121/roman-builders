@@ -18,15 +18,18 @@ export default function DashboardTab() {
     active: 0
   })
   const [loading, setLoading] = useState(true)
-  const supabase = createClient()
 
   useEffect(() => {
+    let ignore = false
+    const supabase = createClient()
+
     const fetchStats = async () => {
-      setLoading(true)
-      const { data, error } = await supabase
+      const { data } = await supabase
         .from('projects')
         .select('status, publication_status')
       
+      if (ignore) return
+
       if (data) {
         setStats({
           total: data.length,
@@ -39,6 +42,10 @@ export default function DashboardTab() {
     }
 
     fetchStats()
+
+    return () => {
+      ignore = true
+    }
   }, [])
 
   if (loading) {

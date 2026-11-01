@@ -23,7 +23,7 @@ export default function ContactPage() {
       } else {
         setStatus('error');
       }
-    } catch (err) {
+    } catch {
       setStatus('error');
     }
   };
@@ -59,9 +59,9 @@ export default function ContactPage() {
               <div className="w-12 h-[1px] bg-[#4a5240]/30"></div>
               <span className="text-[10px] font-bold tracking-[0.25em] text-[#4a5240] uppercase">Contact Us</span>
             </div>
-            <h1 className="text-4xl lg:text-5xl font-serif text-[#161f18] mb-4">Let's Build Your Future</h1>
+            <h1 className="text-4xl lg:text-5xl font-serif text-[#161f18] mb-4">Let&apos;s Build Your Future</h1>
             <p className="text-gray-600 mb-6 max-w-md leading-relaxed text-sm">
-              Whether you're looking to invest, buy a home, or learn more about our projects, our team is here to help.
+              Whether you&apos;re looking to invest, buy a home, or learn more about our projects, our team is here to help.
             </p>
 
             <div className="space-y-4">

@@ -4,6 +4,17 @@ import Image from 'next/image';
 import CTASection from "@/components/CTASection";
 import { createClient } from '@supabase/supabase-js';
 
+type ProjectItem = {
+  id: string;
+  title: string;
+  location: string;
+  status: string;
+  description: string;
+  features: string[];
+  image_url: string;
+  link: string;
+};
+
 export const dynamic = 'force-static';
 
 export default async function ProjectsPage() {
@@ -12,7 +23,7 @@ export default async function ProjectsPage() {
     process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
   );
 
-  const { data: projectsData, error } = await supabase
+  const { data: projectsData } = await supabase
     .from('projects')
     .select('id, title, location, status, description, features, image_url, link')
     .or('publication_status.eq.Published,publication_status.is.null')
@@ -48,7 +59,7 @@ export default async function ProjectsPage() {
 
       {/* Projects List */}
       <section className="pt-0 pb-16 px-6 sm:px-8 max-w-7xl mx-auto space-y-20 -mt-6 md:-mt-10 relative z-20">
-        {projects.map((project: any, index: number) => (
+        {projects.map((project: ProjectItem, index: number) => (
           <div key={project.id} className={`flex flex-col lg:flex-row gap-10 items-center p-6 md:p-10 lg:p-12 rounded-[3rem] border-2 border-white/70 bg-white/30 shadow-sm backdrop-blur-sm ${index % 2 !== 0 ? 'lg:flex-row-reverse' : ''}`}>
             {/* Image Side */}
             <div className="w-full lg:w-1/2 relative h-[350px] lg:h-[450px] rounded-3xl overflow-hidden shadow-lg group bg-gray-100">

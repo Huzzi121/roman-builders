@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import Link from 'next/link';
 
 export default function Footer({ transparent = false }: { transparent?: boolean }) {
+  void transparent;
   const [email, setEmail] = useState('');
   const [subscribed, setSubscribed] = useState(false);
 

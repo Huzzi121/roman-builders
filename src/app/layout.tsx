@@ -1,13 +1,13 @@
 import type { Metadata } from "next";
-import { Playfair_Display, Outfit } from "next/font/google";
+import { Playfair_Display, Outfit, Great_Vibes } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
-import Footer from "@/components/Footer";
 import WhatsAppButton from "@/components/WhatsAppButton";
 import AdminLogoutWatcher from "@/components/AdminLogoutWatcher";
 
 const outfit = Outfit({ subsets: ["latin"], variable: "--font-sans" });
 const playfair = Playfair_Display({ subsets: ["latin"], variable: "--font-serif" });
+const greatVibes = Great_Vibes({ weight: "400", subsets: ["latin"], variable: "--font-signature" });
 
 export const metadata: Metadata = {
   title: "Roman Builders & Developers",
@@ -26,9 +26,8 @@ export default function RootLayout({
           rel="stylesheet"
           href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
         />
-        <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet" />
       </head>
-      <body className={`${outfit.variable} ${playfair.variable} font-sans bg-[#e8e4db] text-slate-800 antialiased relative`}>
+      <body className={`${outfit.variable} ${playfair.variable} ${greatVibes.variable} font-sans bg-[#e8e4db] text-slate-800 antialiased relative`}>
         {/* Global Background */}
         <div className="fixed inset-0 z-[-1] pointer-events-none overflow-hidden">
           {/* Desktop Global Background */}
