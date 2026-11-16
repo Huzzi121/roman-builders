@@ -6,6 +6,7 @@ import {
   advisoryMember,
   engineeringMember,
   softwareEngineers,
+  marketingMember,
 } from "@/data/team";
 import TeamCard from "@/components/TeamCard";
 
@@ -14,7 +15,7 @@ export default function TeamContent() {
   const categoryParam = searchParams.get("category");
 
   // Determine active category from query params
-  const activeCategory = (categoryParam && ["founders", "advisory", "engineers", "software", "all"].includes(categoryParam))
+  const activeCategory = (categoryParam && ["founders", "advisory", "engineers", "software", "marketing", "all"].includes(categoryParam))
     ? categoryParam
     : "all";
 
@@ -23,6 +24,7 @@ export default function TeamContent() {
   const showAdvisory = activeCategory === "all" || activeCategory === "advisory";
   const showEngineers = activeCategory === "all" || activeCategory === "engineers";
   const showSoftware = activeCategory === "all" || activeCategory === "software";
+  const showMarketing = activeCategory === "all" || activeCategory === "marketing";
 
   // Category heading info
   const getCategoryTitle = () => {
@@ -51,6 +53,12 @@ export default function TeamContent() {
           subtitle: "Architecting modern digital infrastructure, scalable systems, and intelligent experiences.",
           tag: "SOFTWARE DEVELOPERS & ENGINEERS"
         };
+      case "marketing":
+        return {
+          title: "Marketing and Sales Partner",
+          subtitle: "Driving commercial success, investor relations, and strategic market expansion.",
+          tag: "MARKETING & SALES"
+        };
       default:
         return {
           title: "Our Team",
@@ -62,22 +70,24 @@ export default function TeamContent() {
 
   const catInfo = getCategoryTitle();
 
+  const isFoundersView = activeCategory === "founders";
+
   return (
-    <div className="min-h-screen pt-28 sm:pt-36 pb-24 px-4 sm:px-6 lg:px-8 max-w-6xl mx-auto">
+    <div className={`min-h-screen ${isFoundersView ? "pt-20 sm:pt-24 pb-12" : "pt-28 sm:pt-36 pb-24"} px-4 sm:px-6 lg:px-8 max-w-6xl mx-auto`}>
       
       {/* Category Hero Header */}
-      <div className="text-center mb-12 sm:mb-16 relative">
-        <div className="flex items-center justify-center gap-4 mb-3">
+      <div className={`text-center ${isFoundersView ? "mb-6 sm:mb-8" : "mb-12 sm:mb-16"} relative`}>
+        <div className="flex items-center justify-center gap-4 mb-2">
           <div className="h-px bg-[#4a5240]/30 w-12"></div>
           <span className="text-[#4a5240] text-xs font-bold tracking-[0.2em] uppercase">
             {catInfo.tag}
           </span>
           <div className="h-px bg-[#4a5240]/30 w-12"></div>
         </div>
-        <h1 className="text-3xl sm:text-5xl font-serif text-[#1a1c19] mb-3 tracking-tight">
+        <h1 className={`${isFoundersView ? "text-2xl sm:text-4xl" : "text-3xl sm:text-5xl"} font-serif text-[#1a1c19] mb-2 tracking-tight`}>
           {catInfo.title}
         </h1>
-        <p className="text-gray-700 text-sm sm:text-base max-w-2xl mx-auto leading-relaxed">
+        <p className="text-gray-700 text-xs sm:text-sm max-w-2xl mx-auto leading-relaxed">
           {catInfo.subtitle}
         </p>
       </div>
@@ -138,6 +148,19 @@ export default function TeamContent() {
             {softwareEngineers.map((m) => (
               <TeamCard key={m.id} member={m} />
             ))}
+          </div>
+        )}
+
+        {/* Marketing and Sales Partner Category */}
+        {showMarketing && (
+          <div className="space-y-10 sm:space-y-12">
+            {activeCategory === "all" && (
+              <div className="text-center mb-6">
+                <span className="text-[#4a5240] text-xs font-bold tracking-[0.2em] uppercase">Marketing & Sales</span>
+                <h2 className="text-2xl sm:text-3xl font-serif text-[#1a1c19] mt-1">Marketing and Sales Partner</h2>
+              </div>
+            )}
+            <TeamCard member={marketingMember} />
           </div>
         )}
 

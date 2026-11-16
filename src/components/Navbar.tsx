@@ -24,27 +24,27 @@ export default function Navbar() {
   }
 
   return (
-    <div className="fixed top-0 left-0 w-full z-50 px-4 sm:px-6 lg:px-8 pt-3 sm:pt-4 pointer-events-none">
-      <div className="w-full max-w-[96rem] mx-auto flex items-center justify-between relative">
+    <div className="fixed top-0 left-0 w-full z-50 px-4 sm:px-6 lg:px-8 pt-2 sm:pt-2.5 pointer-events-none">
+      <div className="w-full max-w-[96rem] mx-auto flex items-center justify-between relative min-h-[50px] sm:min-h-[54px]">
         
-        {/* Top-Left: Brand Logo (Transparent, without card/pill background) */}
-        <div className="pointer-events-auto shrink-0 z-10">
+        {/* Top-Left: Brand Logo (Aligned vertically to the exact same area as navbar) */}
+        <div className="pointer-events-auto shrink-0 z-10 -mt-1 sm:-mt-1.5">
           <Link
             href="/"
-            className="flex items-center transition-all hover:scale-105 active:scale-95 focus:outline-none"
+            className="flex items-center transition-all hover:scale-105 active:scale-95 focus:outline-none -translate-y-0.5 sm:-translate-y-1"
             data-purpose="brand-logo"
             onClick={() => setIsMobileMenuOpen(false)}
           >
             <img
               src={isWhiteLogo ? "/logo-white.png" : "/logo.png"}
               alt="Roman Builders & Developers"
-              className="h-11 sm:h-12 md:h-14 lg:h-16 w-auto object-contain drop-shadow-sm"
+              className="h-10 sm:h-11 md:h-13 lg:h-15 w-auto object-contain drop-shadow-sm"
             />
           </Link>
         </div>
 
         {/* Center: Complete Single-Line Navigation Bar with all buttons */}
-        <header className="pointer-events-auto hidden md:flex items-center justify-center bg-[#3d4435]/85 backdrop-blur-md rounded-full shadow-[0_8px_30px_rgba(0,0,0,0.15)] border border-white/10 px-3 lg:px-4 py-2 transition-all md:absolute md:left-1/2 md:-translate-x-1/2 z-0">
+        <header className="pointer-events-auto hidden md:flex items-center justify-center bg-[#3d4435]/85 backdrop-blur-md rounded-full shadow-[0_8px_30px_rgba(0,0,0,0.15)] border border-white/10 px-3 lg:px-4 py-2 transition-all md:absolute md:left-1/2 md:-translate-x-1/2 md:top-1/2 md:-translate-y-1/2 z-0">
           <nav className="flex items-center flex-nowrap whitespace-nowrap gap-1.5 lg:gap-2.5 text-[15px] lg:text-[16px] font-medium text-[#e8e4db]" data-purpose="primary-navigation">
             <Link
               href="/"
@@ -155,6 +155,14 @@ export default function Navbar() {
                     <i className="fa-solid fa-laptop-code text-xs text-[#dfd2ba]"></i>
                     <span>Software Developers & Engineers</span>
                   </Link>
+                  <Link
+                    href="/team?category=marketing"
+                    onClick={() => setIsTeamMenuOpen(false)}
+                    className="px-4 py-2.5 rounded-xl hover:bg-white/15 text-[#e8e4db] hover:text-white text-[13.5px] font-medium transition-all text-left flex items-center gap-2.5"
+                  >
+                    <i className="fa-solid fa-bullhorn text-xs text-[#dfd2ba]"></i>
+                    <span>Marketing and Sales Partner</span>
+                  </Link>
                 </div>
               </div>
             </div>
@@ -237,6 +245,14 @@ export default function Navbar() {
                 >
                   <i className="fa-solid fa-laptop-code text-[10px]"></i>
                   <span>Software Developers & Engineers</span>
+                </Link>
+                <Link
+                  href="/team?category=marketing"
+                  onClick={() => setIsMobileMenuOpen(false)}
+                  className="text-xs text-[#dfd2ba] hover:text-white py-1.5 flex items-center gap-2"
+                >
+                  <i className="fa-solid fa-bullhorn text-[10px]"></i>
+                  <span>Marketing and Sales Partner</span>
                 </Link>
               </div>
             )}

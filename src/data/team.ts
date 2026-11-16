@@ -7,7 +7,7 @@ export interface TeamMember {
   image: string;
   description: string;
   signature: string;
-  category: 'founders' | 'advisory' | 'engineers' | 'software';
+  category: 'founders' | 'advisory' | 'engineers' | 'software' | 'marketing';
   bulletsHeader?: string;
   bullets: Array<{ text: string; icon: string }>;
 }
@@ -192,9 +192,30 @@ export const softwareEngineers: TeamMember[] = [
   },
 ];
 
+export const marketingMember: TeamMember = {
+  id: "ahmed-ali-syed",
+  name: "Ahmed Ali Syed",
+  role: "Marketing and Sales Partner",
+  tag: "MARKETING & SALES PARTNER",
+  email: "info@romanbuilders.com",
+  image: "/ahmed ali syed.jpeg",
+  description:
+    "Ahmed Ali Syed oversees strategic marketing campaigns and commercial sales partnerships at Roman Builders & Developers. With specialized expertise in real estate acquisition, client advisory, and market positioning, he drives business growth by connecting investors and prospective homeowners with landmark living spaces.",
+  signature: "Ahmed Ali Syed",
+  category: "marketing",
+  bulletsHeader: "Sales & Strategic Marketing",
+  bullets: [
+    { text: "Strategic Real Estate Sales & Market Expansion", icon: "fa-bullseye" },
+    { text: "Client Advisory & High-Value Investor Engagement", icon: "fa-handshake" },
+    { text: "Brand Outreach, Digital Marketing & Campaign Management", icon: "fa-bullhorn" },
+    { text: "Commercial Growth & Housing Project Commercialization", icon: "fa-chart-line" },
+  ],
+};
+
 export const teamCategories = [
   { id: "founders", label: "Founders" },
   { id: "advisory", label: "Advisory & compliance" },
   { id: "engineers", label: "Engineers & development" },
   { id: "software", label: "Software Developers & Engineers" },
+  { id: "marketing", label: "Marketing and Sales Partner" },
 ] as const;
