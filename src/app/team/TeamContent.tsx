@@ -136,6 +136,19 @@ export default function TeamContent() {
           </div>
         )}
 
+        {/* Marketing and Sales Partner Category */}
+        {showMarketing && (
+          <div className="space-y-10 sm:space-y-12">
+            {activeCategory === "all" && (
+              <div className="text-center mb-6">
+                <span className="text-[#4a5240] text-xs font-bold tracking-[0.2em] uppercase">Marketing & Sales</span>
+                <h2 className="text-2xl sm:text-3xl font-serif text-[#1a1c19] mt-1">Marketing and Sales Partner</h2>
+              </div>
+            )}
+            <TeamCard member={marketingMember} />
+          </div>
+        )}
+
         {/* Software Developers Category */}
         {showSoftware && (
           <div className="space-y-10 sm:space-y-12">
@@ -148,19 +161,6 @@ export default function TeamContent() {
             {softwareEngineers.map((m) => (
               <TeamCard key={m.id} member={m} />
             ))}
-          </div>
-        )}
-
-        {/* Marketing and Sales Partner Category */}
-        {showMarketing && (
-          <div className="space-y-10 sm:space-y-12">
-            {activeCategory === "all" && (
-              <div className="text-center mb-6">
-                <span className="text-[#4a5240] text-xs font-bold tracking-[0.2em] uppercase">Marketing & Sales</span>
-                <h2 className="text-2xl sm:text-3xl font-serif text-[#1a1c19] mt-1">Marketing and Sales Partner</h2>
-              </div>
-            )}
-            <TeamCard member={marketingMember} />
           </div>
         )}
 

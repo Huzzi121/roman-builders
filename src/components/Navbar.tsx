@@ -148,20 +148,20 @@ export default function Navbar() {
                     <span>Engineers & development</span>
                   </Link>
                   <Link
-                    href="/team?category=software"
-                    onClick={() => setIsTeamMenuOpen(false)}
-                    className="px-4 py-2.5 rounded-xl hover:bg-white/15 text-[#e8e4db] hover:text-white text-[13.5px] font-medium transition-all text-left flex items-center gap-2.5"
-                  >
-                    <i className="fa-solid fa-laptop-code text-xs text-[#dfd2ba]"></i>
-                    <span>Software Developers & Engineers</span>
-                  </Link>
-                  <Link
                     href="/team?category=marketing"
                     onClick={() => setIsTeamMenuOpen(false)}
                     className="px-4 py-2.5 rounded-xl hover:bg-white/15 text-[#e8e4db] hover:text-white text-[13.5px] font-medium transition-all text-left flex items-center gap-2.5"
                   >
                     <i className="fa-solid fa-bullhorn text-xs text-[#dfd2ba]"></i>
                     <span>Marketing and Sales Partner</span>
+                  </Link>
+                  <Link
+                    href="/team?category=software"
+                    onClick={() => setIsTeamMenuOpen(false)}
+                    className="px-4 py-2.5 rounded-xl hover:bg-white/15 text-[#e8e4db] hover:text-white text-[13.5px] font-medium transition-all text-left flex items-center gap-2.5"
+                  >
+                    <i className="fa-solid fa-laptop-code text-xs text-[#dfd2ba]"></i>
+                    <span>Software Developers & Engineers</span>
                   </Link>
                 </div>
               </div>
@@ -239,20 +239,20 @@ export default function Navbar() {
                   <span>Engineers & development</span>
                 </Link>
                 <Link
-                  href="/team?category=software"
-                  onClick={() => setIsMobileMenuOpen(false)}
-                  className="text-xs text-[#dfd2ba] hover:text-white py-1.5 flex items-center gap-2"
-                >
-                  <i className="fa-solid fa-laptop-code text-[10px]"></i>
-                  <span>Software Developers & Engineers</span>
-                </Link>
-                <Link
                   href="/team?category=marketing"
                   onClick={() => setIsMobileMenuOpen(false)}
                   className="text-xs text-[#dfd2ba] hover:text-white py-1.5 flex items-center gap-2"
                 >
                   <i className="fa-solid fa-bullhorn text-[10px]"></i>
                   <span>Marketing and Sales Partner</span>
+                </Link>
+                <Link
+                  href="/team?category=software"
+                  onClick={() => setIsMobileMenuOpen(false)}
+                  className="text-xs text-[#dfd2ba] hover:text-white py-1.5 flex items-center gap-2"
+                >
+                  <i className="fa-solid fa-laptop-code text-[10px]"></i>
+                  <span>Software Developers & Engineers</span>
                 </Link>
               </div>
             )}

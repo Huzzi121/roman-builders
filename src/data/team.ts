@@ -82,15 +82,12 @@ export const engineeringMember: TeamMember = {
   email: "info@romanbuilders.com",
   image: "/engr. waqar ahmed.jpeg",
   description:
-    "Engr. Waqar Ahmed leads engineering and project development at Roman Builders & Developers (Private) Limited. Bringing profound expertise in civil engineering, infrastructure planning, site management, and technical compliance, he is responsible for translating architectural master plans into solid, enduring ground realities. His disciplined oversight over site works—ranging from modern road networks and robust utility installations to structural quality assurance—ensures that every Roman Builders community is built to international standards of safety, resilience, and sustainability.",
+    "Roman Builders and Developers (Pvt.) Ltd.",
   signature: "Engr. Waqar Ahmed",
   category: "engineers",
   bulletsHeader: "Engineering & Technical Oversight",
   bullets: [
-    { text: "Lead Project Engineer — Infrastructure & Civil Works", icon: "fa-helmet-safety" },
-    { text: "Site Execution, Structural Integrity & Quality Assurance Standards", icon: "fa-ruler-combined" },
-    { text: "Underground Utilities, Modern Electrification & Road Networks", icon: "fa-road" },
-    { text: "Translating Architectural Master Plans into Resilient Communities", icon: "fa-map-location-dot" },
+    { text: "Civil Engineer", icon: "fa-helmet-safety" },
   ],
 };
 
@@ -200,15 +197,12 @@ export const marketingMember: TeamMember = {
   email: "info@romanbuilders.com",
   image: "/ahmed ali syed.jpeg",
   description:
-    "Ahmed Ali Syed oversees strategic marketing campaigns and commercial sales partnerships at Roman Builders & Developers. With specialized expertise in real estate acquisition, client advisory, and market positioning, he drives business growth by connecting investors and prospective homeowners with landmark living spaces.",
+    "Marketing Director, Roman Builders and Developers (Pvt.) Ltd",
   signature: "Ahmed Ali Syed",
   category: "marketing",
   bulletsHeader: "Sales & Strategic Marketing",
   bullets: [
-    { text: "Strategic Real Estate Sales & Market Expansion", icon: "fa-bullseye" },
-    { text: "Client Advisory & High-Value Investor Engagement", icon: "fa-handshake" },
-    { text: "Brand Outreach, Digital Marketing & Campaign Management", icon: "fa-bullhorn" },
-    { text: "Commercial Growth & Housing Project Commercialization", icon: "fa-chart-line" },
+    { text: "Marketing Director", icon: "fa-handshake" },
   ],
 };
 
@@ -216,6 +210,6 @@ export const teamCategories = [
   { id: "founders", label: "Founders" },
   { id: "advisory", label: "Advisory & compliance" },
   { id: "engineers", label: "Engineers & development" },
-  { id: "software", label: "Software Developers & Engineers" },
   { id: "marketing", label: "Marketing and Sales Partner" },
+  { id: "software", label: "Software Developers & Engineers" },
 ] as const;
