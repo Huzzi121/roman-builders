@@ -90,18 +90,7 @@ export default function PrimeViewPage() {
         </div>
       </section>
 
-      {/* Brochure / Download */}
-      <section className="py-16 px-6 sm:px-8 max-w-3xl mx-auto bg-white rounded-3xl shadow-sm border border-gray-100 text-center mb-20">
-        <div className="w-16 h-16 rounded-full bg-[#e8e5da] text-[#4a5240] flex items-center justify-center mx-auto mb-6">
-          <i className="fa-solid fa-file-pdf text-2xl"></i>
-        </div>
-        <h2 className="text-2xl font-serif text-[#161f18] mb-4">Download the Official Brochure</h2>
-        <p className="text-gray-500 mb-8 text-sm max-w-md mx-auto">Get complete details about payment plans, plot sizes, and the master plan layout.</p>
-        <button className="inline-flex items-center gap-3 bg-[#4a5240] text-white px-8 py-3 rounded-full text-sm font-medium hover:bg-[#3d4435] transition-all shadow-md">
-          <i className="fa-solid fa-download"></i>
-          <span>Download PDF</span>
-        </button>
-      </section>
+
 
       <CTASection />
       <Footer />

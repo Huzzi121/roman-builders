@@ -3,6 +3,7 @@
 import { useEffect, useState } from 'react'
 import { createClient } from '@/lib/supabase/client'
 import { useRouter } from 'next/navigation'
+import Link from 'next/link'
 import ProjectsTab from './components/ProjectsTab'
 import SettingsTab from './components/SettingsTab'
 import DashboardTab from './components/DashboardTab'
@@ -66,6 +67,9 @@ export default function AdminDashboard() {
       <aside className={`fixed md:sticky top-28 left-4 right-4 md:left-auto md:right-auto z-30 w-[calc(100%-2rem)] md:w-64 flex-shrink-0 transition-all duration-300 transform ${isSidebarOpen ? 'translate-y-0 opacity-100 mt-4 md:mt-0' : '-translate-y-full opacity-0 pointer-events-none md:translate-y-0 md:opacity-100 md:pointer-events-auto'}`}>
         <div className="bg-white/70 backdrop-blur-md border border-white p-6 rounded-[2rem] shadow-xl sticky top-28">
           <div className="mb-8">
+            <Link href="/" className="inline-block mb-3 hover:opacity-85 transition-opacity">
+              <img src="/logo.png" alt="Roman Builders & Developers" className="h-8 w-auto object-contain" />
+            </Link>
             <h1 className="text-xl font-serif text-[#161f18]">Admin Panel</h1>
             <p className="text-xs text-gray-500 font-bold uppercase tracking-wider mt-1">ADMINISTRATOR</p>
             {userEmail && <p className="text-[10px] text-gray-400 mt-1 truncate">{userEmail}</p>}

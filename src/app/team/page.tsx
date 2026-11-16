@@ -1,0 +1,26 @@
+import { Suspense } from "react";
+import TeamContent from "./TeamContent";
+import Footer from "@/components/Footer";
+
+export const metadata = {
+  title: "Our Team | Roman Builders & Developers",
+  description: "Meet the executive leadership, engineering experts, advisory council, and software developers behind Roman Builders & Developers.",
+};
+
+export default function TeamPage() {
+  return (
+    <main className="relative min-h-screen">
+      <Suspense
+        fallback={
+          <div className="min-h-screen pt-40 flex items-center justify-center">
+            <div className="w-8 h-8 border-4 border-[#3d4435] border-t-transparent rounded-full animate-spin"></div>
+          </div>
+        }
+      >
+        <TeamContent />
+      </Suspense>
+      <Footer transparent={true} />
+    </main>
+  );
+}
+

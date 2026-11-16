@@ -101,18 +101,13 @@ export default function Footer({ transparent = false }: { transparent?: boolean 
             <div className="flex flex-col items-center justify-center text-center py-6 lg:py-0">
               <div className="lg:border-l lg:border-r lg:border-white/10 w-full flex flex-col items-center py-4 lg:px-8">
                 <div className="mb-4 flex flex-col items-center">
-                  <div className="w-14 h-14 flex items-center justify-center mb-3 text-[#e8e4db]">
-                    <svg viewBox="0 0 48 48" fill="currentColor" className="w-full h-full" xmlns="http://www.w3.org/2000/svg">
-                      <path d="M24 4L4 18V44H18V30H30V44H44V18L24 4Z" fillOpacity="0.15" />
-                      <path d="M24 4L4 18V44H18V30H30V44H44V18L24 4ZM40 40H34V26H14V40H8V20.1L24 9.2L40 20.1V40Z" />
-                      <rect x="20" y="8" width="2" height="28" fillOpacity="0.4" />
-                      <rect x="26" y="8" width="2" height="28" fillOpacity="0.4" />
-                      <rect x="14" y="20" width="4" height="4" rx="1" fillOpacity="0.6" />
-                      <rect x="30" y="20" width="4" height="4" rx="1" fillOpacity="0.6" />
-                    </svg>
-                  </div>
-                  <h3 className="font-serif text-2xl lg:text-[22px] leading-none tracking-tight mb-1.5 text-white">Roman Builders</h3>
-                  <p className="text-[8px] tracking-[0.3em] font-sans text-white/60 uppercase">& Developers</p>
+                  <Link href="/" className="inline-block hover:opacity-85 transition-opacity mb-2">
+                    <img
+                      src="/logo-white.png"
+                      alt="Roman Builders & Developers"
+                      className="h-14 sm:h-16 w-auto object-contain"
+                    />
+                  </Link>
                 </div>
                 <div className="text-[7px] sm:text-[8px] font-bold tracking-[0.25em] text-white/35 uppercase mt-1">
                   People <span className="mx-2 text-white/10">|</span> Places <span className="mx-2 text-white/10">|</span> Progress <span className="mx-2 text-white/10">|</span> Together

@@ -1,5 +1,4 @@
 import Footer from "@/components/Footer";
-import FoundersPreview from "@/components/FoundersPreview";
 import CTASection from "@/components/CTASection";
 
 export default function AboutPage() {
@@ -76,11 +75,6 @@ export default function AboutPage() {
           </div>
         </div>
       </section>
-
-      {/* Founders Section */}
-      <FoundersPreview />
-
-
 
       {/* CTA */}
       <CTASection />

@@ -2,6 +2,7 @@
 
 import { useState } from 'react'
 import { useRouter } from 'next/navigation'
+import Link from 'next/link'
 import { createClient } from '@/lib/supabase/client'
 
 export default function LoginPage() {
@@ -34,7 +35,10 @@ export default function LoginPage() {
   return (
     <main className="min-h-screen flex items-center justify-center pt-24 pb-16 px-6">
       <div className="w-full max-w-md bg-white/70 backdrop-blur-md border border-white p-8 rounded-[2rem] shadow-xl">
-        <div className="text-center mb-8">
+        <div className="text-center mb-8 flex flex-col items-center">
+          <Link href="/" className="inline-block mb-3 hover:opacity-85 transition-opacity">
+            <img src="/logo.png" alt="Roman Builders & Developers" className="h-12 w-auto object-contain" />
+          </Link>
           <h1 className="text-3xl font-serif text-[#161f18] mb-2">Admin Login</h1>
           <p className="text-gray-600 text-sm">Secure access for authorized personnel only.</p>
         </div>
