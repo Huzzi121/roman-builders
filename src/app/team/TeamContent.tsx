@@ -5,8 +5,10 @@ import {
   founders,
   advisoryMember,
   engineeringMember,
+  engineeringMembers,
   softwareEngineers,
   marketingMember,
+  marketingMembers,
 } from "@/data/team";
 import TeamCard from "@/components/TeamCard";
 
@@ -132,7 +134,9 @@ export default function TeamContent() {
                 <h2 className="text-2xl sm:text-3xl font-serif text-[#1a1c19] mt-1">Engineers and Development</h2>
               </div>
             )}
-            <TeamCard member={engineeringMember} />
+            {engineeringMembers.map((m) => (
+              <TeamCard key={m.id} member={m} />
+            ))}
           </div>
         )}
 
@@ -145,7 +149,9 @@ export default function TeamContent() {
                 <h2 className="text-2xl sm:text-3xl font-serif text-[#1a1c19] mt-1">Marketing and Sales Partner</h2>
               </div>
             )}
-            <TeamCard member={marketingMember} />
+            {marketingMembers.map((m) => (
+              <TeamCard key={m.id} member={m} />
+            ))}
           </div>
         )}
 

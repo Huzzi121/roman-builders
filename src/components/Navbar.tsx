@@ -24,27 +24,36 @@ export default function Navbar() {
   }
 
   return (
-    <div className="fixed top-0 left-0 w-full z-50 px-4 sm:px-6 lg:px-8 pt-2 sm:pt-2.5 pointer-events-none">
-      <div className="w-full max-w-[96rem] mx-auto flex items-center justify-between relative min-h-[50px] sm:min-h-[54px]">
-        
-        {/* Top-Left: Brand Logo (Aligned vertically to the exact same area as navbar) */}
-        <div className="pointer-events-auto shrink-0 z-10 -mt-1 sm:-mt-1.5">
-          <Link
-            href="/"
-            className="flex items-center transition-all hover:scale-105 active:scale-95 focus:outline-none -translate-y-0.5 sm:-translate-y-1"
-            data-purpose="brand-logo"
-            onClick={() => setIsMobileMenuOpen(false)}
-          >
-            <img
-              src={isWhiteLogo ? "/logo-white.png" : "/logo.png"}
-              alt="Roman Builders & Developers"
-              className="h-10 sm:h-11 md:h-13 lg:h-15 w-auto object-contain drop-shadow-sm"
-            />
-          </Link>
+    <>
+      {/* Brand Logo: Absolute positioned so it stays at the top of the page and scrolls naturally with the page */}
+      <div className="absolute top-0 left-0 w-full z-40 px-4 sm:px-6 lg:px-8 pt-2 sm:pt-2.5 pointer-events-none">
+        <div className="w-full max-w-[96rem] mx-auto flex items-center justify-between relative min-h-[50px] sm:min-h-[54px]">
+          {/* Top-Left: Brand Logo (Aligned vertically to the exact same area as navbar) */}
+          <div className="pointer-events-auto shrink-0 z-10 -mt-1 sm:-mt-1.5">
+            <Link
+              href="/"
+              className="flex items-center transition-all hover:scale-105 active:scale-95 focus:outline-none -translate-y-0.5 sm:-translate-y-1"
+              data-purpose="brand-logo"
+              onClick={() => setIsMobileMenuOpen(false)}
+            >
+              <img
+                src={isWhiteLogo ? "/logo-white.png" : "/logo.png"}
+                alt="Roman Builders & Developers"
+                className="h-10 sm:h-11 md:h-13 lg:h-15 w-auto object-contain drop-shadow-sm"
+              />
+            </Link>
+          </div>
         </div>
+      </div>
 
-        {/* Center: Complete Single-Line Navigation Bar with all buttons */}
-        <header className="pointer-events-auto hidden md:flex items-center justify-center bg-[#3d4435]/85 backdrop-blur-md rounded-full shadow-[0_8px_30px_rgba(0,0,0,0.15)] border border-white/10 px-3 lg:px-4 py-2 transition-all md:absolute md:left-1/2 md:-translate-x-1/2 md:top-1/2 md:-translate-y-1/2 z-0">
+      {/* Fixed Navigation Bar & Mobile Menu Toggle */}
+      <div className="fixed top-0 left-0 w-full z-50 px-4 sm:px-6 lg:px-8 pt-2 sm:pt-2.5 pointer-events-none">
+        <div className="w-full max-w-[96rem] mx-auto flex items-center justify-between relative min-h-[50px] sm:min-h-[54px]">
+          {/* Left Spacer matching logo area */}
+          <div className="shrink-0 pointer-events-none w-10 sm:w-11 md:w-13 lg:w-15"></div>
+
+          {/* Center: Complete Single-Line Navigation Bar with all buttons */}
+          <header className="pointer-events-auto hidden md:flex items-center justify-center bg-[#3d4435]/85 backdrop-blur-md rounded-full shadow-[0_8px_30px_rgba(0,0,0,0.15)] border border-white/10 px-3 lg:px-4 py-2 transition-all md:absolute md:left-1/2 md:-translate-x-1/2 md:top-1/2 md:-translate-y-1/2 z-0">
           <nav className="flex items-center flex-nowrap whitespace-nowrap gap-1.5 lg:gap-2.5 text-[15px] lg:text-[16px] font-medium text-[#e8e4db]" data-purpose="primary-navigation">
             <Link
               href="/"
@@ -264,5 +273,6 @@ export default function Navbar() {
         </nav>
       </div>
     </div>
+    </>
   );
 }

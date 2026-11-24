@@ -91,6 +91,31 @@ export const engineeringMember: TeamMember = {
   ],
 };
 
+export const salmanMember: TeamMember = {
+  id: "salman-qamar-sandhu",
+  name: "Engr. Salman Qamar Sandhu",
+  role: "Civil Engineer",
+  tag: "CIVIL ENGINEER",
+  email: "info@primeview.pk",
+  image: "/engr salman qamar sandhu.jpeg",
+  description:
+    "Roman Builders and Developers (Pvt.) Ltd.",
+  signature: "Engr. Salman Qamar Sandhu",
+  category: "engineers",
+  bulletsHeader: "Leadership & Services",
+  bullets: [
+    { text: "Land Survey", icon: "fa-map-location-dot" },
+    { text: "Topographic Survey", icon: "fa-layer-group" },
+    { text: "Town Planning & Designing", icon: "fa-city" },
+    { text: "2D & 3D House Plan", icon: "fa-cube" },
+  ],
+};
+
+export const engineeringMembers: TeamMember[] = [
+  engineeringMember,
+  salmanMember,
+];
+
 export const softwareEngineers: TeamMember[] = [
   {
     id: "umer-liaqat",
@@ -205,6 +230,28 @@ export const marketingMember: TeamMember = {
     { text: "Marketing Director", icon: "fa-handshake" },
   ],
 };
+
+export const shakeelMember: TeamMember = {
+  id: "dr-shakeel-ahmed",
+  name: "Dr. Shakeel Ahmed",
+  role: "Marketing & Sales Partner",
+  tag: "MARKETING & SALES PARTNER",
+  email: "info@primeview.pk",
+  image: "/dr shakeel ahmed.jpeg",
+  description:
+    "Roman Builders and Developers (Pvt.) Ltd.",
+  signature: "Dr. Shakeel Ahmed",
+  category: "marketing",
+  bulletsHeader: "Leadership & Services",
+  bullets: [
+    { text: "Marketing & Sales Partner", icon: "fa-chart-line" },
+  ],
+};
+
+export const marketingMembers: TeamMember[] = [
+  marketingMember,
+  shakeelMember,
+];
 
 export const teamCategories = [
   { id: "founders", label: "Founders" },
