@@ -2,13 +2,50 @@
 import Footer from "@/components/Footer";
 import React, { useState } from 'react';
 
+const WHATSAPP_NUMBER = '923139986707';
+const DEFAULT_WHATSAPP_MESSAGE =
+  "Assalamualaikum, I visited your website and I'm interested in your services. I would like to discuss a project and get more information about your services, pricing, and process. Please let me know when you're available to discuss. Thank you!";
+
+function buildWhatsAppUrl(data: {
+  name: string;
+  phone: string;
+  email: string;
+  interest: string;
+  message: string;
+}) {
+  const fields: Array<[string, string]> = [
+    ['Full Name', data.name.trim()],
+    ['Phone Number', data.phone.trim()],
+    ['Email Address', data.email.trim()],
+    ['Area of Interest', data.interest.trim()],
+    ['Message', data.message.trim()],
+  ];
+
+  const filledFields = fields.filter(([, value]) => value.length > 0);
+  if (filledFields.length === 0) {
+    return `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(DEFAULT_WHATSAPP_MESSAGE)}`;
+  }
+
+  const formattedLines = filledFields.map(([label, value]) => `*${label}:* ${value}`);
+  const customMessage = `Assalamualaikum, here are my inquiry details:\n\n${formattedLines.join('\n')}`;
+  return `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(customMessage)}`;
+}
+
 export default function ContactPage() {
   const [formData, setFormData] = useState({ name: '', email: '', phone: '', interest: '', message: '' });
   const [status, setStatus] = useState<'idle' | 'submitting' | 'success' | 'error'>('idle');
+  const [phoneError, setPhoneError] = useState('');
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    if (!/^\d{11}$/.test(formData.phone)) {
+      setPhoneError('Phone number must be exactly 11 digits.');
+      return;
+    }
+    setPhoneError('');
     setStatus('submitting');
+
+    const whatsappUrl = buildWhatsAppUrl(formData);
     
     try {
       const res = await fetch('/api/contact', {
@@ -18,6 +55,7 @@ export default function ContactPage() {
       });
       
       if (res.ok) {
+        window.open(whatsappUrl, '_blank', 'noopener,noreferrer');
         setStatus('success');
         setFormData({ name: '', email: '', phone: '', interest: '', message: '' });
       } else {
@@ -29,7 +67,16 @@ export default function ContactPage() {
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
-    setFormData(prev => ({ ...prev, [e.target.name]: e.target.value }));
+    const { name, value } = e.target;
+    if (name === 'phone') {
+      const digitsOnly = value.replace(/\D/g, '').slice(0, 11);
+      setFormData(prev => ({ ...prev, phone: digitsOnly }));
+      if (phoneError && digitsOnly.length === 11) {
+        setPhoneError('');
+      }
+      return;
+    }
+    setFormData(prev => ({ ...prev, [name]: value }));
   };
 
   return (
@@ -71,7 +118,7 @@ export default function ContactPage() {
                 </div>
                 <div>
                   <h4 className="text-sm font-bold text-[#161f18] uppercase tracking-wider mb-1">WhatsApp</h4>
-                  <a href="https://wa.me/923139986707?text=Assalamualaikum%2C%20I%20visited%20your%20website%20and%20I%27m%20interested%20in%20your%20services.%20I%20would%20like%20to%20discuss%20a%20project%20and%20get%20more%20information%20about%20your%20services%2C%20pricing%2C%20and%20process.%20Please%20let%20me%20know%20when%20you%27re%20available%20to%20discuss.%20Thank%20you%21" target="_blank" rel="noreferrer" className="text-gray-600 hover:text-[#4a5240] transition-colors">+92 313 9986707</a>
+                  <a href={buildWhatsAppUrl(formData)} target="_blank" rel="noreferrer" className="text-gray-600 hover:text-[#4a5240] transition-colors">+92 313 9986707</a>
                 </div>
               </div>
 
@@ -82,6 +129,16 @@ export default function ContactPage() {
                 <div>
                   <h4 className="text-sm font-bold text-[#161f18] uppercase tracking-wider mb-1">Phone</h4>
                   <a href="tel:+923139986707" className="text-gray-600 hover:text-[#4a5240] transition-colors">+92 313 9986707</a>
+                </div>
+              </div>
+
+              <div className="flex items-start gap-4">
+                <div className="w-12 h-12 rounded-full bg-[#4a5240]/10 flex items-center justify-center text-[#4a5240] shrink-0">
+                  <i className="fa-solid fa-tty text-xl"></i>
+                </div>
+                <div>
+                  <h4 className="text-sm font-bold text-[#161f18] uppercase tracking-wider mb-1">Landline</h4>
+                  <a href="tel:0992639567" className="text-gray-600 hover:text-[#4a5240] transition-colors">0992639567</a>
                 </div>
               </div>
 
@@ -101,7 +158,7 @@ export default function ContactPage() {
                 </div>
                 <div>
                   <h4 className="text-sm font-bold text-[#161f18] uppercase tracking-wider mb-1">Location</h4>
-                  <p className="text-gray-600">Main Mansehra Road, near Supply<br/>Abbottabad, Hazara Division, KPK</p>
+                  <p className="text-gray-600">2nd Floor, Office No. 205, Iqbal Shopping Complex<br/>The Mall Abbottabad</p>
                 </div>
               </div>
             </div>
@@ -136,7 +193,23 @@ export default function ContactPage() {
                     </div>
                     <div>
                       <label className="block text-xs font-bold text-gray-500 uppercase tracking-wider mb-2">Phone Number</label>
-                      <input required name="phone" value={formData.phone} onChange={handleChange} type="tel" className="w-full bg-[#f8f7f4] border border-gray-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-[#4a5240]/50 transition-all" placeholder="+92 300 0000000" />
+                      <input
+                        required
+                        name="phone"
+                        value={formData.phone}
+                        onChange={handleChange}
+                        type="tel"
+                        inputMode="numeric"
+                        pattern="[0-9]{11}"
+                        minLength={11}
+                        maxLength={11}
+                        title="Please enter an 11-digit phone number (numbers only)"
+                        className="w-full bg-[#f8f7f4] border border-gray-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-[#4a5240]/50 transition-all"
+                        placeholder="03000000000"
+                      />
+                      {phoneError && (
+                        <p className="text-red-500 text-xs mt-1">{phoneError}</p>
+                      )}
                     </div>
                   </div>
                   

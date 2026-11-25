@@ -96,10 +96,23 @@ export default async function ProjectsPage() {
               </div>
 
               {project.link !== '#' ? (
-                <Link href={project.link} className="inline-flex items-center gap-3 bg-[#4a5240] text-white px-8 py-3 rounded-full text-sm font-medium hover:bg-[#3d4435] transition-all self-start shadow-md group">
-                  <span>View Project Details</span>
-                  <i className="fa-solid fa-arrow-right text-[11px] group-hover:translate-x-1 transition-transform"></i>
-                </Link>
+                <div className="flex flex-wrap items-center gap-4 self-start">
+                  <Link href={project.link} className="inline-flex items-center gap-3 bg-[#4a5240] text-white px-8 py-3 rounded-full text-sm font-medium hover:bg-[#3d4435] transition-all shadow-md group">
+                    <span>View Project Details</span>
+                    <i className="fa-solid fa-arrow-right text-[11px] group-hover:translate-x-1 transition-transform"></i>
+                  </Link>
+                  {(project.link === '/projects/prime-view' || project.title.toLowerCase().includes('prime view')) && (
+                    <a
+                      href="https://www.primeview.pk/"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-3 bg-white/80 text-[#161f18] border border-[#4a5240]/30 px-8 py-3 rounded-full text-sm font-medium hover:bg-[#4a5240] hover:text-white transition-all shadow-md group"
+                    >
+                      <span>View Project</span>
+                      <i className="fa-solid fa-arrow-up-right-from-square text-[11px] group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform"></i>
+                    </a>
+                  )}
+                </div>
               ) : (
                 <button disabled className="inline-flex items-center gap-3 bg-gray-300 text-gray-500 px-8 py-3 rounded-full text-sm font-medium self-start cursor-not-allowed">
                   <span>Coming Soon</span>

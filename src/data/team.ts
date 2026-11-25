@@ -7,7 +7,7 @@ export interface TeamMember {
   image: string;
   description: string;
   signature: string;
-  category: 'founders' | 'advisory' | 'engineers' | 'software' | 'marketing';
+  category: 'founders' | 'directors' | 'advisory' | 'engineers' | 'software' | 'marketing';
   bulletsHeader?: string;
   bullets: Array<{ text: string; icon: string }>;
 }
@@ -32,6 +32,9 @@ export const founders: TeamMember[] = [
       { text: "Lead Partner — Real Estate Sales & Commercial Strategy", icon: "fa-chart-line" },
     ],
   },
+];
+
+export const directors: TeamMember[] = [
   {
     id: "liaqat-jadoon",
     name: "Liaqat Khan Jadoon",
@@ -40,16 +43,14 @@ export const founders: TeamMember[] = [
     email: "director@romanbuilders.pk",
     image: "/liaqat khan jadoon.jpeg",
     description:
-      "Liaqat Khan Jadoon is a dynamic business leader and Executive Director of Roman Builders & Developers (Private) Limited, bringing strategic leadership and extensive expertise in real estate development, town planning, construction, regulatory approvals, and project commercialization. With a strong command of sales and marketing, he plays a pivotal role in driving business growth and advancing real estate ventures. A retired Navy SEAL commando with distinguished national and international achievements in skydiving, sailing, and allied disciplines, he embodies strategic vision, operational excellence, discipline, and decisive leadership.",
+      "Liaqat Khan Jadoon is a dynamic business leader and Executive Director of Roman Builders & Developers (Private) Limited, with extensive expertise in real estate development, town planning, construction, regulatory approvals, and project commercialization. Skilled in sales and marketing, he drives business growth through strategic leadership. A retired Navy SEAL commando with distinguished national and international achievements in skydiving, sailing, and allied disciplines, he brings discipline, operational excellence, and decisive leadership to every venture.",
     signature: "Liaqat Khan Jadoon",
-    category: "founders",
+    category: "directors",
     bulletsHeader: "Leadership & Service",
     bullets: [
       { text: "Executive Director — Roman Builders & Developers (Pvt.) Ltd.", icon: "fa-building" },
       { text: "Business Leader — Real Estate Development", icon: "fa-briefcase" },
       { text: "Strategic Leader — Town Planning & Construction", icon: "fa-city" },
-      { text: "Leader — Regulatory Approvals & Project Commercialization", icon: "fa-file-shield" },
-      { text: "Leader — Sales & Marketing and Business Growth", icon: "fa-bullseye" },
     ],
   },
 ];
@@ -255,6 +256,7 @@ export const marketingMembers: TeamMember[] = [
 
 export const teamCategories = [
   { id: "founders", label: "Founders" },
+  { id: "directors", label: "Directors" },
   { id: "advisory", label: "Advisory & compliance" },
   { id: "engineers", label: "Engineers & development" },
   { id: "marketing", label: "Marketing and Sales Partner" },

@@ -141,6 +141,14 @@ export default function Navbar() {
                     <span>Founders</span>
                   </Link>
                   <Link
+                    href="/team?category=directors"
+                    onClick={() => setIsTeamMenuOpen(false)}
+                    className="px-4 py-2.5 rounded-xl hover:bg-white/15 text-[#e8e4db] hover:text-white text-[13.5px] font-medium transition-all text-left flex items-center gap-2.5"
+                  >
+                    <i className="fa-solid fa-user-tie text-xs text-[#dfd2ba]"></i>
+                    <span>Directors</span>
+                  </Link>
+                  <Link
                     href="/team?category=advisory"
                     onClick={() => setIsTeamMenuOpen(false)}
                     className="px-4 py-2.5 rounded-xl hover:bg-white/15 text-[#e8e4db] hover:text-white text-[13.5px] font-medium transition-all text-left flex items-center gap-2.5"
@@ -230,6 +238,14 @@ export default function Navbar() {
                 >
                   <i className="fa-solid fa-users text-[10px]"></i>
                   <span>Founders</span>
+                </Link>
+                <Link
+                  href="/team?category=directors"
+                  onClick={() => setIsMobileMenuOpen(false)}
+                  className="text-xs text-[#dfd2ba] hover:text-white py-1.5 flex items-center gap-2"
+                >
+                  <i className="fa-solid fa-user-tie text-[10px]"></i>
+                  <span>Directors</span>
                 </Link>
                 <Link
                   href="/team?category=advisory"

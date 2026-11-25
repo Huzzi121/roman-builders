@@ -3,6 +3,7 @@
 import { useSearchParams } from "next/navigation";
 import {
   founders,
+  directors,
   advisoryMember,
   engineeringMember,
   engineeringMembers,
@@ -17,12 +18,13 @@ export default function TeamContent() {
   const categoryParam = searchParams.get("category");
 
   // Determine active category from query params
-  const activeCategory = (categoryParam && ["founders", "advisory", "engineers", "software", "marketing", "all"].includes(categoryParam))
+  const activeCategory = (categoryParam && ["founders", "directors", "advisory", "engineers", "software", "marketing", "all"].includes(categoryParam))
     ? categoryParam
     : "all";
 
   // Filter flags
   const showFounders = activeCategory === "all" || activeCategory === "founders";
+  const showDirectors = activeCategory === "all" || activeCategory === "directors";
   const showAdvisory = activeCategory === "all" || activeCategory === "advisory";
   const showEngineers = activeCategory === "all" || activeCategory === "engineers";
   const showSoftware = activeCategory === "all" || activeCategory === "software";
@@ -36,6 +38,12 @@ export default function TeamContent() {
           title: "The Founders",
           subtitle: "The Visionaries Behind Roman Builders & Developers",
           tag: "OUR FOUNDERS"
+        };
+      case "directors":
+        return {
+          title: "The Directors",
+          subtitle: "Driving Strategic Execution & Operational Excellence",
+          tag: "OUR DIRECTORS"
         };
       case "advisory":
         return {
@@ -76,7 +84,7 @@ export default function TeamContent() {
 
   return (
     <div className={`min-h-screen ${isFoundersView ? "pt-20 sm:pt-24 pb-12" : "pt-28 sm:pt-36 pb-24"} px-4 sm:px-6 lg:px-8 max-w-6xl mx-auto`}>
-      
+
       {/* Category Hero Header */}
       <div className={`text-center ${isFoundersView ? "mb-6 sm:mb-8" : "mb-12 sm:mb-16"} relative`}>
         <div className="flex items-center justify-center gap-4 mb-2">
@@ -96,7 +104,7 @@ export default function TeamContent() {
 
       {/* Cards Area - Pure Cards in Layout from Reference Image */}
       <div className="space-y-16 sm:space-y-20">
-        
+
         {/* Founders Category */}
         {showFounders && (
           <div className="space-y-10 sm:space-y-12">
@@ -107,6 +115,21 @@ export default function TeamContent() {
               </div>
             )}
             {founders.map((m) => (
+              <TeamCard key={m.id} member={m} />
+            ))}
+          </div>
+        )}
+
+        {/* Directors Category */}
+        {showDirectors && (
+          <div className="space-y-10 sm:space-y-12">
+            {activeCategory === "all" && (
+              <div className="text-center mb-6">
+                <span className="text-[#4a5240] text-xs font-bold tracking-[0.2em] uppercase">Directors</span>
+                <h2 className="text-2xl sm:text-3xl font-serif text-[#1a1c19] mt-1">The Directors</h2>
+              </div>
+            )}
+            {directors.map((m) => (
               <TeamCard key={m.id} member={m} />
             ))}
           </div>
