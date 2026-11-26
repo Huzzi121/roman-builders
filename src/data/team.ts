@@ -7,7 +7,7 @@ export interface TeamMember {
   image: string;
   description: string;
   signature: string;
-  category: 'founders' | 'directors' | 'advisory' | 'engineers' | 'software' | 'marketing';
+  category: string;
   bulletsHeader?: string;
   bullets: Array<{ text: string; icon: string }>;
 }

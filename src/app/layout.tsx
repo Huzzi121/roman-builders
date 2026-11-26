@@ -4,6 +4,7 @@ import "./globals.css";
 import Navbar from "@/components/Navbar";
 import WhatsAppButton from "@/components/WhatsAppButton";
 import AdminLogoutWatcher from "@/components/AdminLogoutWatcher";
+import { getDynamicTeamCategories } from "@/lib/team-data";
 
 const outfit = Outfit({ subsets: ["latin"], variable: "--font-sans" });
 const playfair = Playfair_Display({ subsets: ["latin"], variable: "--font-serif" });
@@ -14,11 +15,13 @@ export const metadata: Metadata = {
   description: "Your trusted partners in architecture, construction, and society management in Abbottabad, Hazara Division.",
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const teamCategories = await getDynamicTeamCategories();
+
   return (
     <html lang="en">
       <head>
@@ -45,7 +48,7 @@ export default function RootLayout({
           </div>
         </div>
         <AdminLogoutWatcher />
-        <Navbar />
+        <Navbar teamCategories={teamCategories} />
         {children}
         <WhatsAppButton />
       </body>

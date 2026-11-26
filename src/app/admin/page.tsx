@@ -5,11 +5,12 @@ import { createClient } from '@/lib/supabase/client'
 import { useRouter } from 'next/navigation'
 import Link from 'next/link'
 import ProjectsTab from './components/ProjectsTab'
+import TeamTab from './components/TeamTab'
 import SettingsTab from './components/SettingsTab'
 import DashboardTab from './components/DashboardTab'
 
 export default function AdminDashboard() {
-  const [activeTab, setActiveTab] = useState<'dashboard' | 'projects' | 'settings'>('dashboard')
+  const [activeTab, setActiveTab] = useState<'dashboard' | 'projects' | 'team' | 'settings'>('dashboard')
   const [isSidebarOpen, setIsSidebarOpen] = useState(false)
   const [userEmail, setUserEmail] = useState<string | null>(null)
   const [loading, setLoading] = useState(true)
@@ -88,6 +89,12 @@ export default function AdminDashboard() {
             >
               <i className="fa-solid fa-building w-5"></i> Projects
             </button>
+            <button 
+              onClick={() => { setActiveTab('team'); setIsSidebarOpen(false); }}
+              className={`flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium transition-all ${activeTab === 'team' ? 'bg-[#4a5240] text-white shadow-md' : 'text-gray-600 hover:bg-gray-100'}`}
+            >
+              <i className="fa-solid fa-users w-5"></i> Team
+            </button>
             
             <button 
               onClick={() => { setActiveTab('settings'); setIsSidebarOpen(false); }}
@@ -112,6 +119,7 @@ export default function AdminDashboard() {
       <div className="flex-grow w-full max-w-full overflow-hidden">
         {activeTab === 'dashboard' && <DashboardTab />}
         {activeTab === 'projects' && <ProjectsTab />}
+        {activeTab === 'team' && <TeamTab />}
         {activeTab === 'settings' && <SettingsTab />}
       </div>
       

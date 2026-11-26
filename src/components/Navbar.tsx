@@ -2,8 +2,14 @@
 import Link from 'next/link';
 import { useState } from 'react';
 import { usePathname } from 'next/navigation';
+import { STATIC_TEAM_CATEGORIES, TeamCategoryItem } from '@/lib/team-data';
 
-export default function Navbar() {
+interface NavbarProps {
+  teamCategories?: TeamCategoryItem[];
+}
+
+export default function Navbar({ teamCategories }: NavbarProps) {
+  const categories = teamCategories && teamCategories.length > 0 ? teamCategories : STATIC_TEAM_CATEGORIES;
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isTeamMenuOpen, setIsTeamMenuOpen] = useState(false);
   const [isMobileTeamOpen, setIsMobileTeamOpen] = useState(false);
@@ -132,54 +138,17 @@ export default function Navbar() {
                 }`}
               >
                 <div className="bg-[#3d4435]/95 backdrop-blur-xl border border-white/15 rounded-2xl shadow-2xl p-2 min-w-[260px] flex flex-col gap-1">
-                  <Link
-                    href="/team?category=founders"
-                    onClick={() => setIsTeamMenuOpen(false)}
-                    className="px-4 py-2.5 rounded-xl hover:bg-white/15 text-[#e8e4db] hover:text-white text-[13.5px] font-medium transition-all text-left flex items-center gap-2.5"
-                  >
-                    <i className="fa-solid fa-users text-xs text-[#dfd2ba]"></i>
-                    <span>Founders</span>
-                  </Link>
-                  <Link
-                    href="/team?category=directors"
-                    onClick={() => setIsTeamMenuOpen(false)}
-                    className="px-4 py-2.5 rounded-xl hover:bg-white/15 text-[#e8e4db] hover:text-white text-[13.5px] font-medium transition-all text-left flex items-center gap-2.5"
-                  >
-                    <i className="fa-solid fa-user-tie text-xs text-[#dfd2ba]"></i>
-                    <span>Directors</span>
-                  </Link>
-                  <Link
-                    href="/team?category=advisory"
-                    onClick={() => setIsTeamMenuOpen(false)}
-                    className="px-4 py-2.5 rounded-xl hover:bg-white/15 text-[#e8e4db] hover:text-white text-[13.5px] font-medium transition-all text-left flex items-center gap-2.5"
-                  >
-                    <i className="fa-solid fa-scale-balanced text-xs text-[#dfd2ba]"></i>
-                    <span>Advisory & compliance</span>
-                  </Link>
-                  <Link
-                    href="/team?category=engineers"
-                    onClick={() => setIsTeamMenuOpen(false)}
-                    className="px-4 py-2.5 rounded-xl hover:bg-white/15 text-[#e8e4db] hover:text-white text-[13.5px] font-medium transition-all text-left flex items-center gap-2.5"
-                  >
-                    <i className="fa-solid fa-helmet-safety text-xs text-[#dfd2ba]"></i>
-                    <span>Engineers & development</span>
-                  </Link>
-                  <Link
-                    href="/team?category=marketing"
-                    onClick={() => setIsTeamMenuOpen(false)}
-                    className="px-4 py-2.5 rounded-xl hover:bg-white/15 text-[#e8e4db] hover:text-white text-[13.5px] font-medium transition-all text-left flex items-center gap-2.5"
-                  >
-                    <i className="fa-solid fa-bullhorn text-xs text-[#dfd2ba]"></i>
-                    <span>Marketing and Sales Partner</span>
-                  </Link>
-                  <Link
-                    href="/team?category=software"
-                    onClick={() => setIsTeamMenuOpen(false)}
-                    className="px-4 py-2.5 rounded-xl hover:bg-white/15 text-[#e8e4db] hover:text-white text-[13.5px] font-medium transition-all text-left flex items-center gap-2.5"
-                  >
-                    <i className="fa-solid fa-laptop-code text-xs text-[#dfd2ba]"></i>
-                    <span>Software Developers & Engineers</span>
-                  </Link>
+                  {categories.map((cat) => (
+                    <Link
+                      key={cat.slug}
+                      href={`/team?category=${cat.slug}`}
+                      onClick={() => setIsTeamMenuOpen(false)}
+                      className="px-4 py-2.5 rounded-xl hover:bg-white/15 text-[#e8e4db] hover:text-white text-[13.5px] font-medium transition-all text-left flex items-center gap-2.5"
+                    >
+                      <i className={`fa-solid ${cat.icon || 'fa-users'} text-xs text-[#dfd2ba]`}></i>
+                      <span>{cat.label}</span>
+                    </Link>
+                  ))}
                 </div>
               </div>
             </div>
@@ -231,54 +200,17 @@ export default function Navbar() {
             </button>
             {isMobileTeamOpen && (
               <div className="flex flex-col pl-10 pr-4 pb-3 space-y-2">
-                <Link
-                  href="/team?category=founders"
-                  onClick={() => setIsMobileMenuOpen(false)}
-                  className="text-xs text-[#dfd2ba] hover:text-white py-1.5 flex items-center gap-2"
-                >
-                  <i className="fa-solid fa-users text-[10px]"></i>
-                  <span>Founders</span>
-                </Link>
-                <Link
-                  href="/team?category=directors"
-                  onClick={() => setIsMobileMenuOpen(false)}
-                  className="text-xs text-[#dfd2ba] hover:text-white py-1.5 flex items-center gap-2"
-                >
-                  <i className="fa-solid fa-user-tie text-[10px]"></i>
-                  <span>Directors</span>
-                </Link>
-                <Link
-                  href="/team?category=advisory"
-                  onClick={() => setIsMobileMenuOpen(false)}
-                  className="text-xs text-[#dfd2ba] hover:text-white py-1.5 flex items-center gap-2"
-                >
-                  <i className="fa-solid fa-scale-balanced text-[10px]"></i>
-                  <span>Advisory & compliance</span>
-                </Link>
-                <Link
-                  href="/team?category=engineers"
-                  onClick={() => setIsMobileMenuOpen(false)}
-                  className="text-xs text-[#dfd2ba] hover:text-white py-1.5 flex items-center gap-2"
-                >
-                  <i className="fa-solid fa-helmet-safety text-[10px]"></i>
-                  <span>Engineers & development</span>
-                </Link>
-                <Link
-                  href="/team?category=marketing"
-                  onClick={() => setIsMobileMenuOpen(false)}
-                  className="text-xs text-[#dfd2ba] hover:text-white py-1.5 flex items-center gap-2"
-                >
-                  <i className="fa-solid fa-bullhorn text-[10px]"></i>
-                  <span>Marketing and Sales Partner</span>
-                </Link>
-                <Link
-                  href="/team?category=software"
-                  onClick={() => setIsMobileMenuOpen(false)}
-                  className="text-xs text-[#dfd2ba] hover:text-white py-1.5 flex items-center gap-2"
-                >
-                  <i className="fa-solid fa-laptop-code text-[10px]"></i>
-                  <span>Software Developers & Engineers</span>
-                </Link>
+                {categories.map((cat) => (
+                  <Link
+                    key={cat.slug}
+                    href={`/team?category=${cat.slug}`}
+                    onClick={() => setIsMobileMenuOpen(false)}
+                    className="text-xs text-[#dfd2ba] hover:text-white py-1.5 flex items-center gap-2"
+                  >
+                    <i className={`fa-solid ${cat.icon || 'fa-users'} text-[10px]`}></i>
+                    <span>{cat.label}</span>
+                  </Link>
+                ))}
               </div>
             )}
           </div>
