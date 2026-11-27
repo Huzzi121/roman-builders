@@ -1,9 +1,16 @@
 "use client";
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 
 export default function ProcessPreview() {
   const [activeProcessStep, setActiveProcessStep] = useState(0);
+  const [loadedSteps, setLoadedSteps] = useState<number[]>([0]);
+
+  const handleSelectStep = (index: number) => {
+    setActiveProcessStep(index);
+    setLoadedSteps((prev) => (prev.includes(index) ? prev : [...prev, index]));
+  };
 
   const processSteps = [
     {
@@ -38,7 +45,11 @@ export default function ProcessPreview() {
 
   useEffect(() => {
     const timer = setInterval(() => {
-      setActiveProcessStep((prev) => (prev + 1) % processSteps.length);
+      setActiveProcessStep((prev) => {
+        const next = (prev + 1) % processSteps.length;
+        setLoadedSteps((ls) => (ls.includes(next) ? ls : [...ls, next]));
+        return next;
+      });
     }, 4000); // Automatically cycle every 4 seconds
     return () => clearInterval(timer);
   }, [activeProcessStep, processSteps.length]);
@@ -64,7 +75,7 @@ export default function ProcessPreview() {
               {processSteps.map((step, index) => (
                 <button
                   key={index}
-                  onClick={() => setActiveProcessStep(index)}
+                  onClick={() => handleSelectStep(index)}
                   className={`flex items-center gap-3 px-4 py-3 rounded-2xl transition-all w-full min-w-[200px] lg:min-w-0 cursor-pointer focus:outline-none group ${
                     activeProcessStep === index
                       ? 'bg-[#4a5240] text-white shadow-lg'
@@ -100,7 +111,16 @@ export default function ProcessPreview() {
                     activeProcessStep === index ? 'opacity-100 z-[1]' : 'opacity-0 z-0 scale-[1.02]'
                   }`}
                 >
-                  <img alt={step.heading} className="w-full h-full object-cover" src={step.image}/>
+                  {(loadedSteps.includes(index) || activeProcessStep === index) && (
+                    <Image
+                      alt={step.heading}
+                      src={step.image}
+                      fill
+                      sizes="(max-width: 1024px) 100vw, 60vw"
+                      quality={75}
+                      className="object-cover"
+                    />
+                  )}
                 </div>
               ))}
               

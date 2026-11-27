@@ -1,3 +1,4 @@
+import { unstable_cache } from 'next/cache';
 import { createClient } from '@supabase/supabase-js';
 import {
   founders,
@@ -93,65 +94,73 @@ function getPublicSupabase() {
   return createClient(url, key);
 }
 
-export async function getDynamicTeamCategories(): Promise<TeamCategoryItem[]> {
-  try {
-    const supabase = getPublicSupabase();
-    if (!supabase) return STATIC_TEAM_CATEGORIES;
+export const getDynamicTeamCategories = unstable_cache(
+  async (): Promise<TeamCategoryItem[]> => {
+    try {
+      const supabase = getPublicSupabase();
+      if (!supabase) return STATIC_TEAM_CATEGORIES;
 
-    const { data, error } = await supabase
-      .from('team_categories')
-      .select('id, slug, label, icon, tag, title, subtitle, display_order')
-      .order('display_order', { ascending: true });
+      const { data, error } = await supabase
+        .from('team_categories')
+        .select('id, slug, label, icon, tag, title, subtitle, display_order')
+        .order('display_order', { ascending: true });
 
-    if (error || !data || data.length === 0) {
+      if (error || !data || data.length === 0) {
+        return STATIC_TEAM_CATEGORIES;
+      }
+
+      return data.map((row) => ({
+        id: row.id,
+        slug: row.slug,
+        label: row.label,
+        icon: row.icon || 'fa-users',
+        tag: row.tag || row.label.toUpperCase(),
+        title: row.title || row.label,
+        subtitle: row.subtitle || '',
+        display_order: row.display_order ?? 0,
+      }));
+    } catch {
       return STATIC_TEAM_CATEGORIES;
     }
+  },
+  ['dynamic-team-categories'],
+  { revalidate: 3600, tags: ['team'] }
+);
 
-    return data.map((row) => ({
-      id: row.id,
-      slug: row.slug,
-      label: row.label,
-      icon: row.icon || 'fa-users',
-      tag: row.tag || row.label.toUpperCase(),
-      title: row.title || row.label,
-      subtitle: row.subtitle || '',
-      display_order: row.display_order ?? 0,
-    }));
-  } catch {
-    return STATIC_TEAM_CATEGORIES;
-  }
-}
+export const getDynamicTeamMembers = unstable_cache(
+  async (): Promise<TeamMember[]> => {
+    try {
+      const supabase = getPublicSupabase();
+      if (!supabase) return STATIC_TEAM_MEMBERS;
 
-export async function getDynamicTeamMembers(): Promise<TeamMember[]> {
-  try {
-    const supabase = getPublicSupabase();
-    if (!supabase) return STATIC_TEAM_MEMBERS;
+      const { data, error } = await supabase
+        .from('team_members')
+        .select('id, category_slug, name, role, tag, email, image_url, description, bullets_header, bullets, display_order, publication_status')
+        .or('publication_status.eq.Published,publication_status.is.null')
+        .order('display_order', { ascending: true });
 
-    const { data, error } = await supabase
-      .from('team_members')
-      .select('id, category_slug, name, role, tag, email, image_url, description, bullets_header, bullets, display_order, publication_status')
-      .or('publication_status.eq.Published,publication_status.is.null')
-      .order('display_order', { ascending: true });
+      if (error || !data || data.length === 0) {
+        return STATIC_TEAM_MEMBERS;
+      }
 
-    if (error || !data || data.length === 0) {
+      return data.map((row) => ({
+        id: row.id,
+        name: row.name,
+        role: row.role,
+        tag: row.tag || row.role,
+        email: row.email || 'info@romanbuilders.pk',
+        image: row.image_url,
+        description: row.description,
+        signature: row.name,
+        category: row.category_slug,
+        bulletsHeader: row.bullets_header || 'Leadership & Services',
+        bullets: Array.isArray(row.bullets) ? row.bullets : [],
+      }));
+    } catch {
       return STATIC_TEAM_MEMBERS;
     }
-
-    return data.map((row) => ({
-      id: row.id,
-      name: row.name,
-      role: row.role,
-      tag: row.tag || row.role,
-      email: row.email || 'info@romanbuilders.pk',
-      image: row.image_url,
-      description: row.description,
-      signature: row.name,
-      category: row.category_slug,
-      bulletsHeader: row.bullets_header || 'Leadership & Services',
-      bullets: Array.isArray(row.bullets) ? row.bullets : [],
-    }));
-  } catch {
-    return STATIC_TEAM_MEMBERS;
-  }
-}
+  },
+  ['dynamic-team-members'],
+  { revalidate: 3600, tags: ['team'] }
+);
 

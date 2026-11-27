@@ -1,6 +1,7 @@
 "use client";
 import React, { useState } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 
 export default function Footer({ transparent = false }: { transparent?: boolean }) {
   void transparent;
@@ -102,9 +103,11 @@ export default function Footer({ transparent = false }: { transparent?: boolean 
               <div className="lg:border-l lg:border-r lg:border-white/10 w-full flex flex-col items-center py-4 lg:px-8">
                 <div className="mb-4 flex flex-col items-center">
                   <Link href="/" className="inline-block hover:opacity-85 transition-opacity mb-2">
-                    <img
+                    <Image
                       src="/logo-white.png"
                       alt="Roman Builders & Developers"
+                      width={180}
+                      height={66}
                       className="h-14 sm:h-16 w-auto object-contain"
                     />
                   </Link>

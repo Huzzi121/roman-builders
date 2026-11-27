@@ -1,5 +1,6 @@
 "use client";
 import { useState } from 'react';
+import Image from 'next/image';
 
 export default function TestimonialCarousel() {
   const [testOffset, setTestOffset] = useState(0);
@@ -94,7 +95,14 @@ export default function TestimonialCarousel() {
 
         {/* Right Side - Image */}
         <div className="hidden lg:block w-[58%] relative">
-          <img src="/images/testimonial-building.jpg" alt="Roman Builders luxury project" className="w-full h-full object-cover" />
+          <Image
+            src="/images/testimonial-building.jpg"
+            alt="Roman Builders luxury project"
+            fill
+            sizes="58vw"
+            quality={75}
+            className="object-cover"
+          />
           <div className="absolute inset-0 bg-gradient-to-r from-[#3d4435]/20 via-transparent to-transparent pointer-events-none"></div>
         </div>
       </div>

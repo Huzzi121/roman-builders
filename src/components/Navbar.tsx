@@ -1,5 +1,6 @@
 "use client";
 import Link from 'next/link';
+import Image from 'next/image';
 import { useState } from 'react';
 import { usePathname } from 'next/navigation';
 import { STATIC_TEAM_CATEGORIES, TeamCategoryItem } from '@/lib/team-data';
@@ -42,9 +43,12 @@ export default function Navbar({ teamCategories }: NavbarProps) {
               data-purpose="brand-logo"
               onClick={() => setIsMobileMenuOpen(false)}
             >
-              <img
+              <Image
                 src={isWhiteLogo ? "/logo-white.png" : "/logo.png"}
                 alt="Roman Builders & Developers"
+                width={180}
+                height={66}
+                priority
                 className="h-10 sm:h-11 md:h-13 lg:h-15 w-auto object-contain drop-shadow-sm"
               />
             </Link>

@@ -1,5 +1,6 @@
 "use client";
 import Link from 'next/link';
+import Image from 'next/image';
 
 export default function ExpertiseSection() {
   return (
@@ -69,7 +70,14 @@ export default function ExpertiseSection() {
           {/* Right Image Area */}
           <div className="w-full lg:w-[55%] xl:w-[55%] relative mt-10 lg:mt-0 lg:pl-10">
             <div className="w-full h-[400px] sm:h-[500px] lg:h-[560px] xl:h-[600px] rounded-tl-[6rem] lg:rounded-tl-[10rem] overflow-hidden relative shadow-2xl">
-              <img src="/images/expertise-house.jpg" alt="Luxury Villa" className="w-full h-full object-cover object-center absolute inset-0 z-0" />
+              <Image
+                src="/images/expertise-house.jpg"
+                alt="Luxury Villa"
+                fill
+                sizes="(max-width: 1024px) 100vw, 55vw"
+                quality={75}
+                className="object-cover object-center"
+              />
             </div>
           </div>
         </div>

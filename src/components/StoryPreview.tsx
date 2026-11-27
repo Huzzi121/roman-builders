@@ -1,7 +1,27 @@
 "use client";
 import Link from 'next/link';
+import { useEffect, useRef, useState } from 'react';
 
 export default function StoryPreview() {
+  const videoContainerRef = useRef<HTMLDivElement>(null);
+  const [shouldLoadVideo, setShouldLoadVideo] = useState(false);
+
+  useEffect(() => {
+    const el = videoContainerRef.current;
+    if (!el) return;
+    const observer = new IntersectionObserver(
+      (entries) => {
+        if (entries[0]?.isIntersecting) {
+          setShouldLoadVideo(true);
+          observer.disconnect();
+        }
+      },
+      { rootMargin: '200px' }
+    );
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, []);
+
   return (
     <section className="w-full bg-transparent relative overflow-hidden pt-10 pb-4 z-20" data-purpose="video-presentation" id="story">
       {/* Abstract Background SVG */}
@@ -78,12 +98,14 @@ export default function StoryPreview() {
           </div>
 
           {/* Center Column - Video Container */}
-          <div className="w-full max-w-4xl relative rounded-3xl overflow-hidden shadow-[0_10px_40px_-10px_rgba(0,0,0,0.2)] group shrink border-[4px] border-white/50">
+          <div ref={videoContainerRef} className="w-full max-w-4xl relative rounded-3xl overflow-hidden shadow-[0_10px_40px_-10px_rgba(0,0,0,0.2)] group shrink border-[4px] border-white/50">
             <div className="aspect-[16/9] sm:aspect-[21/9] lg:aspect-[24/10] w-full relative bg-slate-900">
               <video
                 className="w-full h-full object-cover"
-                src="/pv-website-trim-home-page.mp4"
-                autoPlay
+                src={shouldLoadVideo ? "/pv-website-trim-home-page.mp4" : undefined}
+                poster="/images/prime-view-showcase.jpg"
+                preload="none"
+                autoPlay={shouldLoadVideo}
                 loop
                 muted
                 playsInline

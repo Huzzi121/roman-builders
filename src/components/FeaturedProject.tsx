@@ -1,5 +1,6 @@
 "use client";
 import Link from 'next/link';
+import Image from 'next/image';
 
 export default function FeaturedProject() {
   return (
@@ -26,10 +27,13 @@ export default function FeaturedProject() {
           {/* Left Side - Visual */}
           <div className="w-full lg:w-[58%] xl:w-[60%] shrink-0">
             <div className="relative rounded-2xl overflow-hidden shadow-lg group h-[320px] sm:h-[400px] lg:h-[520px] xl:h-[560px]">
-              <img
+              <Image
                 src="/images/prime-view-showcase.jpg"
                 alt="Aerial view of Prime View Co-Operative Housing Society"
-                className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-[1.03]"
+                fill
+                sizes="(max-width: 1024px) 100vw, 60vw"
+                quality={75}
+                className="object-cover transition-transform duration-700 ease-out group-hover:scale-[1.03]"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent pointer-events-none"></div>
               <div className="absolute top-5 left-5 sm:top-6 sm:left-6 bg-white/90 backdrop-blur-md px-4 py-2 rounded-full shadow-md border border-white/50 flex items-center gap-2">
