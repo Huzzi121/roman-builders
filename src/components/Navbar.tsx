@@ -59,11 +59,11 @@ export default function Navbar({ teamCategories }: NavbarProps) {
           <div className="shrink-0 pointer-events-none w-10 sm:w-11 md:w-13 lg:w-15"></div>
 
           {/* Center: Complete Single-Line Navigation Bar with all buttons */}
-          <header className="pointer-events-auto hidden md:flex items-center justify-center bg-[#3d4435]/85 backdrop-blur-md rounded-full shadow-[0_8px_30px_rgba(0,0,0,0.15)] border border-white/10 px-3 lg:px-4 py-2 transition-all md:absolute md:left-1/2 md:-translate-x-1/2 md:top-1/2 md:-translate-y-1/2 z-0">
-          <nav className="flex items-center flex-nowrap whitespace-nowrap gap-1.5 lg:gap-2.5 text-[15px] lg:text-[16px] font-medium text-[#e8e4db]" data-purpose="primary-navigation">
+          <header className="pointer-events-auto hidden md:flex items-center justify-center bg-[#3d4435]/85 backdrop-blur-md rounded-full shadow-[0_8px_30px_rgba(0,0,0,0.15)] border border-white/10 px-2 lg:px-3 py-1.5 lg:py-2 transition-all xl:absolute xl:left-1/2 xl:-translate-x-1/2 xl:top-1/2 xl:-translate-y-1/2 z-0">
+          <nav className="flex items-center flex-nowrap whitespace-nowrap gap-0.5 lg:gap-1 text-[12.5px] lg:text-[13.5px] xl:text-[15px] font-medium text-[#e8e4db]" data-purpose="primary-navigation">
             <Link
               href="/"
-              className={`px-5 lg:px-6 py-2.5 rounded-full transition-all whitespace-nowrap ${
+              className={`px-3 lg:px-4 xl:px-5 py-2.5 rounded-full transition-all whitespace-nowrap ${
                 pathname === '/'
                   ? 'bg-white/20 text-white font-semibold shadow-sm'
                   : 'hover:bg-white/10 hover:text-white'
@@ -73,7 +73,7 @@ export default function Navbar({ teamCategories }: NavbarProps) {
             </Link>
             <Link
               href="/about"
-              className={`px-5 lg:px-6 py-2.5 rounded-full transition-all whitespace-nowrap ${
+              className={`px-3 lg:px-4 xl:px-5 py-2.5 rounded-full transition-all whitespace-nowrap ${
                 pathname === '/about'
                   ? 'bg-white/20 text-white font-semibold shadow-sm'
                   : 'hover:bg-white/10 hover:text-white'
@@ -83,7 +83,7 @@ export default function Navbar({ teamCategories }: NavbarProps) {
             </Link>
             <Link
               href="/projects"
-              className={`px-5 lg:px-6 py-2.5 rounded-full transition-all whitespace-nowrap ${
+              className={`px-3 lg:px-4 xl:px-5 py-2.5 rounded-full transition-all whitespace-nowrap ${
                 pathname?.startsWith('/projects')
                   ? 'bg-white/20 text-white font-semibold shadow-sm'
                   : 'hover:bg-white/10 hover:text-white'
@@ -93,13 +93,23 @@ export default function Navbar({ teamCategories }: NavbarProps) {
             </Link>
             <Link
               href="/services"
-              className={`px-5 lg:px-6 py-2.5 rounded-full transition-all whitespace-nowrap ${
+              className={`px-3 lg:px-4 xl:px-5 py-2.5 rounded-full transition-all whitespace-nowrap ${
                 pathname === '/services'
                   ? 'bg-white/20 text-white font-semibold shadow-sm'
                   : 'hover:bg-white/10 hover:text-white'
               }`}
             >
               Services
+            </Link>
+            <Link
+              href="/build-your-house"
+              className={`px-3 lg:px-4 xl:px-5 py-2.5 rounded-full transition-all whitespace-nowrap ${
+                pathname === '/build-your-house'
+                  ? 'bg-white/20 text-white font-semibold shadow-sm'
+                  : 'hover:bg-white/10 hover:text-white'
+              }`}
+            >
+              House Craft
             </Link>
 
             {/* Team Dropdown */}
@@ -114,7 +124,7 @@ export default function Navbar({ teamCategories }: NavbarProps) {
                   e.preventDefault();
                   setIsTeamMenuOpen((prev) => !prev);
                 }}
-                className={`px-5 lg:px-6 py-2.5 rounded-full transition-all whitespace-nowrap flex items-center gap-1.5 cursor-pointer focus:outline-none ${
+                className={`px-3 lg:px-4 xl:px-5 py-2.5 rounded-full transition-all whitespace-nowrap flex items-center gap-1.5 cursor-pointer focus:outline-none ${
                   pathname?.startsWith('/team')
                     ? 'bg-white/20 text-white font-semibold shadow-sm'
                     : 'hover:bg-white/10 hover:text-white'
@@ -155,7 +165,7 @@ export default function Navbar({ teamCategories }: NavbarProps) {
 
             <Link
               href="/contact"
-              className={`ml-1 px-6 lg:px-7 py-2.5 rounded-full transition-all whitespace-nowrap flex items-center gap-2 ${
+              className={`ml-1 px-4 lg:px-5 xl:px-6 py-2.5 rounded-full transition-all whitespace-nowrap flex items-center gap-2 ${
                 pathname === '/contact'
                   ? 'bg-white text-[#161f18] font-semibold shadow-md'
                   : 'bg-[#e8e4db] text-[#161f18] hover:bg-white hover:shadow-md'
@@ -187,6 +197,7 @@ export default function Navbar({ teamCategories }: NavbarProps) {
           <Link href="/about" onClick={() => setIsMobileMenuOpen(false)} className="px-6 py-4 text-[#e8e4db] font-medium border-b border-white/5 hover:bg-white/10 rounded-xl transition-colors">About us</Link>
           <Link href="/projects" onClick={() => setIsMobileMenuOpen(false)} className="px-6 py-4 text-[#e8e4db] font-medium border-b border-white/5 hover:bg-white/10 rounded-xl transition-colors">Projects</Link>
           <Link href="/services" onClick={() => setIsMobileMenuOpen(false)} className="px-6 py-4 text-[#e8e4db] font-medium border-b border-white/5 hover:bg-white/10 rounded-xl transition-colors">Services</Link>
+          <Link href="/build-your-house" onClick={() => setIsMobileMenuOpen(false)} className="px-6 py-4 text-[#e8e4db] font-medium border-b border-white/5 hover:bg-white/10 rounded-xl transition-colors">House Craft</Link>
           
           {/* Team Mobile Menu Section with Expandable Categories */}
           <div className="border-b border-white/5 py-1">

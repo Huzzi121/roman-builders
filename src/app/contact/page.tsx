@@ -1,6 +1,6 @@
 "use client";
 import Footer from "@/components/Footer";
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
 const WHATSAPP_NUMBER = '923139986707';
 const DEFAULT_WHATSAPP_MESSAGE =
@@ -35,6 +35,19 @@ export default function ContactPage() {
   const [formData, setFormData] = useState({ name: '', email: '', phone: '', interest: '', message: '' });
   const [status, setStatus] = useState<'idle' | 'submitting' | 'success' | 'error'>('idle');
   const [phoneError, setPhoneError] = useState('');
+
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.search);
+    const interest = params.get('interest');
+    const message = params.get('message');
+    if (interest || message) {
+      setFormData(prev => ({
+        ...prev,
+        interest: interest || prev.interest,
+        message: message || prev.message,
+      }));
+    }
+  }, []);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -223,6 +236,7 @@ export default function ContactPage() {
                     <select name="interest" value={formData.interest} onChange={handleChange} className="w-full bg-[#f8f7f4] border border-gray-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-[#4a5240]/50 transition-all text-gray-700">
                       <option value="">Select an option</option>
                       <option value="Prime View">Prime View Co-Operative Housing Society</option>
+                      <option value="Custom 3D House Design">Custom 3D House Design</option>
                       <option value="General Inquiry">General Inquiry</option>
                       <option value="Investment">Investment Opportunities</option>
                       <option value="Careers">Careers</option>

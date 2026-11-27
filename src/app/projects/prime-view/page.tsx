@@ -86,7 +86,17 @@ export default function PrimeViewPage() {
           <p className="text-gray-600">Take a virtual tour of the Prime View society.</p>
         </div>
         <div className="aspect-video rounded-3xl overflow-hidden shadow-2xl border-4 border-white relative bg-slate-900">
-          <video className="w-full h-full object-cover" src="/pv-website-trim-home-page.mp4" controls preload="none" poster="/images/prime-view-showcase.jpg"></video>
+          <video
+            className="w-full h-full object-cover"
+            src="/pv-website-trim-home-page.mp4"
+            autoPlay
+            muted
+            loop
+            playsInline
+            controls
+            preload="auto"
+            poster="/images/prime-view-showcase.jpg"
+          ></video>
         </div>
       </section>
 

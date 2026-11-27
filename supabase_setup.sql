@@ -122,3 +122,42 @@ VALUES
   ('marketing', 'Marketing and Sales Partner', 'fa-bullhorn', 'MARKETING & SALES', 'Marketing and Sales Partner', 'Driving commercial success, investor relations, and strategic market expansion.', 5),
   ('software', 'Software Developers & Engineers', 'fa-laptop-code', 'SOFTWARE DEVELOPERS & ENGINEERS', 'Software Developers and Engineers', 'Architecting modern digital infrastructure, scalable systems, and intelligent experiences.', 6)
 ON CONFLICT (slug) DO NOTHING;
+
+-- ============================================================================
+-- 6. 3D House Builder Configurations & Configurable Rates
+-- ============================================================================
+
+CREATE TABLE IF NOT EXISTS house_configurations (
+  id UUID DEFAULT gen_random_uuid() PRIMARY KEY,
+  ref_code TEXT UNIQUE NOT NULL,
+  plot_size TEXT NOT NULL,
+  floors TEXT NOT NULL,
+  style TEXT NOT NULL,
+  config JSONB NOT NULL,
+  estimated_area_sqft INTEGER NOT NULL DEFAULT 0,
+  created_at TIMESTAMP WITH TIME ZONE DEFAULT timezone('utc'::text, now())
+);
+
+ALTER TABLE house_configurations ENABLE ROW LEVEL SECURITY;
+
+DROP POLICY IF EXISTS "Allow public insert on house_configurations" ON house_configurations;
+DROP POLICY IF EXISTS "Allow public read by ref on house_configurations" ON house_configurations;
+
+-- Only anonymous design specs (no private customer info stored)
+CREATE POLICY "Allow public insert on house_configurations" ON house_configurations FOR INSERT WITH CHECK (true);
+CREATE POLICY "Allow public read by ref on house_configurations" ON house_configurations FOR SELECT USING (true);
+
+CREATE TABLE IF NOT EXISTS house_builder_rates (
+  id UUID DEFAULT gen_random_uuid() PRIMARY KEY,
+  is_active BOOLEAN DEFAULT true,
+  rates_json JSONB NOT NULL,
+  updated_at TIMESTAMP WITH TIME ZONE DEFAULT timezone('utc'::text, now())
+);
+
+ALTER TABLE house_builder_rates ENABLE ROW LEVEL SECURITY;
+
+DROP POLICY IF EXISTS "Allow public read on house_builder_rates" ON house_builder_rates;
+DROP POLICY IF EXISTS "Allow admin write on house_builder_rates" ON house_builder_rates;
+
+CREATE POLICY "Allow public read on house_builder_rates" ON house_builder_rates FOR SELECT USING (true);
+CREATE POLICY "Allow admin write on house_builder_rates" ON house_builder_rates FOR ALL USING (auth.role() = 'authenticated');
