@@ -9,6 +9,8 @@ import {
   WINDOW_STYLES,
 } from './configurations';
 import { ConstructionRatesConfig, HouseConfig, HouseEstimate } from './types';
+import type { SocietyPlot } from '@/lib/society/types';
+import { formatSocietyPlotSummaryLines } from '@/lib/society/housecraft-integration';
 
 /**
  * Default configurable construction rates (PKR per sq. ft.).
@@ -124,7 +126,8 @@ export function calculateHouseEstimate(
 export function formatConfigurationSummary(
   config: HouseConfig,
   estimate: HouseEstimate,
-  configRef?: string
+  configRef?: string,
+  societyPlot?: SocietyPlot | null
 ): string {
   const plot = PLOT_SPECS[config.plotSize];
   const floor = FLOOR_OPTIONS.find((f) => f.id === config.floors);
@@ -137,7 +140,8 @@ export function formatConfigurationSummary(
   const enabledAmenities = AMENITIES_META.filter((a) => config.amenities[a.key]).map((a) => a.label);
 
   const lines = [
-    `Plot Size: ${plot.label} (${plot.dimensionsLabel})`,
+    ...(societyPlot ? formatSocietyPlotSummaryLines(societyPlot) : []),
+    `Plot Size: ${plot.label} (${plot.dimensionsLabel})${config.isCornerPlot ? ' — Corner Plot (2-Side Open)' : ''}`,
     `Floors: ${floor?.label} (${floor?.shortLabel})`,
     `Architectural Style: ${style?.label}`,
     `Exterior Color: ${wall?.label}`,
@@ -161,9 +165,10 @@ export const WHATSAPP_QUOTE_NUMBER = '923139986707';
 export function buildHouseQuoteWhatsAppUrl(
   config: HouseConfig,
   estimate: HouseEstimate,
-  configRef?: string
+  configRef?: string,
+  societyPlot?: SocietyPlot | null
 ): string {
-  const summary = formatConfigurationSummary(config, estimate, configRef);
+  const summary = formatConfigurationSummary(config, estimate, configRef, societyPlot);
   const message = `Assalamualaikum Roman Builders, I designed a custom house on your 3D House Builder and would like to request a formal quotation:\n\n${summary}\n\nPlease share the next steps for architectural drawings and a formal quote.`;
   return `https://wa.me/${WHATSAPP_QUOTE_NUMBER}?text=${encodeURIComponent(message)}`;
 }

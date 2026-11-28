@@ -14,6 +14,8 @@ export default function Navbar({ teamCategories }: NavbarProps) {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isTeamMenuOpen, setIsTeamMenuOpen] = useState(false);
   const [isMobileTeamOpen, setIsMobileTeamOpen] = useState(false);
+  const [isHouseCraftMenuOpen, setIsHouseCraftMenuOpen] = useState(false);
+  const [isMobileHouseCraftOpen, setIsMobileHouseCraftOpen] = useState(false);
   const pathname = usePathname();
   const isWhiteLogo = pathname?.startsWith('/about') || pathname?.startsWith('/services');
 
@@ -105,16 +107,67 @@ export default function Navbar({ teamCategories }: NavbarProps) {
             >
               Services
             </Link>
-            <Link
-              href="/build-your-house"
-              className={`px-3 lg:px-4 xl:px-5 py-2.5 rounded-full transition-all whitespace-nowrap ${
-                pathname === '/build-your-house'
-                  ? 'bg-white/20 text-white font-semibold shadow-sm'
-                  : 'hover:bg-white/10 hover:text-white'
-              }`}
+            {/* House Craft Dropdown (Build Your House + Explore Society) */}
+            <div
+              className="relative group"
+              onMouseEnter={() => setIsHouseCraftMenuOpen(true)}
+              onMouseLeave={() => setIsHouseCraftMenuOpen(false)}
             >
-              House Craft
-            </Link>
+              <button
+                type="button"
+                onClick={(e) => {
+                  e.preventDefault();
+                  setIsHouseCraftMenuOpen((prev) => !prev);
+                }}
+                className={`px-3 lg:px-4 xl:px-5 py-2.5 rounded-full transition-all whitespace-nowrap flex items-center gap-1.5 cursor-pointer focus:outline-none ${
+                  pathname === '/build-your-house' || pathname === '/explore-society' || pathname === '/house-craft'
+                    ? 'bg-white/20 text-white font-semibold shadow-sm'
+                    : 'hover:bg-white/10 hover:text-white'
+                }`}
+                aria-haspopup="true"
+                aria-expanded={isHouseCraftMenuOpen}
+              >
+                <span>House Craft</span>
+                <i className="fa-solid fa-chevron-down text-[10px] opacity-70 group-hover:rotate-180 transition-transform duration-200"></i>
+              </button>
+
+              <div className="absolute -bottom-2 left-0 right-0 h-3 pointer-events-auto"></div>
+
+              <div
+                className={`absolute top-full left-1/2 -translate-x-1/2 pt-2 z-50 pointer-events-auto transition-all duration-200 ${
+                  isHouseCraftMenuOpen
+                    ? 'opacity-100 visible translate-y-0'
+                    : 'opacity-0 invisible -translate-y-2 group-hover:opacity-100 group-hover:visible group-hover:translate-y-0'
+                }`}
+              >
+                <div className="bg-[#3d4435]/95 backdrop-blur-xl border border-white/15 rounded-2xl shadow-2xl p-2 min-w-[235px] flex flex-col gap-1">
+                  <Link
+                    href="/house-craft"
+                    onClick={() => setIsHouseCraftMenuOpen(false)}
+                    className="px-4 py-2.5 rounded-xl hover:bg-white/15 text-[#e8e4db] hover:text-white text-[13.5px] font-medium transition-all text-left flex items-center gap-2.5"
+                  >
+                    <i className="fa-solid fa-compass-drafting text-xs text-[#dfd2ba]"></i>
+                    <span>House Craft Studio</span>
+                  </Link>
+                  <Link
+                    href="/build-your-house"
+                    onClick={() => setIsHouseCraftMenuOpen(false)}
+                    className="px-4 py-2.5 rounded-xl hover:bg-white/15 text-[#e8e4db] hover:text-white text-[13.5px] font-medium transition-all text-left flex items-center gap-2.5"
+                  >
+                    <i className="fa-solid fa-house text-xs text-[#dfd2ba]"></i>
+                    <span>Build Your House</span>
+                  </Link>
+                  <Link
+                    href="/explore-society"
+                    onClick={() => setIsHouseCraftMenuOpen(false)}
+                    className="px-4 py-2.5 rounded-xl hover:bg-white/15 text-[#e8e4db] hover:text-white text-[13.5px] font-medium transition-all text-left flex items-center gap-2.5"
+                  >
+                    <i className="fa-solid fa-city text-xs text-[#dfd2ba]"></i>
+                    <span>Explore Society</span>
+                  </Link>
+                </div>
+              </div>
+            </div>
 
             {/* Team Dropdown */}
             <div
@@ -201,7 +254,44 @@ export default function Navbar({ teamCategories }: NavbarProps) {
           <Link href="/about" onClick={() => setIsMobileMenuOpen(false)} className="px-6 py-4 text-[#e8e4db] font-medium border-b border-white/5 hover:bg-white/10 rounded-xl transition-colors">About us</Link>
           <Link href="/projects" onClick={() => setIsMobileMenuOpen(false)} className="px-6 py-4 text-[#e8e4db] font-medium border-b border-white/5 hover:bg-white/10 rounded-xl transition-colors">Projects</Link>
           <Link href="/services" onClick={() => setIsMobileMenuOpen(false)} className="px-6 py-4 text-[#e8e4db] font-medium border-b border-white/5 hover:bg-white/10 rounded-xl transition-colors">Services</Link>
-          <Link href="/build-your-house" onClick={() => setIsMobileMenuOpen(false)} className="px-6 py-4 text-[#e8e4db] font-medium border-b border-white/5 hover:bg-white/10 rounded-xl transition-colors">House Craft</Link>
+          <div className="border-b border-white/5 py-1">
+            <button
+              type="button"
+              onClick={() => setIsMobileHouseCraftOpen(!isMobileHouseCraftOpen)}
+              className="w-full flex items-center justify-between px-6 py-3 text-[#e8e4db] font-medium hover:text-white focus:outline-none cursor-pointer"
+            >
+              <span>House Craft</span>
+              <i className={`fa-solid fa-chevron-down text-xs transition-transform duration-200 ${isMobileHouseCraftOpen ? 'rotate-180' : ''}`}></i>
+            </button>
+            {isMobileHouseCraftOpen && (
+              <div className="flex flex-col pl-10 pr-4 pb-3 space-y-2">
+                <Link
+                  href="/house-craft"
+                  onClick={() => setIsMobileMenuOpen(false)}
+                  className="text-xs text-[#dfd2ba] hover:text-white py-1.5 flex items-center gap-2"
+                >
+                  <i className="fa-solid fa-compass-drafting text-[10px]"></i>
+                  <span>House Craft Studio</span>
+                </Link>
+                <Link
+                  href="/build-your-house"
+                  onClick={() => setIsMobileMenuOpen(false)}
+                  className="text-xs text-[#dfd2ba] hover:text-white py-1.5 flex items-center gap-2"
+                >
+                  <i className="fa-solid fa-house text-[10px]"></i>
+                  <span>Build Your House</span>
+                </Link>
+                <Link
+                  href="/explore-society"
+                  onClick={() => setIsMobileMenuOpen(false)}
+                  className="text-xs text-[#dfd2ba] hover:text-white py-1.5 flex items-center gap-2"
+                >
+                  <i className="fa-solid fa-city text-[10px]"></i>
+                  <span>Explore Society</span>
+                </Link>
+              </div>
+            )}
+          </div>
           
           {/* Team Mobile Menu Section with Expandable Categories */}
           <div className="border-b border-white/5 py-1">

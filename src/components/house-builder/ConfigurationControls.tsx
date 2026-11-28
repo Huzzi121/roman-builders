@@ -13,6 +13,7 @@ import {
   WINDOW_STYLES,
 } from '@/lib/house-builder/configurations';
 import { CONFIGURATION_PRESETS } from '@/lib/house-builder/presets';
+import Link from 'next/link';
 import {
   AmenitiesState,
   ArchStyleId,
@@ -23,10 +24,14 @@ import {
   WallFinishId,
   WindowStyleId,
 } from '@/lib/house-builder/types';
+import { PLOT_TYPE_LABELS, SocietyPlot } from '@/lib/society/types';
+import { buildConfigFromSocietyPlot } from '@/lib/society/housecraft-integration';
 
 interface ConfigurationControlsProps {
   config: HouseConfig;
   onChange: (next: HouseConfig) => void;
+  societyPlot?: SocietyPlot | null;
+  onExitSocietyPlot?: () => void;
 }
 
 type PanelTab = 'structure' | 'exterior' | 'amenities';
@@ -34,11 +39,29 @@ type PanelTab = 'structure' | 'exterior' | 'amenities';
 export default function ConfigurationControls({
   config,
   onChange,
+  societyPlot,
+  onExitSocietyPlot,
 }: ConfigurationControlsProps) {
   const [activeTab, setActiveTab] = useState<PanelTab>('structure');
 
+  const isPlotLocked = Boolean(societyPlot);
+
   const handlePlotChange = (plotSize: PlotSizeId) => {
+    if (isPlotLocked) return;
     onChange(sanitizeConfigForPlot(config, plotSize));
+  };
+
+  const handleCornerPlotToggle = () => {
+    if (isPlotLocked) return;
+    onChange({ ...config, isCornerPlot: !config.isCornerPlot });
+  };
+
+  const handlePresetApply = (presetConfig: HouseConfig) => {
+    if (societyPlot) {
+      onChange(buildConfigFromSocietyPlot(societyPlot, presetConfig));
+    } else {
+      onChange(presetConfig);
+    }
   };
 
   const handleFloorChange = (floors: FloorConfigId) => {
@@ -86,7 +109,7 @@ export default function ConfigurationControls({
             <button
               key={preset.id}
               type="button"
-              onClick={() => onChange(preset.config)}
+              onClick={() => handlePresetApply(preset.config)}
               className="text-left p-2.5 rounded-xl bg-white hover:bg-[#3d4435] hover:text-white border border-[#dfd2ba]/70 transition-all group"
             >
               <div className="flex items-center justify-between gap-1">
@@ -131,11 +154,55 @@ export default function ConfigurationControls({
       <div className="p-5 sm:p-6 space-y-6">
         {activeTab === 'structure' && (
           <>
+            {/* Selected Society Plot Lock Banner */}
+            {societyPlot && (
+              <div className="bg-[#3d4435] text-[#e8e4db] rounded-2xl p-4 border border-[#9d783e]/50 shadow-md space-y-2">
+                <div className="flex items-start justify-between gap-2">
+                  <div>
+                    <span className="text-[9px] font-bold uppercase tracking-[0.2em] text-[#dfd2ba]">
+                      Selected Society Plot (Locked)
+                    </span>
+                    <div className="text-sm font-serif font-semibold text-white">
+                      Plot {societyPlot.plotNumber} • {societyPlot.plotSizeLabel} ({societyPlot.width}×{societyPlot.depth} ft)
+                    </div>
+                    <div className="text-[11px] text-[#dfd2ba]/90">
+                      {societyPlot.block} • {societyPlot.street} • {PLOT_TYPE_LABELS[societyPlot.plotType]}
+                    </div>
+                  </div>
+                  <i className="fa-solid fa-lock text-[#9d783e] text-xs mt-1"></i>
+                </div>
+                <div className="flex flex-wrap gap-2 pt-1">
+                  <Link
+                    href="/explore-society"
+                    className="text-[11px] font-medium bg-white/15 hover:bg-white/25 text-white px-2.5 py-1 rounded-lg transition-colors"
+                  >
+                    Switch Plot in Society
+                  </Link>
+                  {onExitSocietyPlot && (
+                    <button
+                      type="button"
+                      onClick={onExitSocietyPlot}
+                      className="text-[11px] text-[#dfd2ba] hover:text-white px-2 py-1 rounded-lg"
+                    >
+                      Unlock Standalone Mode
+                    </button>
+                  )}
+                </div>
+              </div>
+            )}
+
             {/* Plot Size */}
             <div>
-              <label className="text-[11px] font-bold uppercase tracking-wider text-gray-500 block mb-2.5">
-                1. Residential Plot Size
-              </label>
+              <div className="flex items-center justify-between mb-2.5">
+                <label className="text-[11px] font-bold uppercase tracking-wider text-gray-500">
+                  1. Residential Plot Size
+                </label>
+                {isPlotLocked && (
+                  <span className="text-[10px] font-semibold text-[#9d783e]">
+                    Set by Society Plot
+                  </span>
+                )}
+              </div>
               <div className="grid grid-cols-2 gap-2.5">
                 {(Object.keys(PLOT_SPECS) as PlotSizeId[]).map((plotId) => {
                   const spec = PLOT_SPECS[plotId];
@@ -144,10 +211,13 @@ export default function ConfigurationControls({
                     <button
                       key={plotId}
                       type="button"
+                      disabled={isPlotLocked}
                       onClick={() => handlePlotChange(plotId)}
                       className={`p-3 rounded-2xl border text-left transition-all ${
                         active
                           ? 'bg-[#3d4435] text-white border-[#3d4435] shadow-md'
+                          : isPlotLocked
+                          ? 'bg-gray-100 text-gray-400 border-gray-200 cursor-not-allowed opacity-55'
                           : 'bg-white text-[#161f18] border-[#dfd2ba]/70 hover:border-[#4a5240]'
                       }`}
                     >
@@ -160,6 +230,49 @@ export default function ConfigurationControls({
                 })}
               </div>
             </div>
+
+            {/* Corner Plot Toggle */}
+            <button
+              type="button"
+              disabled={isPlotLocked}
+              onClick={handleCornerPlotToggle}
+              className={`w-full p-3 rounded-2xl border text-left flex items-center justify-between gap-3 transition-all ${
+                isPlotLocked ? 'opacity-75 cursor-not-allowed ' : ''
+              }${
+                config.isCornerPlot
+                  ? 'bg-[#3d4435]/10 border-[#3d4435] text-[#161f18]'
+                  : 'bg-white border-[#dfd2ba]/70 text-[#161f18] hover:border-[#4a5240]'
+              }`}
+            >
+              <div className="flex items-center gap-3">
+                <div
+                  className={`w-8 h-8 rounded-full flex items-center justify-center text-xs shrink-0 ${
+                    config.isCornerPlot
+                      ? 'bg-[#3d4435] text-white'
+                      : 'bg-[#f4efe4] text-[#9d783e]'
+                  }`}
+                >
+                  <i className="fa-solid fa-road"></i>
+                </div>
+                <div>
+                  <div className="text-xs font-semibold leading-tight">Corner Plot</div>
+                  <div className="text-[10px] text-gray-500 mt-0.5">
+                    Two-side open street frontage with side elevation windows
+                  </div>
+                </div>
+              </div>
+              <div
+                className={`w-10 h-5.5 rounded-full transition-colors p-0.5 shrink-0 ${
+                  config.isCornerPlot ? 'bg-[#4a5240]' : 'bg-gray-300'
+                }`}
+              >
+                <div
+                  className={`w-4.5 h-4.5 rounded-full bg-white shadow transition-transform ${
+                    config.isCornerPlot ? 'translate-x-4.5' : 'translate-x-0'
+                  }`}
+                ></div>
+              </div>
+            </button>
 
             {/* Floors */}
             <div>
@@ -195,6 +308,8 @@ export default function ConfigurationControls({
                   );
                 })}
               </div>
+
+
             </div>
 
             {/* Architectural Style */}
@@ -231,6 +346,8 @@ export default function ConfigurationControls({
                   );
                 })}
               </div>
+
+
             </div>
           </>
         )}
@@ -265,6 +382,8 @@ export default function ConfigurationControls({
                   );
                 })}
               </div>
+
+
             </div>
 
             {/* Accent Cladding */}
@@ -300,6 +419,8 @@ export default function ConfigurationControls({
                   );
                 })}
               </div>
+
+
             </div>
 
             {/* Window Style */}
@@ -336,6 +457,8 @@ export default function ConfigurationControls({
                   );
                 })}
               </div>
+
+
             </div>
           </>
         )}

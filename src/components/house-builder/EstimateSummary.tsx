@@ -17,6 +17,7 @@ import {
   formatConfigurationSummary,
 } from '@/lib/house-builder/estimates';
 import { FinishingCategoryId, HouseConfig, HouseEstimate } from '@/lib/house-builder/types';
+import { PLOT_TYPE_LABELS, SocietyPlot } from '@/lib/society/types';
 
 interface EstimateSummaryProps {
   config: HouseConfig;
@@ -28,6 +29,7 @@ interface EstimateSummaryProps {
   saving: boolean;
   savedRef: string | null;
   statusBanner: string | null;
+  societyPlot?: SocietyPlot | null;
 }
 
 export default function EstimateSummary({
@@ -40,6 +42,7 @@ export default function EstimateSummary({
   saving,
   savedRef,
   statusBanner,
+  societyPlot,
 }: EstimateSummaryProps) {
   const plot = PLOT_SPECS[config.plotSize];
   const floor = FLOOR_OPTIONS.find((f) => f.id === config.floors);
@@ -49,8 +52,8 @@ export default function EstimateSummary({
   const win = WINDOW_STYLES.find((w) => w.id === config.windowStyle);
 
   const selectedAmenities = AMENITIES_META.filter((a) => config.amenities[a.key]);
-  const whatsappUrl = buildHouseQuoteWhatsAppUrl(config, estimate, savedRef || undefined);
-  const contactSummary = formatConfigurationSummary(config, estimate, savedRef || undefined);
+  const whatsappUrl = buildHouseQuoteWhatsAppUrl(config, estimate, savedRef || undefined, societyPlot);
+  const contactSummary = formatConfigurationSummary(config, estimate, savedRef || undefined, societyPlot);
   const contactHref = `/contact?interest=${encodeURIComponent(
     'Custom 3D House Design'
   )}&message=${encodeURIComponent(
@@ -119,6 +122,32 @@ export default function EstimateSummary({
 
         {/* Spec Breakdown */}
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-y-2.5 gap-x-6 text-xs sm:text-sm text-gray-700 mb-5">
+          {societyPlot && (
+            <>
+              <div className="flex justify-between border-b border-gray-100 pb-1.5">
+                <span className="text-gray-500">Society Plot:</span>
+                <span className="font-semibold text-[#9d783e]">
+                  Plot {societyPlot.plotNumber} ({societyPlot.block})
+                </span>
+              </div>
+              <div className="flex justify-between border-b border-gray-100 pb-1.5">
+                <span className="text-gray-500">Street & Facing:</span>
+                <span className="font-medium text-[#161f18]">
+                  {societyPlot.street} • {societyPlot.orientation}
+                </span>
+              </div>
+            </>
+          )}
+          <div className="flex justify-between border-b border-gray-100 pb-1.5">
+            <span className="text-gray-500">Plot Type:</span>
+            <span className="font-medium text-[#161f18]">
+              {societyPlot
+                ? PLOT_TYPE_LABELS[societyPlot.plotType]
+                : config.isCornerPlot
+                ? 'Corner Plot (2-Side Open)'
+                : 'Standard Plot'}
+            </span>
+          </div>
           <div className="flex justify-between border-b border-gray-100 pb-1.5">
             <span className="text-gray-500">Floors:</span>
             <span className="font-medium text-[#161f18]">{floor?.label}</span>

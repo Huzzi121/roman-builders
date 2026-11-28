@@ -2,7 +2,8 @@
 
 import React, { useEffect, useMemo, useState } from 'react';
 import dynamic from 'next/dynamic';
-import { useSearchParams } from 'next/navigation';
+import Link from 'next/link';
+import { useSearchParams, useRouter } from 'next/navigation';
 import { createClient } from '@/lib/supabase/client';
 import {
   buildHouseQuoteWhatsAppUrl,
@@ -18,6 +19,11 @@ import {
   LightingMode,
   ViewMode,
 } from '@/lib/house-builder/types';
+import {
+  buildConfigFromSocietyPlot,
+  resolveSocietyPlot,
+} from '@/lib/society/housecraft-integration';
+import { PLOT_TYPE_LABELS, SocietyPlot } from '@/lib/society/types';
 import ConfigurationControls from './ConfigurationControls';
 import FloorPlanViewer from './FloorPlanViewer';
 import EstimateSummary from './EstimateSummary';
@@ -57,7 +63,9 @@ function decodeConfigParam(raw: string): HouseConfig | null {
 
 export default function HouseConfigurator() {
   const searchParams = useSearchParams();
+  const router = useRouter();
   const [config, setConfig] = useState<HouseConfig>(DEFAULT_HOUSE_CONFIG);
+  const [societyPlot, setSocietyPlot] = useState<SocietyPlot | null>(null);
   const [viewMode, setViewMode] = useState<ViewMode>('3d');
   const [lightingMode, setLightingMode] = useState<LightingMode>('daylight');
   const [lowPowerMode, setLowPowerMode] = useState(false);
@@ -70,15 +78,27 @@ export default function HouseConfigurator() {
   const [savedRef, setSavedRef] = useState<string | null>(null);
   const [statusBanner, setStatusBanner] = useState<string | null>(null);
 
-  // Restore configuration from URL query (?config=... or ?ref=...)
+  // Restore configuration from URL query (?societyPlot=..., ?config=..., or ?ref=...)
   useEffect(() => {
+    const plotParam = searchParams.get('societyPlot');
+    const layoutParam = searchParams.get('layout');
     const cfgParam = searchParams.get('config');
     const refParam = searchParams.get('ref');
+
+    let resolvedPlot: SocietyPlot | null = null;
+    if (plotParam) {
+      resolvedPlot = resolveSocietyPlot(plotParam, layoutParam);
+      setSocietyPlot(resolvedPlot);
+    } else {
+      setSocietyPlot(null);
+    }
 
     if (cfgParam) {
       const decoded = decodeConfigParam(cfgParam);
       if (decoded) {
-        setConfig(decoded);
+        setConfig(resolvedPlot ? buildConfigFromSocietyPlot(resolvedPlot, decoded) : decoded);
+      } else if (resolvedPlot) {
+        setConfig((prev) => buildConfigFromSocietyPlot(resolvedPlot!, prev));
       }
     } else if (refParam) {
       const supabase = createClient();
@@ -89,10 +109,13 @@ export default function HouseConfigurator() {
         .maybeSingle()
         .then(({ data }) => {
           if (data?.config) {
-            setConfig(data.config as HouseConfig);
+            const loaded = data.config as HouseConfig;
+            setConfig(resolvedPlot ? buildConfigFromSocietyPlot(resolvedPlot, loaded) : loaded);
             setSavedRef(data.ref_code);
           }
         });
+    } else if (resolvedPlot) {
+      setConfig((prev) => buildConfigFromSocietyPlot(resolvedPlot!, prev));
     }
   }, [searchParams]);
 
@@ -163,18 +186,71 @@ export default function HouseConfigurator() {
   };
 
   const handleReset = () => {
-    setConfig(DEFAULT_HOUSE_CONFIG);
+    setConfig(societyPlot ? buildConfigFromSocietyPlot(societyPlot, DEFAULT_HOUSE_CONFIG) : DEFAULT_HOUSE_CONFIG);
     setSavedRef(null);
     setStatusBanner('Reset to default house configuration.');
     triggerCamera('reset');
   };
 
-  const whatsappUrl = buildHouseQuoteWhatsAppUrl(config, estimate, savedRef || undefined);
+  const handleExitSocietyMode = () => {
+    setSocietyPlot(null);
+    router.replace('/build-your-house');
+  };
+
+  const whatsappUrl = buildHouseQuoteWhatsAppUrl(config, estimate, savedRef || undefined, societyPlot);
   const hasFirstFloor = config.floors === 'double' || config.floors === 'double-rooftop';
   const hasRooftop = config.floors === 'double-rooftop';
 
   return (
-    <div className="space-y-8 pb-20 md:pb-8">
+    <div className="space-y-6 pb-20 md:pb-8">
+      {/* Top Society Context or Quick Mode Switcher */}
+      {societyPlot ? (
+        <div className="bg-[#3d4435] text-[#e8e4db] rounded-2xl px-4 sm:px-6 py-3.5 shadow-lg border border-[#9d783e]/50 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+          <div className="flex items-center gap-3">
+            <div className="w-9 h-9 rounded-full bg-[#9d783e] text-white flex items-center justify-center shrink-0">
+              <i className="fa-solid fa-location-dot text-sm"></i>
+            </div>
+            <div>
+              <div className="text-xs sm:text-sm font-serif text-white font-semibold">
+                Designing on Society Plot {societyPlot.plotNumber} ({societyPlot.plotSizeLabel} • {societyPlot.width}×{societyPlot.depth} ft)
+              </div>
+              <div className="text-[11px] text-[#dfd2ba]">
+                {societyPlot.block} • {societyPlot.street} • {PLOT_TYPE_LABELS[societyPlot.plotType]} • Facing {societyPlot.orientation}
+              </div>
+            </div>
+          </div>
+          <div className="flex items-center gap-2 shrink-0">
+            <Link
+              href="/explore-society"
+              className="bg-white/15 hover:bg-white/25 text-white text-xs font-medium px-3.5 py-1.5 rounded-xl transition-colors"
+            >
+              Switch Plot
+            </Link>
+            <button
+              type="button"
+              onClick={handleExitSocietyMode}
+              className="text-xs text-[#dfd2ba] hover:text-white px-2.5 py-1.5"
+            >
+              Exit Plot Mode
+            </button>
+          </div>
+        </div>
+      ) : (
+        <div className="bg-white/75 backdrop-blur-md rounded-2xl px-4 sm:px-6 py-3 border border-[#dfd2ba]/80 shadow-sm flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+          <div className="text-xs text-gray-700 flex items-center gap-2">
+            <i className="fa-solid fa-city text-[#9d783e]"></i>
+            <span>Want to choose a specific plot location inside a residential community first?</span>
+          </div>
+          <Link
+            href="/explore-society"
+            className="inline-flex items-center gap-2 bg-[#3d4435] hover:bg-[#161f18] text-white text-xs font-semibold px-4 py-2 rounded-xl transition-colors self-start sm:self-auto shrink-0"
+          >
+            <span>Explore 3D Society</span>
+            <i className="fa-solid fa-arrow-right text-[10px]"></i>
+          </Link>
+        </div>
+      )}
+
       {/* Main Split Builder Interface */}
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 items-start">
         {/* Left: 3D Viewport / Floor Plan Canvas */}
@@ -283,6 +359,7 @@ export default function HouseConfigurator() {
                     lightingMode={lightingMode}
                     cameraPresetTrigger={cameraPresetTrigger}
                     lowPowerMode={lowPowerMode}
+                    societyPlot={societyPlot}
                   />
 
                   {/* Camera Preset Overlay Bar */}
@@ -334,13 +411,19 @@ export default function HouseConfigurator() {
               saving={saving}
               savedRef={savedRef}
               statusBanner={statusBanner}
+              societyPlot={societyPlot}
             />
           </div>
         </div>
 
         {/* Right: Configuration Panel */}
-        <div className="lg:col-span-5 xl:col-span-4 space-y-6 lg:sticky lg:top-24">
-          <ConfigurationControls config={config} onChange={setConfig} />
+        <div className="lg:col-span-5 xl:col-span-4 space-y-6">
+          <ConfigurationControls
+            config={config}
+            onChange={setConfig}
+            societyPlot={societyPlot}
+            onExitSocietyPlot={handleExitSocietyMode}
+          />
 
           {/* Mobile/Tablet Estimate & Summary */}
           <div className="lg:hidden">
@@ -356,6 +439,7 @@ export default function HouseConfigurator() {
               saving={saving}
               savedRef={savedRef}
               statusBanner={statusBanner}
+              societyPlot={societyPlot}
             />
           </div>
         </div>

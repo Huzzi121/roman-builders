@@ -47,6 +47,7 @@ export interface AmenitiesState {
 
 export interface HouseConfig {
   plotSize: PlotSizeId;
+  isCornerPlot?: boolean;
   floors: FloorConfigId;
   style: ArchStyleId;
   wallFinish: WallFinishId;

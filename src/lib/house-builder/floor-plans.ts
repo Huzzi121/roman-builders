@@ -169,9 +169,9 @@ export function getIllustrativeFloorPlan(
 
     return {
       levelTitle: 'Ground Floor Layout (Illustrative)',
-      subtitle: `${plot.label} (${plot.dimensionsLabel}) — ${
-        config.floors === 'single' ? 'Single Story' : 'Ground Level'
-      }`,
+      subtitle: `${plot.label} (${plot.dimensionsLabel})${
+        config.isCornerPlot ? ' • Corner Plot (Side Street Open)' : ''
+      } — ${config.floors === 'single' ? 'Single Story' : 'Ground Level'}`,
       rooms,
     };
   }

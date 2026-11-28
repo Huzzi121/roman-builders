@@ -94,6 +94,7 @@ export const CONFIGURATION_PRESETS: ConfigPreset[] = [
     badge: '1 Kanal',
     config: {
       plotSize: '1-kanal',
+      isCornerPlot: true,
       floors: 'double-rooftop',
       style: 'modern-minimalist',
       wallFinish: 'charcoal-slate',

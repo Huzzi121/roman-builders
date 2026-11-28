@@ -6,6 +6,7 @@ import {
   WINDOW_STYLES,
 } from './configurations';
 import { CladdingId, HouseConfig } from './types';
+import type { SocietyPlot } from '@/lib/society/types';
 
 // 1 Three.js unit = 4 feet (0.25 scale keeps geometry crisp & camera framing clean)
 export const FT = 0.25;
@@ -186,21 +187,35 @@ function addPitchedGableRoof(
 
 /**
  * Builds the complete procedural 3D house assembly into a fresh THREE.Group.
+ * Optionally respects an active SocietyPlot's exact dimensions, footprint, and corner road side.
  */
-export function buildHouseAssembly(config: HouseConfig, isGoldenHour: boolean): THREE.Group {
+export function buildHouseAssembly(
+  config: HouseConfig,
+  isGoldenHour: boolean,
+  societyPlot?: SocietyPlot | null
+): THREE.Group {
   const root = new THREE.Group();
   const plot = PLOT_SPECS[config.plotSize];
 
-  const plotW = plot.widthFt * FT;
-  const plotD = plot.depthFt * FT;
+  const plotW = (societyPlot ? societyPlot.width : plot.widthFt) * FT;
+  const plotD = (societyPlot ? societyPlot.depth : plot.depthFt) * FT;
 
   const frontSetback = plot.setbackFrontFt * FT;
   const backSetback = plot.setbackBackFt * FT;
-  const sideSetback = plot.setbackSideFt * FT;
+  const sideSetback = (config.isCornerPlot ? Math.max(plot.setbackSideFt, 3.5) : plot.setbackSideFt) * FT;
 
-  const houseW = Math.max(3.5, plotW - sideSetback * 2);
-  const houseD = Math.max(4.5, plotD - frontSetback - backSetback);
+  const rawHouseW = Math.max(3.5, plotW - sideSetback * 2);
+  const rawHouseD = Math.max(4.5, plotD - frontSetback - backSetback);
+  const houseW = societyPlot
+    ? Math.min(rawHouseW, societyPlot.buildingFootprint.width * FT)
+    : rawHouseW;
+  const houseD = societyPlot
+    ? Math.min(rawHouseD, societyPlot.buildingFootprint.depth * FT)
+    : rawHouseD;
   const houseZ = -plotD / 2 + backSetback + houseD / 2;
+
+  // Corner street side (-1 = Left/-X, +1 = Right/+X)
+  const cornerDir = societyPlot?.cornerRoadSide === 'right' ? 1 : -1;
 
   const wallSpec = WALL_FINISHES.find((w) => w.id === config.wallFinish) || WALL_FINISHES[0];
   const claddingSpec = CLADDING_OPTIONS.find((c) => c.id === config.cladding) || CLADDING_OPTIONS[0];
@@ -250,6 +265,21 @@ export function buildHouseAssembly(config: HouseConfig, isGoldenHour: boolean): 
   addBox(root, plotW + 2.4, 0.16, plotD + 2.4, 0, -0.08, 0, paveMat, false, true);
   // Subtle street strip at front
   addBox(root, plotW + 3.2, 0.06, 1.8, 0, -0.03, plotD / 2 + 1.1, roadMat, false, true);
+  // Corner Plot: second street along configured corner road side intersecting front street
+  if (config.isCornerPlot) {
+    addBox(
+      root,
+      1.8,
+      0.06,
+      plotD + 3.2,
+      cornerDir * (plotW / 2 + 1.1),
+      -0.03,
+      0.2,
+      roadMat,
+      false,
+      true
+    );
+  }
 
   // 2. Front Lawn & Courtyard
   if (config.amenities.frontLawn) {
@@ -319,19 +349,25 @@ export function buildHouseAssembly(config: HouseConfig, isGoldenHour: boolean): 
     false
   );
 
-  // Side windows
-  addWindowUnit(
-    root,
-    0.1,
-    1.35,
-    -houseW / 2 - 0.02,
-    gfY,
-    houseZ,
-    frameMat,
-    glassMat,
-    false,
-    false
-  );
+  // Side windows (expanded architectural side elevation facing corner road side)
+  if (config.isCornerPlot) {
+    const cornerFaceX = cornerDir * (houseW / 2 + 0.02);
+    addBox(root, 0.12, 1.35, houseD * 0.24, cornerFaceX, gfY, houseZ + houseD * 0.2, glassMat, false, false);
+    addBox(root, 0.12, 1.35, houseD * 0.24, cornerFaceX, gfY, houseZ - houseD * 0.2, glassMat, false, false);
+  } else {
+    addWindowUnit(
+      root,
+      0.1,
+      1.35,
+      -houseW / 2 - 0.02,
+      gfY,
+      houseZ,
+      frameMat,
+      glassMat,
+      false,
+      false
+    );
+  }
 
   // Architectural Style Details — Ground Level
   if (config.style === 'contemporary-classic') {

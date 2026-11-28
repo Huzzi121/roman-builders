@@ -6,12 +6,14 @@ import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js';
 import { buildHouseAssembly, disposeObject3D, FT } from '@/lib/house-builder/geometry';
 import { PLOT_SPECS } from '@/lib/house-builder/configurations';
 import { CameraPreset, HouseConfig, LightingMode } from '@/lib/house-builder/types';
+import type { SocietyPlot } from '@/lib/society/types';
 
 interface HouseCanvasProps {
   config: HouseConfig;
   lightingMode: LightingMode;
   cameraPresetTrigger: { preset: CameraPreset; seq: number } | null;
   lowPowerMode: boolean;
+  societyPlot?: SocietyPlot | null;
 }
 
 function isWebGLAvailable(): boolean {
@@ -32,6 +34,7 @@ export default function HouseCanvas({
   lightingMode,
   cameraPresetTrigger,
   lowPowerMode,
+  societyPlot,
 }: HouseCanvasProps) {
   const containerRef = useRef<HTMLDivElement>(null);
   const [webglSupported, setWebglSupported] = useState(true);
@@ -242,10 +245,10 @@ export default function HouseCanvas({
       houseGroupRef.current = null;
     }
 
-    const assembly = buildHouseAssembly(config, lightingMode === 'golden-hour');
+    const assembly = buildHouseAssembly(config, lightingMode === 'golden-hour', societyPlot);
     scene.add(assembly);
     houseGroupRef.current = assembly;
-  }, [config, lightingMode]);
+  }, [config, lightingMode, societyPlot]);
 
   // 4. Camera Presets
   useEffect(() => {
